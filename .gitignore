@@ -16,7 +16,6 @@ TestResults
 *.sln.docstates
 
 # Build results
-[Dd]ebug/
 [Rr]elease/
 x64/
 *_i.c
@@ -91,7 +90,6 @@ csx
 AppPackages/
 
 # Others
-[Bb]in
 [Oo]bj
 sql
 TestResults
