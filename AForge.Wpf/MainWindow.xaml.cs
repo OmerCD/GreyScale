@@ -51,13 +51,14 @@ namespace AForge.Wpf
         #region Private fields
 
         private bool _recognition;
-        private IVideoSource _videoSource;
+        private VideoCaptureDevice _videoSource;
 
         private Image<Bgr, Byte> _frame;
         private readonly ImageProcessor _processor;
 
         private CroppedBitmap _croppedImage;
         private BitmapImage _videoImage;
+        private Templates _designedSamples;
 
         DispatcherTimer _dispatcherTimer = new DispatcherTimer();
 
@@ -73,6 +74,7 @@ namespace AForge.Wpf
             _dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             _dispatcherTimer.Tick += DispatcherTimer_Tick;
             _processor = new ImageProcessor();
+            _designedSamples= new Templates();
             ApplySettings();
         }
 
@@ -154,12 +156,9 @@ namespace AForge.Wpf
 
         private void GetFoundTemplates()
         {
-            ListBoxFoundTemplates.Items.Clear();
+            
             ProcessFrame(_videoImage);
-            foreach (var foundTemplate in _processor.foundTemplates)
-            {
-                ListBoxFoundTemplates.Items.Add(foundTemplate.template.name);
-            }
+            TxtMatches.Text = _processor.templates.Count + "/" + _processor.foundTemplates.Count;
 
         }
 
@@ -186,7 +185,7 @@ namespace AForge.Wpf
             {
                 _videoSource = new VideoCaptureDevice(CurrentDevice.MonikerString);
                 _videoSource.NewFrame += video_NewFrame;
-                ((VideoCaptureDevice) _videoSource).VideoResolution.FrameSize
+                _videoSource.VideoResolution = _videoSource.VideoCapabilities[0];
                 _videoSource.Start();
             }
         }
@@ -450,7 +449,7 @@ namespace AForge.Wpf
             try
             {
                 using (FileStream fs = new FileStream(fileName, FileMode.Create))
-                    new BinaryFormatter().Serialize(fs, _processor.templates);
+                    new BinaryFormatter().Serialize(fs, _designedSamples);
             }
             catch (Exception ex)
             {
@@ -460,15 +459,15 @@ namespace AForge.Wpf
         private void Kaydet_Click(object sender, RoutedEventArgs e)
         {
 
-            if (_processor.samples.Count > 0)
+            if (_designedSamples.Count > 0)
             {
-                foreach (var sample in _processor.samples)
+                foreach (var sample in _designedSamples)
                 {
                     sample.name = "test";
                 }
                 _processor.templates.Clear();
-                _processor.templates.AddRange(_processor.samples);
-                ProcessFrame(_croppedImage);
+                _processor.templates.AddRange(_designedSamples);
+                //ProcessFrame(_croppedImage);
                 SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "Template|*bin" };
                 if (saveFileDialog.ShowDialog() == true)
                 {
@@ -491,13 +490,28 @@ namespace AForge.Wpf
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
+            bool wasActiveBefore = false;
             //SampleSelection ss = new SampleSelection(_croppedImage,processor.contours);
+            if (_recognition)
+            {
+                wasActiveBefore = true;
+                _dispatcherTimer.Stop();
+                _recognition = false;
+            }
             ProcessFrame(_croppedImage);
             SampleSelection ss = new SampleSelection(_croppedImage, _processor.samples, _processor.contours);
+
             ss.ShowDialog();
+            _designedSamples.Clear();
             _processor.contours = ss.Contours;
             _processor.samples = ss.Samples;
+            _designedSamples.AddRange(ss.Samples);
             Paint();
+            if (wasActiveBefore)
+            {
+                _recognition = true;
+                _dispatcherTimer.Start();
+            }
         }
 
         private void BtnYükle_OnClick(object sender, RoutedEventArgs e)
@@ -506,8 +520,9 @@ namespace AForge.Wpf
             if (oPF.ShowDialog() == true)
             {
                 LoadTemplates(oPF.FileName);
+                Paint();
             }
-            Paint();
+            
         }
 
         private void BtnRecognition_OnClick(object sender, RoutedEventArgs e)

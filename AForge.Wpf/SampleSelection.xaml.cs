@@ -77,27 +77,6 @@ namespace AForge.Wpf
             
         }
 
-        void RemoveSampleSelected(double top, double left, double bottom, double right)
-        {
-            Templates removingTemplates = new Templates();
-            foreach (var sample in _samples)
-            {
-                var startPoint = sample.startPoint;
-                for (int i = 0; i < sample.contour.Count; i++)
-                {
-                    var point = new Point((float)(sample.contour[i].a + startPoint.X), (float)(sample.contour[i].b + startPoint.Y));
-                    if (point.X > left && point.X < right && point.Y < bottom && point.Y > top)
-                    {
-                        removingTemplates.Add(sample);
-                        break;
-                    }
-                }
-            }
-            foreach (var removingTemplate in removingTemplates)
-            {
-                _samples.Remove(removingTemplate);
-            }
-        }
         #region MouseCapture
 
         void DrawSampleContours()
@@ -217,24 +196,7 @@ namespace AForge.Wpf
                 _samples.Remove(removeSamples[index]);
                 _contours.Remove(removingContours[index]);
             }
-        }
-        // ReSharper disable once UnusedMember.Local
-        private void RemoveContoursInArea(double top, double left, double bottom, double right)
-        {
-            var newContours = new List<Contour<System.Drawing.Point>>(Contours.Count);
-            for (var q = 0; q < Contours.Count; q++)
-            {
-                newContours.Add(new Contour<System.Drawing.Point>(Contours[q].Storage));
-                var contourArray = Contours[q].ToArray();
-                foreach (var point in contourArray)
-                {
-                    if (!(point.X > left) || !(point.X < right) || !(point.Y < bottom) || !(point.Y > top))
-                    {
-                        newContours[q].Push(point);
-                    }
-                }
-            }
-            _contours = newContours;
+            SampleWindow.Title = "Alan Seçimi| Alan Sayısı :" + _samples.Count;
         }
     }
 }
