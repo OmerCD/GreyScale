@@ -1,0 +1,22 @@
+﻿<Window x:Class="AForge.Wpf.SampleSelection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AForge.Wpf"
+        mc:Ignorable="d"
+        Title="SampleSelection" Height="480" Width="640" ResizeMode="NoResize">
+    <Grid>
+        <Canvas x:Name="SelectionCanvas" Background="AliceBlue" Height="Auto" Width="Auto" MouseLeftButtonUp="SelectionCanvas_OnMouseLeftButtonUp" MouseMove="SelectionCanvas_OnMouseMove" MouseLeftButtonDown="SelectionCanvas_OnMouseLeftButtonDown">
+            <Image x:Name="SelectionImage"></Image>
+            <Rectangle x:Name="SelectionRectangle"
+                       StrokeThickness="1"
+                       Stroke="LightBlue"
+                       Fill="#220000FF"
+                       Visibility="Collapsed" />
+            <Canvas x:Name="LineCanvas">
+                
+            </Canvas>
+        </Canvas>
+    </Grid>
+</Window>

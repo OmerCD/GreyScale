@@ -1,0 +1,123 @@
+﻿<Window x:Name="CropWindow" x:Class="AForge.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="1263.108"
+        Height="764.25"
+        mc:Ignorable="d" Loaded="Window_Loaded" SizeChanged="CropWindow_SizeChanged">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <ListBox Background="Aqua" Grid.Column="2" Grid.Row="1" x:Name="ListBoxFoundTemplates"></ListBox>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextWrapping="Wrap" Text="TextBlock" x:Name="tblkClippingRectangle" Style="{DynamicResource TextBlock}"/>
+        <Canvas Grid.Column="0" Grid.Row="1" Margin="5" x:Name="VideoCanvas" MouseLeftButtonDown="VideoCanvas_OnMouseLeftButtonDown" MouseMove="VideoCanvas_OnMouseMove" MouseLeftButtonUp="VideoCanvas_OnMouseLeftButtonUp" Background="AliceBlue">
+            <Image x:Name="videoPlayer" Height="{Binding ActualHeight, ElementName=VideoCanvas}" Width="{Binding ActualWidth, ElementName=VideoCanvas}" Stretch="None"/>
+            <Rectangle x:Name="selectionRectangle"
+                       StrokeThickness="1"
+                       Stroke="LightBlue"
+                       Fill="#220000FF"
+                       Visibility="Collapsed" 
+                       ClipToBounds="True"
+                       />
+        </Canvas>
+
+        <Canvas Grid.Row="1" Grid.Column="1" Margin="5" x:Name="PaintCanvas" Background="AliceBlue">
+            <!--<Image x:Name="CroppedImage" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>-->
+        </Canvas>
+
+        <DockPanel Grid.Row="2" Grid.ColumnSpan="3" Margin="5">
+            <ComboBox x:Name="comboBox"
+                      Width="150"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Bottom"
+                      DisplayMemberPath="Name"
+                      ItemsSource="{Binding VideoDevices}"
+                      SelectedItem="{Binding CurrentDevice}" />
+            <Label Width="150"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Content="Select video source" />
+            <DockPanel Width="600">
+                <Button Style="{DynamicResource Buton}" Click="ButtonBase_OnClick" Content="Dizayn"></Button>
+                <Button Style="{DynamicResource Buton}" Click="btnStart_Click" Content="Start"/>
+                <Button Style="{DynamicResource Buton}" Content="Kırp"  x:Name="BtnCrop" Click="BtnCrop_OnClick" />
+                <Button Style="{DynamicResource Buton}" Content="Kaydet" Click="Kaydet_Click"/>
+                <Button Style="{DynamicResource Buton}" Content="Yükle" Click="BtnYükle_OnClick" x:Name="BtnYükle"></Button>
+                <Button Style="{DynamicResource Buton}" Content="Tanıma" Click="BtnRecognition_OnClick" x:Name="BtnRecognition"/>
+            </DockPanel>
+        </DockPanel>
+        <DockPanel Grid.Column="3" Grid.Row="1" Margin="0,0,0,20" >
+            <DockPanel DockPanel.Dock="Top">
+                <CheckBox Margin="2" Name="EqualizeHist" Checked="ValueChange" Unchecked="ValueChange"/>
+                <TextBlock Text="equalizeHist" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <CheckBox Margin="2" Name="MaxRotateAngle" Unchecked="ValueChange" Checked="ValueChange"/>
+                <TextBlock Text="maxRotateAngle" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <TextBox Style="{DynamicResource TextBox}" Name="MinContourArea" PreviewTextInput="SayiKontrol" Text="70" TextChanged="ValueChange"/>
+                <TextBlock Text="minContourArea" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <TextBox  Style="{DynamicResource TextBox}" Name="MinContourLength" PreviewTextInput="SayiKontrol" Text="70" TextChanged="ValueChange"/>
+                <TextBlock Text="minContourLength" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <TextBox  Style="{DynamicResource TextBox}" Name="MaxAcfDescriptorDeviation" PreviewTextInput="SayiKontrol" Text="4" TextChanged="ValueChange"/>
+                <TextBlock Text="maxACFDescriptorDeviation" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <TextBox  Style="{DynamicResource TextBox}" Name="MinAcf" PreviewTextInput="SayiKontrol" Text="0,96" TextChanged="ValueChange"/>
+                <TextBlock Text="minACF" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <TextBox  Style="{DynamicResource TextBox}" Name="MinIcf" PreviewTextInput="SayiKontrol" Text="0,85" TextChanged="ValueChange"/>
+                <TextBlock Text="minICF" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <CheckBox Name="Blur" IsChecked="True" Checked="ValueChange" Unchecked="ValueChange"/>
+                <TextBlock Text="blur" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <CheckBox Name="NoiseFilter" Unchecked="ValueChange" Checked="ValueChange"/>
+                <TextBlock Text="noiseFilter" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <TextBox  Style="{DynamicResource TextBox}" Name="CannyThreshold" PreviewTextInput="SayiKontrol" Text="50" TextChanged="ValueChange"/>
+                <TextBlock Text="cannyThreshold" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <TextBox  Style="{DynamicResource TextBox}" Name="AdaptiveThresholdBlockSize" PreviewTextInput="SayiKontrol" Text="19" TextChanged="ValueChange"/>
+                <TextBlock Text="adaptiveThresholdBlockSize" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <CheckBox Name="AdaptiveNoiseFilter" IsChecked="True" Unchecked="ValueChange" Checked="ValueChange"/>
+                <TextBlock Text="AdaptiveNoiseFilter" Style="{DynamicResource TextBlock}"/>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top" Height="30"/>
+        </DockPanel>
+    </Grid>
+</Window>

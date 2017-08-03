@@ -1,0 +1,28 @@
+﻿<Window x:Class="AForge.Wpf.Recognition"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AForge.Wpf"
+        mc:Ignorable="d"
+        Title="Recognition" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Canvas  Grid.Row="0" Margin="5" x:Name="VideoCanvas" Background="AliceBlue">
+            <Image x:Name="VideoPlayer" Height="{Binding ActualHeight, ElementName=VideoCanvas}" Width="{Binding ActualWidth, ElementName=VideoCanvas}" Stretch="None"/>
+           
+        </Canvas>
+        <DockPanel Grid.Row="1">
+            <ComboBox x:Name="CbVideoSources" Width="150"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Bottom"
+                      DisplayMemberPath="Name"
+                      ItemsSource="{Binding VideoDevices}"
+                      SelectedItem="{Binding CurrentDevice}" />
+        </DockPanel>
+
+    </Grid>
+</Window>
