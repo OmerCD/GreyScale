@@ -29,7 +29,8 @@ namespace AForge.Wpf
     {
         private List<Contour<System.Drawing.Point>> _contours;
         private Templates _samples;
-        public SampleSelection(ImageSource imageSource, List<Contour<System.Drawing.Point>> contours)
+        private double _strokeThickness;
+        public SampleSelection(ImageSource imageSource, List<Contour<System.Drawing.Point>> contours,double strokeThickness)
         {
             InitializeComponent();
             SelectionImage.Source = imageSource;
@@ -52,7 +53,7 @@ namespace AForge.Wpf
                 {
                     var line = new Line
                     {
-                        StrokeThickness = 3,
+                        StrokeThickness = _strokeThickness,
                         Stroke = Brushes.Red,
                         X1 = point.X - 0.1,
                         X2 = point.X + 0.1,
@@ -60,6 +61,7 @@ namespace AForge.Wpf
                         Y2 = point.Y + 0.1
                     };
                     LineCanvas.Children.Add(line);
+                    
                 }
             }
         }
@@ -67,12 +69,13 @@ namespace AForge.Wpf
         private bool _mouseDown; // Set to 'true' when mouse is held down.
         private System.Windows.Point _mouseDownPos; // The point where the mouse button was clicked down.
 
-        public SampleSelection(ImageSource image, Templates samples, List<Contour<System.Drawing.Point>> contours)
+        public SampleSelection(ImageSource image, Templates samples, List<Contour<System.Drawing.Point>> contours, double strokeThickness)
         {
             InitializeComponent();
             SelectionImage.Source = image;
             _samples = samples;
             _contours = contours;
+            _strokeThickness = strokeThickness;
             DrawContours(contours);
             
         }

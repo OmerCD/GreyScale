@@ -15,12 +15,8 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
-<<<<<<< HEAD
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-=======
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="100"></ColumnDefinition>
->>>>>>> origin/Arayüz
             <ColumnDefinition Width="300"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -28,8 +24,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-<<<<<<< HEAD
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextWrapping="Wrap" Text="TextBlock" x:Name="TxtMatches" Style="{DynamicResource TextBlock}"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextWrapping="Wrap" Text="Bulma Oranı : 0/0" x:Name="TxtMatches" Style="{DynamicResource TextBlock}"/>
         <Canvas Grid.Column="0" Grid.Row="1" Margin="5" x:Name="VideoCanvas" MouseLeftButtonDown="VideoCanvas_OnMouseLeftButtonDown" MouseMove="VideoCanvas_OnMouseMove" MouseLeftButtonUp="VideoCanvas_OnMouseLeftButtonUp" Background="AliceBlue">
             <Image x:Name="videoPlayer" Height="{Binding ActualHeight, ElementName=VideoCanvas}" Width="{Binding ActualWidth, ElementName=VideoCanvas}" Stretch="None"/>
             <Rectangle x:Name="selectionRectangle"
@@ -39,12 +34,7 @@
                        Visibility="Collapsed" 
                        ClipToBounds="True"
                        />
-=======
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextWrapping="Wrap" x:Name="tblkClippingRectangle" Style="{DynamicResource TextBlock}"/>
-        <Canvas Grid.Column="0" Grid.Row="1" Margin="5" x:Name="VideoCanvas"  MouseLeftButtonDown="VideoCanvas_OnMouseLeftButtonDown" MouseMove="VideoCanvas_OnMouseMove" MouseLeftButtonUp="VideoCanvas_OnMouseLeftButtonUp" Background="White">
-            <Image x:Name="videoPlayer" Stretch="None" Height="{Binding ActualHeight, ElementName=VideoCanvas}" Width="{Binding ActualWidth, ElementName=VideoCanvas}"/>
-            <Rectangle x:Name="selectionRectangle" StrokeThickness="1" Stroke="LightBlue" Fill="#220000FF" Visibility="Collapsed" ClipToBounds="True"/>
->>>>>>> origin/Arayüz
+
         </Canvas>
 
         <Canvas Grid.Row="1" Grid.Column="1" Margin="5" x:Name="PaintCanvas" Background="White">
@@ -83,7 +73,7 @@
                         <TextBlock Text="equalizeHist" Style="{DynamicResource TextBlock}"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
-                        <CheckBox Margin="2" Name="MaxRotateAngle" Unchecked="ValueChange" Checked="ValueChange"/>
+                        <CheckBox Margin="2" Name="MaxRotateAngle" Unchecked="ValueChange" Checked="ValueChange" IsChecked="True"/>
                         <TextBlock Text="maxRotateAngle" Style="{DynamicResource TextBlock}"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
@@ -128,7 +118,7 @@
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
                         <DockPanel DockPanel.Dock="Top">
-                            <Button Name="Default" Style="{DynamicResource Buton}" Content="Fabrika Ayarları"/>
+                            <Button x:Name="BtnFactoryDefaults" Style="{DynamicResource Buton}" Content="Fabrika Ayarları" Click="BtnFactoryDefaults_Click"/>
                         </DockPanel>
                     </DockPanel>
                 </DockPanel>
@@ -136,29 +126,29 @@
             <GroupBox Header="Ayarlar" FontFamily="{StaticResource SemiBold}" FontSize="18" DockPanel.Dock="Top" >
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Top">
-                        <Button Name="YeniButon" Style="{DynamicResource Buton}" Content="Yeni" FontSize="30" Width="Auto" Height="50" />
+                        <Button Name="YeniButon" Style="{DynamicResource Buton}" Content="Yeni" FontSize="30" Width="Auto" Height="50" Click="YeniButon_Click" />
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
-                        <Button Style="{DynamicResource Buton}" Content="Kaydet" Click="Kaydet_Click"  FontSize="30" Width="Auto" Height="50"/>
+                        <Button x:Name="BtnSave" Style="{DynamicResource Buton}" Content="Kaydet" Click="Kaydet_Click"  FontSize="30" Width="Auto" Height="50"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
                         <Button Style="{DynamicResource Buton}" Content="Yükle" Click="BtnYükle_OnClick" x:Name="BtnYükle"  FontSize="30" Width="Auto" Height="50"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
-                        <Button Style="{DynamicResource Buton}" Content="Alan Ekle" Click="BtnYükle_OnClick" x:Name="BtnAlanEkle"  FontSize="30" Width="Auto" Height="50"/>
+                        <Button Style="{DynamicResource Buton}" Content="Alan Ekle" x:Name="BtnAlanEkle"  FontSize="30" Width="Auto" Height="50" Click="BtnAlanEkle_Click"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
                         <TextBlock Text="Seçim Kalınlığı   " FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
-                        <Slider Width="140"  Height="24" Maximum="20" Minimum="1" TickFrequency="0.5" IsSnapToTickEnabled="True" Name="SecimValue"/>
+                        <Slider Width="140"  Height="24" Maximum="20" Minimum="1" TickFrequency="0.5" IsSnapToTickEnabled="True" Name="SecimValue" ValueChanged="SecimValue_OnValueChanged" Value="7.5"/>
                         <TextBlock Width="30" Text="{Binding Path=Value, ElementName=SecimValue}" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
                         <TextBlock Text="Doğruluk Değeri" FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
-                        <Slider Width="140"  Height="24" Maximum="100" Minimum="0" TickFrequency="1" IsSnapToTickEnabled="True" Name="DogrulukValue"/>
+                        <Slider Width="140"  Height="24" Maximum="100" Minimum="0" TickFrequency="1" IsSnapToTickEnabled="True" Name="DogrulukValue" ValueChanged="DogrulukValue_OnValueChanged" Value="60"/>
                         <TextBlock Width="30" Text="{Binding Path=Value, ElementName=DogrulukValue}" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
-                        <TextBlock TextWrapping="Wrap" x:Name="AlanSayisi" Style="{DynamicResource TextBlock}"/>
+                        <TextBlock TextWrapping="Wrap" x:Name="AlanSayisi" Style="{DynamicResource TextBlock}" Text="{Binding ElementName=_processor,XPath=samples.Count}"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top">
                         <TextBlock TextWrapping="Wrap" x:Name="ResimdekiAlanSayisi" Style="{DynamicResource TextBlock}"/>

@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
@@ -43,12 +44,36 @@ namespace AForge.Wpf
             get { return _currentDevice; }
             set { _currentDevice = value; OnPropertyChanged("CurrentDevice"); }
         }
+
         private FilterInfo _currentDevice;
 
         #endregion
 
 
         #region Private fields
+
+        private bool Recognition
+        {
+
+            set
+            {
+                RecognitionAnimation(value);
+                _recognition = value;
+                if (!_recognition)
+                {
+                    _dispatcherTimer.Stop();
+
+                }
+                else
+                {
+                    _dispatcherTimer.Start();
+
+                }
+                SetButtonsActivity(!value);
+            }
+        }
+
+        private double _strokeThickness;
 
         private bool _recognition;
         private VideoCaptureDevice _videoSource;
@@ -122,11 +147,14 @@ namespace AForge.Wpf
         }
 
 
-        private void ProcessFrame(BitmapSource bSource)
+        private void ProcessFrame(BitmapSource bSource,bool showSelectedAreaContourCount)
         {
             if (bSource == null || bSource.Height <= 1 || bSource.Width <= 1) return;
             _frame = new Image<Bgr, byte>(ToBitmap(bSource));
             _processor.ProcessImage(_frame);
+            AlanSayisi.Text = "Kayıtlı Alan Sayısı :" + _processor.templates.Count;
+            if(showSelectedAreaContourCount)
+            ResimdekiAlanSayisi.Text = "Seçilen Kısımda Alan Sayısı :" + _processor.samples.Count;
         }
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
@@ -157,11 +185,20 @@ namespace AForge.Wpf
         private void GetFoundTemplates()
         {
             
-            ProcessFrame(_videoImage);
-            TxtMatches.Text = _processor.templates.Count + "/" + _processor.foundTemplates.Count;
+            ProcessFrame(_videoImage,false);
+            TxtMatches.Text = "Bulma Oranı : "+_processor.templates.Count + "/" + _processor.foundTemplates.Count;
 
         }
 
+        private void SetButtonsActivity(bool state)
+        {
+            YeniButon.IsEnabled = state;
+            BtnSave.IsEnabled = state;
+            BtnYükle.IsEnabled = state;
+            BtnAlanEkle.IsEnabled = state;
+            SecimValue.IsEnabled = state;
+            DogrulukValue.IsEnabled = state;
+        }
         private void GetVideoDevices()
         {
             VideoDevices = new ObservableCollection<FilterInfo>();
@@ -238,7 +275,7 @@ namespace AForge.Wpf
 
                         Line line = new Line
                         {
-                            StrokeThickness = 5,
+                            StrokeThickness = _strokeThickness,
                             Stroke = Brushes.Red,
                             X1 = point.X - 0.1,
                             X2 = point.X + 0.1,
@@ -361,7 +398,7 @@ namespace AForge.Wpf
                 PaintCanvas.Background = ib;
                 PaintCanvas.Height = rect.Height;
                 PaintCanvas.Width = rect.Width;
-                ProcessFrame(_croppedImage);
+                ProcessFrame(_croppedImage,true);
                 Paint();
             }
         }
@@ -374,6 +411,7 @@ namespace AForge.Wpf
 
         private bool _mouseDown; // Set to 'true' when mouse is held down.
         private System.Windows.Point _mouseDownPos; // The point where the mouse button was clicked down.
+        private double _correctnessPercentage;
 
         private void VideoCanvas_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -458,22 +496,17 @@ namespace AForge.Wpf
         }
         private void Kaydet_Click(object sender, RoutedEventArgs e)
         {
-
-            if (_designedSamples.Count > 0)
-            {
-                foreach (var sample in _designedSamples)
+                foreach (var sample in _processor.templates)
                 {
                     sample.name = "test";
                 }
-                _processor.templates.Clear();
-                _processor.templates.AddRange(_designedSamples);
                 //ProcessFrame(_croppedImage);
-                SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "Template|*bin" };
+                SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "Template|*bin",DefaultExt = "bin"};
                 if (saveFileDialog.ShowDialog() == true)
                 {
                     SaveTemplates(saveFileDialog.FileName);
                 }
-            }
+            
         }
         private void LoadTemplates(string fileName)
         {
@@ -481,6 +514,7 @@ namespace AForge.Wpf
             {
                 using (FileStream fs = new FileStream(fileName, FileMode.Open))
                     _processor.templates = (Templates)new BinaryFormatter().Deserialize(fs);
+                AlanSayisi.Text = "Kayıtlı Alan Sayısı :" + _processor.templates.Count;
             }
             catch (Exception ex)
             {
@@ -495,22 +529,21 @@ namespace AForge.Wpf
             if (_recognition)
             {
                 wasActiveBefore = true;
-                _dispatcherTimer.Stop();
-                _recognition = false;
+                Recognition = false;
             }
-            ProcessFrame(_croppedImage);
-            SampleSelection ss = new SampleSelection(_croppedImage, _processor.samples, _processor.contours);
+            ProcessFrame(_croppedImage,true);
+            SampleSelection ss = new SampleSelection(_croppedImage, _processor.samples, _processor.contours,_strokeThickness);
 
             ss.ShowDialog();
             _designedSamples.Clear();
             _processor.contours = ss.Contours;
             _processor.samples = ss.Samples;
             _designedSamples.AddRange(ss.Samples);
+            ResimdekiAlanSayisi.Text = "Seçilen Kısımda Alan Sayısı :" + _designedSamples.Count;
             Paint();
             if (wasActiveBefore)
             {
-                _recognition = true;
-                _dispatcherTimer.Start();
+                Recognition = true;
             }
         }
 
@@ -525,20 +558,100 @@ namespace AForge.Wpf
             
         }
 
+        void RecognitionAnimation(bool active)
+        {
+            if (active)
+            {
+                BtnRecognition.Content = "TANIMA AKTİF";
+                var animation = new ColorAnimation
+                {
+                    From = Colors.Gray,
+                    To = Colors.Red,
+                    RepeatBehavior = RepeatBehavior.Forever,
+                    Duration = new Duration(TimeSpan.FromSeconds(1))
+                };
+                BtnRecognition.Background = new SolidColorBrush(Colors.Red);
+                BtnRecognition.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
+            }
+            else
+            {
+                BtnRecognition.Background = new SolidColorBrush(Colors.SkyBlue);
+                BtnRecognition.Background.BeginAnimation(SolidColorBrush.ColorProperty, new ColorAnimation { BeginTime = null });
+                BtnRecognition.Background = Brushes.SkyBlue;
+                BtnRecognition.Content = "Tanıma";
+            }
+        }
         private void BtnRecognition_OnClick(object sender, RoutedEventArgs e)
         {
             //Recognition frm = new Recognition();
             //frm.ShowDialog();
-            if (_recognition)
-            {
-                _dispatcherTimer.Stop();
-            }
-            else
-            {
-                _dispatcherTimer.Start();
-            }
-            _recognition = !_recognition;
+            
+            
+            Recognition = !_recognition;
             _processor.onlyFindContours = !_recognition;
+        }
+
+        private void BtnFactoryDefaults_Click(object sender, RoutedEventArgs e)
+        {
+            if (_processor == null)
+            {
+                return;
+            }
+            try
+            {
+                EqualizeHist.IsChecked = false;
+                MaxRotateAngle.IsChecked = true;
+                MinContourArea.Text = "70";
+                MinContourLength.Text = "70";
+                MaxAcfDescriptorDeviation.Text = "4";
+                MinAcf.Text = "0.96";
+                MinIcf.Text= "0.85";
+                Blur.IsChecked = true;
+                NoiseFilter.IsChecked = false;
+                CannyThreshold.Text="50";
+                AdaptiveThresholdBlockSize.Text="19";
+                AdaptiveNoiseFilter.IsChecked =true; 
+                ApplySettings();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void YeniButon_Click(object sender, RoutedEventArgs e)
+        {
+            _processor.templates=new Templates();
+            _processor.foundTemplates= new List<FoundTemplateDesc>();
+            _designedSamples = new Templates();
+            AlanSayisi.Text = "Kayıtlı Alan Sayısı :0";
+        }
+
+        private void BtnAlanEkle_Click(object sender, RoutedEventArgs e)
+        {
+            Templates toSaveSamples;
+            if (_designedSamples.Count > 0)
+            {
+                toSaveSamples = _designedSamples;
+            }
+            else if (_processor.samples.Count > 0)
+            {
+                toSaveSamples = _processor.samples;
+            }
+            else return;
+            _processor.templates.AddRange(toSaveSamples);
+            AlanSayisi.Text = "Kayıtlı Alan Sayısı :" + _processor.templates.Count;
+        }
+
+        private void SecimValue_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            _strokeThickness = SecimValue.Value;
+        }
+
+        private void DogrulukValue_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            _correctnessPercentage = DogrulukValue.Value;
         }
     }
 }
