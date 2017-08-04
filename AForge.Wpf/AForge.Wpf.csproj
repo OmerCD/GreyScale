@@ -154,10 +154,26 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <Resource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    </Resource>
+    <Resource Include="Fonts\Titillium-Black.otf" />
+    <Resource Include="Fonts\Titillium-Bold.otf" />
+    <Resource Include="Fonts\Titillium-BoldItalic.otf" />
+    <Resource Include="Fonts\Titillium-BoldUpright.otf" />
+    <Resource Include="Fonts\Titillium-Light.otf" />
+    <Resource Include="Fonts\Titillium-LightItalic.otf" />
+    <Resource Include="Fonts\Titillium-LightUpright.otf" />
+    <Resource Include="Fonts\Titillium-Regular.otf" />
+    <Resource Include="Fonts\Titillium-RegularItalic.otf" />
+    <Resource Include="Fonts\Titillium-RegularUpright.otf" />
+    <Resource Include="Fonts\Titillium-Semibold.otf" />
+    <Resource Include="Fonts\Titillium-SemiboldItalic.otf" />
+    <Resource Include="Fonts\Titillium-SemiboldUpright.otf" />
+    <Resource Include="Fonts\Titillium-Thin.otf" />
+    <Resource Include="Fonts\Titillium-ThinItalic.otf" />
+    <Resource Include="Fonts\Titillium-ThinUpright.otf" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -168,6 +184,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fonts\SIL Open Font License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
