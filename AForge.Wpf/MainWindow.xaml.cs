@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
@@ -24,6 +25,7 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Microsoft.Win32;
 using Brushes = System.Windows.Media.Brushes;
+using Color = System.Windows.Media.Color;
 using Size = System.Drawing.Size;
 
 namespace AForge.Wpf
@@ -79,7 +81,6 @@ namespace AForge.Wpf
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
         
-                GetFoundTemplates();
             
         }
 
@@ -152,17 +153,6 @@ namespace AForge.Wpf
 
         }
 
-        private void GetFoundTemplates()
-        {
-            ListBoxFoundTemplates.Items.Clear();
-            ProcessFrame(_videoImage);
-            foreach (var foundTemplate in _processor.foundTemplates)
-            {
-                ListBoxFoundTemplates.Items.Add(foundTemplate.template.name);
-            }
-
-        }
-
         private void GetVideoDevices()
         {
             VideoDevices = new ObservableCollection<FilterInfo>();
@@ -186,7 +176,6 @@ namespace AForge.Wpf
             {
                 _videoSource = new VideoCaptureDevice(CurrentDevice.MonikerString);
                 _videoSource.NewFrame += video_NewFrame;
-                ((VideoCaptureDevice) _videoSource).VideoResolution.FrameSize
                 _videoSource.Start();
             }
         }
@@ -219,6 +208,7 @@ namespace AForge.Wpf
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             StartCamera();
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("En");
         }
 
         void Paint()
@@ -521,6 +511,16 @@ namespace AForge.Wpf
             else
             {
                 _dispatcherTimer.Start();
+                BtnRecognition.Content = "TANIMA AKTİF";
+                var animation = new ColorAnimation
+                {
+                    From=Colors.Gray,
+                    To = Colors.Red,
+                    RepeatBehavior = RepeatBehavior.Forever,
+                    Duration = new Duration(TimeSpan.FromSeconds(1))
+                };
+                BtnRecognition.Background = new SolidColorBrush(Colors.Red);
+                BtnRecognition.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
             }
             _recognition = !_recognition;
             _processor.onlyFindContours = !_recognition;
