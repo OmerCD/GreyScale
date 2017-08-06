@@ -188,6 +188,35 @@
   <ItemGroup>
     <Resource Include="Fonts\SIL Open Font License.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers.png" />
+    <Resource Include="Images\save.png" />
+    <Resource Include="Images\tabs.png" />
+    <Resource Include="Images\upload.png" />
+    <Resource Include="Images\video-camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tanıma-1.png" />
+    <Resource Include="Images\Tanıma-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\do-not-touch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tanıma.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\reset.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
