@@ -1,0 +1,16 @@
+﻿<Window x:Class="AForge.Wpf.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AForge.Wpf"
+        mc:Ignorable="d"
+        Title="About" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Text="Program Hakkında:" Style="{StaticResource TextBlock}"/>
+            <TextBox Width="Auto" Height="Auto" Style="{StaticResource TextBox}" Text="Grey Scale isimli bu program AForge, OpenCV ve EmguCC isimli açık kaynak kodlu frameworkler kullanılarak tasarlanmıştır. Tüm hakları saklıdır."/>
+
+        </DockPanel>
+    </Grid>
+</Window>

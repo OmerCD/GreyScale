@@ -110,6 +110,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImageProcessor.cs" />
     <Compile Include="LanguageLocalization\ResLocalization.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -130,6 +133,10 @@
       <DependentUpon>SampleSelection.xaml</DependentUpon>
     </Compile>
     <Compile Include="TemplateGenerator.cs" />
+    <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -214,9 +221,6 @@
     <Resource Include="Images\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\do-not-touch.png" />
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +245,12 @@
       <LastGenOutput>ResLocalization.tr-TR.Designer.cs</LastGenOutput>
       <CustomToolNamespace>AForge.Wpf.LanguageLocalization</CustomToolNamespace>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\eraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
