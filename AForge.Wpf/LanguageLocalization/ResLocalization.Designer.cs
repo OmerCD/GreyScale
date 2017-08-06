@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AForge.Wpf.Properties {
+namespace AForge.Wpf.LanguageLocalization {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace AForge.Wpf.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class ResLocalization {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal ResLocalization() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace AForge.Wpf.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AForge.Wpf.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AForge.Wpf.LanguageLocalization.ResLocalization", typeof(ResLocalization).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,52 +61,38 @@ namespace AForge.Wpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;root&gt;
-        ///  &lt;!-- 
-        ///    Microsoft ResX Schema 
-        ///    
-        ///    Version 2.0
-        ///    
-        ///    The primary goals of this format is to allow a simple XML format 
-        ///    that is mostly human readable. The generation and parsing of the 
-        ///    various data types are done through the TypeConverter classes 
-        ///    associated with the data types.
-        ///    
-        ///    Example:
-        ///    
-        ///    ... ado.net/XML headers &amp; schema ...
-        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
-        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Doğruluk Değeri.
         /// </summary>
-        public static string ResLocalization_en_GB {
+        public static string CorrectnessLevel {
             get {
-                return ResourceManager.GetString("ResLocalization_en_GB", resourceCulture);
+                return ResourceManager.GetString("CorrectnessLevel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;root&gt;
-        ///  &lt;!-- 
-        ///    Microsoft ResX Schema 
-        ///    
-        ///    Version 2.0
-        ///    
-        ///    The primary goals of this format is to allow a simple XML format 
-        ///    that is mostly human readable. The generation and parsing of the 
-        ///    various data types are done through the TypeConverter classes 
-        ///    associated with the data types.
-        ///    
-        ///    Example:
-        ///    
-        ///    ... ado.net/XML headers &amp; schema ...
-        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
-        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Seçim Kalınlığı.
         /// </summary>
-        public static string ResLocalization_tr_TR {
+        public static string SelectionThickness {
             get {
-                return ResourceManager.GetString("ResLocalization_tr_TR", resourceCulture);
+                return ResourceManager.GetString("SelectionThickness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GriTon.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video Kaynağını Seçin.
+        /// </summary>
+        public static string VideoSourceSelect {
+            get {
+                return ResourceManager.GetString("VideoSourceSelect", resourceCulture);
             }
         }
     }

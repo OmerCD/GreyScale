@@ -111,8 +111,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ImageProcessor.cs" />
-    <Compile Include="Recognition.xaml.cs">
-      <DependentUpon>Recognition.xaml</DependentUpon>
+    <Compile Include="LanguageLocalization\ResLocalization.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResLocalization.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LanguageLocalization\ResLocalization.en-GB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResLocalization.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LanguageLocalization\ResLocalization.tr-TR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResLocalization.tr-TR.resx</DependentUpon>
     </Compile>
     <Compile Include="SampleSelection.xaml.cs">
       <DependentUpon>SampleSelection.xaml</DependentUpon>
@@ -131,10 +143,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Recognition.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="SampleSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,7 +163,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Resource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </Resource>
     <Resource Include="Fonts\Titillium-Black.otf" />
@@ -216,6 +224,23 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\reset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LanguageLocalization\ResLocalization.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResLocalization.en-GB.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>AForge.Wpf.LanguageLocalization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguageLocalization\ResLocalization.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResLocalization.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>AForge.Wpf.LanguageLocalization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguageLocalization\ResLocalization.tr-TR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResLocalization.tr-TR.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>AForge.Wpf.LanguageLocalization</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

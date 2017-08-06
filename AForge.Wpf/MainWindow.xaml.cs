@@ -92,6 +92,8 @@ namespace AForge.Wpf
 
         public MainWindow()
         {
+            System.Threading.Thread.CurrentThread.CurrentUICulture =
+                new System.Globalization.CultureInfo("tr-TR");
             InitializeComponent();
             DataContext = this;
             GetVideoDevices();
@@ -222,7 +224,6 @@ namespace AForge.Wpf
             {
                 _videoSource = new VideoCaptureDevice(CurrentDevice.MonikerString);
                 _videoSource.NewFrame += video_NewFrame;
-                _videoSource.VideoResolution = _videoSource.VideoCapabilities[0];
                 _videoSource.Start();
             }
         }
@@ -563,6 +564,7 @@ namespace AForge.Wpf
             if (active)
             {
                 BtnRecognition.Content = "TANIMA AKTİF";
+                
                 var animation = new ColorAnimation
                 {
                     From = Colors.Gray,
