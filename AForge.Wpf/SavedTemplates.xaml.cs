@@ -23,5 +23,17 @@ namespace AForge.Wpf
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var list = new CustomListView(ListView);
+            list.Ekle("Images/settings.png","abc","abs");
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var list = new CustomListView(ListView);
+            list.Sil(ListView.SelectedItem);
+        }
     }
 }

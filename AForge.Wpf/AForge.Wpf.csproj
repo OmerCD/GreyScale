@@ -113,6 +113,7 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomListView.cs" />
     <Compile Include="ImageProcessor.cs" />
     <Compile Include="LanguageLocalization\ResLocalization.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -131,6 +132,9 @@
     </Compile>
     <Compile Include="SampleSelection.xaml.cs">
       <DependentUpon>SampleSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Save.xaml.cs">
+      <DependentUpon>Save.xaml</DependentUpon>
     </Compile>
     <Compile Include="SavedTemplates.xaml.cs">
       <DependentUpon>SavedTemplates.xaml</DependentUpon>
@@ -154,6 +158,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SampleSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Save.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

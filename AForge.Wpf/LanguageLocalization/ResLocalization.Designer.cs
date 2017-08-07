@@ -61,7 +61,7 @@ namespace AForge.Wpf.LanguageLocalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Doğruluk Değeri.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string CorrectnessLevel {
             get {
@@ -70,7 +70,16 @@ namespace AForge.Wpf.LanguageLocalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Seçim Kalınlığı.
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EnterSaveName {
+            get {
+                return ResourceManager.GetString("EnterSaveName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SelectionThickness {
             get {
@@ -79,7 +88,7 @@ namespace AForge.Wpf.LanguageLocalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GriTon.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string Title {
             get {
@@ -88,7 +97,7 @@ namespace AForge.Wpf.LanguageLocalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Video Kaynağını Seçin.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string VideoSourceSelect {
             get {

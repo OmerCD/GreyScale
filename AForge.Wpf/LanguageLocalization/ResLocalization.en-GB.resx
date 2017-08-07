@@ -120,6 +120,9 @@
   <data name="CorrectnessLevel" xml:space="preserve">
     <value>Correctness Level</value>
   </data>
+  <data name="EnterSaveName" xml:space="preserve">
+    <value>Enter Save Name</value>
+  </data>
   <data name="SelectionThickness" xml:space="preserve">
     <value>Selection Thickness</value>
   </data>

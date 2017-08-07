@@ -5,18 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AForge.Wpf"
         mc:Ignorable="d"
-        Title="SavedTemplates" Height="300" Width="300">
+        Title="SavedTemplates" Height="600" Width="600">
     <Grid>
-        <ListView HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="292">
-            <ListViewItem>
-                <Image Source="Images/settings.png" Width="35" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <ListView Name="ListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Sil" Click="MenuItem_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListViewItem HorizontalContentAlignment="Stretch" >
+                <DockPanel>
+                    <Image Source="Images/settings.png" Width="200" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,15,0"/>
+                    <TextBlock Text="ListViewItem1" Style="{StaticResource TextBlock}" Margin="0,0,15,0"/>
+                    <TextBlock Text="ListViewItem2" Style="{StaticResource TextBlock}" Margin="0,0,15,0"/>
+                </DockPanel>
             </ListViewItem>
-            <ListViewItem>
-                <TextBlock Text="ListViewItem1" Style="{StaticResource TextBlock}"/>
-            </ListViewItem>
-            <ListViewItem>
-                <TextBlock Text="ListViewItem2" Style="{StaticResource TextBlock}"/>
-            </ListViewItem>
+            <Button Content="Button" Width="75" Click="Button_Click"/>
         </ListView>
 
     </Grid>

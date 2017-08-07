@@ -1,0 +1,23 @@
+﻿<Window x:Class="AForge.Wpf.Save"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AForge.Wpf"
+        xmlns:p="clr-namespace:AForge.Wpf.LanguageLocalization"
+        mc:Ignorable="d"
+        Title="Save" Height="220" Width="310" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Text="{x:Static p:ResLocalization.EnterSaveName}" HorizontalAlignment="Left" Margin="10,10,0,0"></TextBlock>
+            <TextBox DockPanel.Dock="Top" Name="Ad" Style="{DynamicResource TextBox}" Margin="5,0,5,0" Width="289" HorizontalAlignment="Left"></TextBox>
+
+            <TextBlock  DockPanel.Dock="Top" Text="ID'yi Giriniz:" HorizontalAlignment="Left" Margin="10,10,0,0"></TextBlock>
+            <TextBox   DockPanel.Dock="Top" Name="Id" Style="{DynamicResource TextBox}" Margin="5,0,5,0" Width="289"></TextBox>
+
+            <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" Content="Save" HorizontalAlignment="Left" Margin="5,0,0,5" Style="{StaticResource Buton}"></Button>
+            <Button VerticalAlignment="Bottom" Name="Iptal" Width="140" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,5,5" Style="{StaticResource Buton}"></Button>
+
+        </DockPanel>
+    </Grid>
+</Window>

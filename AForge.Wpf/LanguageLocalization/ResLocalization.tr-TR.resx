@@ -120,6 +120,9 @@
   <data name="CorrectnessLevel" xml:space="preserve">
     <value>Doğruluk Değeri</value>
   </data>
+  <data name="EnterSaveName" xml:space="preserve">
+    <value>Kayıt İsmini Giriniz</value>
+  </data>
   <data name="SelectionThickness" xml:space="preserve">
     <value>Seçim Kalınlığı</value>
   </data>

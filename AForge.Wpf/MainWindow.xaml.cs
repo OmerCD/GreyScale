@@ -93,7 +93,7 @@ namespace AForge.Wpf
         public MainWindow()
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture =
-                new System.Globalization.CultureInfo("tr-TR");
+             new System.Globalization.CultureInfo("en-GB");
             InitializeComponent();
             DataContext = this;
             GetVideoDevices();
@@ -196,7 +196,6 @@ namespace AForge.Wpf
         {
             YeniButon.IsEnabled = state;
             BtnSave.IsEnabled = state;
-            BtnYükle.IsEnabled = state;
             BtnAlanEkle.IsEnabled = state;
             SecimValue.IsEnabled = state;
             DogrulukValue.IsEnabled = state;
@@ -497,17 +496,19 @@ namespace AForge.Wpf
         }
         private void Kaydet_Click(object sender, RoutedEventArgs e)
         {
-                foreach (var sample in _processor.templates)
-                {
-                    sample.name = "test";
-                }
-                //ProcessFrame(_croppedImage);
-                SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "Template|*bin",DefaultExt = "bin"};
-                if (saveFileDialog.ShowDialog() == true)
-                {
-                    SaveTemplates(saveFileDialog.FileName);
-                }
-            
+                //foreach (var sample in _processor.templates)
+                //{
+                //    sample.name = "test";
+                //}
+                ////ProcessFrame(_croppedImage);
+                //SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "Template|*bin",DefaultExt = "bin"};
+                //if (saveFileDialog.ShowDialog() == true)
+                //{
+                //    SaveTemplates(saveFileDialog.FileName);
+                //}
+            var save = new Save();
+            save.Show();
+
         }
         private void LoadTemplates(string fileName)
         {
@@ -548,16 +549,16 @@ namespace AForge.Wpf
             }
         }
 
-        private void BtnYükle_OnClick(object sender, RoutedEventArgs e)
-        {
-            var oPF = new OpenFileDialog { Filter = "Template|*bin" };
-            if (oPF.ShowDialog() == true)
-            {
-                LoadTemplates(oPF.FileName);
-                Paint();
-            }
+        //private void BtnYükle_OnClick(object sender, RoutedEventArgs e)
+        //{
+        //    var oPF = new OpenFileDialog { Filter = "Template|*bin" };
+        //    if (oPF.ShowDialog() == true)
+        //    {
+        //        LoadTemplates(oPF.FileName);
+        //        Paint();
+        //    }
             
-        }
+        //}
 
         void RecognitionAnimation(bool active)
         {
@@ -654,6 +655,12 @@ namespace AForge.Wpf
         private void DogrulukValue_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             _correctnessPercentage = DogrulukValue.Value;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var savedTemplates = new SavedTemplates();
+            savedTemplates.Show();
         }
     }
 }

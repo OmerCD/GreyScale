@@ -28,6 +28,8 @@
             <RowDefinition Height="55"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FFF9F9F9">
+            <MenuItem Header="Kayıtlı Şablonlar" Style="{StaticResource MenuItem}" Height="25" Click="MenuItem_Click"/>
+            <Separator Width="Auto" Margin="2" Style="{StaticResource VerticalSeparatorStyle}"/>
             <MenuItem Header="Ayarlar" Style="{StaticResource MenuItem}">
                 <MenuItem Header="Görüntü Ayarları" Style="{StaticResource MenuItem2}" />
                 <MenuItem Header="Diller" Style="{StaticResource MenuItem2}" />
@@ -90,11 +92,7 @@
                                 <Image Source="Images/save.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5"/>
                             </Button>
                         </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <Button Style="{DynamicResource Buton}" Click="BtnYükle_OnClick" x:Name="BtnYükle"  FontSize="30" Width="Auto" Height="50">
-                                <Image Source="Images/upload.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5"/>
-                            </Button>
-                        </DockPanel>
+
                         <DockPanel DockPanel.Dock="Top">
                             <Button Style="{DynamicResource Buton}" x:Name="BtnAlanEkle" FontSize="30" Width="Auto" Height="50" Click="BtnAlanEkle_Click">
                                 <Image Source="Images/add.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5"/>
