@@ -5,12 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AForge.Wpf"
         mc:Ignorable="d"
-        Title="About" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="About" Height="400" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <DockPanel>
-            <TextBlock DockPanel.Dock="Top" Text="Program Hakkında:" Style="{StaticResource TextBlock}"/>
-            <TextBox Width="Auto" Height="Auto" Style="{StaticResource TextBox}" Text="Grey Scale isimli bu program AForge, OpenCV ve EmguCC isimli açık kaynak kodlu frameworkler kullanılarak tasarlanmıştır. Tüm hakları saklıdır."/>
-
+            <DockPanel DockPanel.Dock="Top" Margin="5">
+                <TextBlock Width="120"  Text="Program Hakkında:" Style="{StaticResource TextBlock}"/>
+                <TextBox Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap" Text="Grey Scale isimli bu program AForge, EmguCV isimli açık kaynak kodlu frameworkler kullanılarak tasarlanmıştır. Tüm hakları saklıdır."/>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top" Margin="5">
+                <TextBlock  Text="Lisans:" Width="120" Style="{StaticResource TextBlock}" />
+                <TextBox Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap" Text="Program kapsamında verilen lisans ömür boyudur. "/>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top" Margin="5">
+                <TextBlock  Text="Emeği Geçenler:" Width="120" Style="{StaticResource TextBlock}" />
+                <TextBox Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap">
+                    Lorem&#10;
+                    Ipsum
+                </TextBox>
+            </DockPanel>
         </DockPanel>
     </Grid>
 </Window>

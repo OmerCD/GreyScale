@@ -132,6 +132,9 @@
     <Compile Include="SampleSelection.xaml.cs">
       <DependentUpon>SampleSelection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SavedTemplates.xaml.cs">
+      <DependentUpon>SavedTemplates.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TemplateGenerator.cs" />
     <Page Include="About.xaml">
       <SubType>Designer</SubType>
@@ -151,6 +154,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SampleSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SavedTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
