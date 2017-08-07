@@ -563,9 +563,7 @@ namespace AForge.Wpf
         void RecognitionAnimation(bool active)
         {
             if (active)
-            {
-                BtnRecognition.Content = "TANIMA AKTİF";
-                
+            {                
                 var animation = new ColorAnimation
                 {
                     From = Colors.Gray,
@@ -578,10 +576,9 @@ namespace AForge.Wpf
             }
             else
             {
-                BtnRecognition.Background = new SolidColorBrush(Colors.SkyBlue);
+                BtnRecognition.Background = new SolidColorBrush(Colors.LightSkyBlue);
                 BtnRecognition.Background.BeginAnimation(SolidColorBrush.ColorProperty, new ColorAnimation { BeginTime = null });
-                BtnRecognition.Background = Brushes.SkyBlue;
-                BtnRecognition.Content = "Tanıma";
+                BtnRecognition.Background = Brushes.LightSkyBlue;
             }
         }
         private void BtnRecognition_OnClick(object sender, RoutedEventArgs e)
@@ -662,5 +659,18 @@ namespace AForge.Wpf
             var savedTemplates = new SavedTemplates();
             savedTemplates.Show();
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            var about = new About();
+            about.Show();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            var languages = new Languages();
+            languages.Show();
+        }
+
     }
 }

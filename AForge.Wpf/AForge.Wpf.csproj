@@ -130,6 +130,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResLocalization.tr-TR.resx</DependentUpon>
     </Compile>
+    <Compile Include="Languages.xaml.cs">
+      <DependentUpon>Languages.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SampleSelection.xaml.cs">
       <DependentUpon>SampleSelection.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
     </Compile>
     <Compile Include="TemplateGenerator.cs" />
     <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Languages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,9 +240,6 @@
     <Resource Include="Images\Tanıma-2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\do-not-touch.png" />
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +270,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Flag_of_Turkey.svg.png" />
+    <Resource Include="Images\Union_flag_1606_%28Kings_Colors%29.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\about.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,7 +12,7 @@
         SizeChanged="CropWindow_SizeChanged"
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized" 
-        Icon="Images/Logo.png"
+        Icon="Images/Logo.ico"
         RenderOptions.BitmapScalingMode="HighQuality"
         >
     <Grid>
@@ -32,10 +32,10 @@
             <Separator Width="Auto" Margin="2" Style="{StaticResource VerticalSeparatorStyle}"/>
             <MenuItem Header="Ayarlar" Style="{StaticResource MenuItem}">
                 <MenuItem Header="Görüntü Ayarları" Style="{StaticResource MenuItem2}" />
-                <MenuItem Header="Diller" Style="{StaticResource MenuItem2}" />
+                <MenuItem Header="Diller" Style="{StaticResource MenuItem2}" Click="MenuItem_Click_2" />
             </MenuItem>
             <Separator Width="Auto" Margin="2" Style="{StaticResource VerticalSeparatorStyle}"/>
-            <MenuItem Header="Hakkında" Style="{StaticResource MenuItem}" Height="25"/>
+            <MenuItem Header="Hakkında" Style="{StaticResource MenuItem}" Height="25" Click="MenuItem_Click_1"/>
         </Menu>
         <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
         <DockPanel>
@@ -99,13 +99,13 @@
                             </Button>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
-                            <TextBlock Text="{x:Static p:ResLocalization.SelectionThickness}" FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
-                            <Slider Width="140"  Height="24" Maximum="20" Minimum="1" TickFrequency="0.5" IsSnapToTickEnabled="True" Name="SecimValue" ValueChanged="SecimValue_OnValueChanged" Value="7.5"/>
+                            <TextBlock Width="150" Text="{x:Static p:ResLocalization.SelectionThickness}" FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
+                            <Slider Width="100"  Height="24" Maximum="20" Minimum="1" TickFrequency="0.5" IsSnapToTickEnabled="True" Name="SecimValue" ValueChanged="SecimValue_OnValueChanged" Value="7.5"/>
                             <TextBlock Width="30" Text="{Binding Path=Value, ElementName=SecimValue}" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
-                            <TextBlock Text="{x:Static p:ResLocalization.CorrectnessLevel}" FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
-                            <Slider Width="140"  Height="24" Maximum="100" Minimum="0" TickFrequency="1" IsSnapToTickEnabled="True" Name="DogrulukValue" ValueChanged="DogrulukValue_OnValueChanged" Value="60"/>
+                            <TextBlock Width="150" Text="{x:Static p:ResLocalization.CorrectnessLevel}" FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
+                            <Slider Width="100"  Height="24" Maximum="100" Minimum="0" TickFrequency="1" IsSnapToTickEnabled="True" Name="DogrulukValue" ValueChanged="DogrulukValue_OnValueChanged" Value="60"/>
                             <TextBlock Width="30" Text="{Binding Path=Value, ElementName=DogrulukValue}" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
