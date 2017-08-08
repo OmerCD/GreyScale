@@ -117,19 +117,87 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="A_AboutText" xml:space="preserve">
+    <value>
+Grey Scale isimli bu program AForge, EmguCV isimli açık kaynak kodlu frameworkler kullanılarak tasarlanmıştır. Tüm hakları saklıdır.
+</value>
+    <comment>Boşlukları Değiştirmeden İngilizceye Çevir</comment>
+  </data>
+  <data name="A_LicenceText" xml:space="preserve">
+    <value>
+Program kapsamında verilen lisans ömür boyudur.
+</value>
+  </data>
+  <data name="A_SpecialThanksText" xml:space="preserve">
+    <value>
+AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi sunarız.
+
+İkonlar için linkte isimleri verilmiş olan kullanıcılara teşekkür ederiz.</value>
+  </data>
   <data name="CorrectnessLevel" xml:space="preserve">
     <value>Correctness Level</value>
   </data>
   <data name="EnterSaveName" xml:space="preserve">
     <value>Enter Save Name</value>
   </data>
+  <data name="Find" xml:space="preserve">
+    <value>Finding Rate : 0/0</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="SavedTemplates" xml:space="preserve">
+    <value>Saved Templates</value>
+  </data>
   <data name="SelectionThickness" xml:space="preserve">
     <value>Selection Thickness</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>GreyScale</value>
   </data>
+  <data name="VideoSettings" xml:space="preserve">
+    <value>Video Settings</value>
+  </data>
   <data name="VideoSourceSelect" xml:space="preserve">
     <value>Choose Your Video Source</value>
+  </data>
+  <data name="A_About" xml:space="preserve">
+    <value>About Application</value>
+  </data>
+  <data name="A_Credits" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="A_Licence" xml:space="preserve">
+    <value>Licence</value>
+  </data>
+  <data name="A_SpecialThanks" xml:space="preserve">
+    <value>Special Thanks</value>
+  </data>
+  <data name="M_Add" xml:space="preserve">
+    <value>Buna Ne demeli? DÜZELT</value>
+  </data>
+  <data name="M_Base" xml:space="preserve">
+    <value>Selection Redesign</value>
+  </data>
+  <data name="M_New" xml:space="preserve">
+    <value>New BUNUDÜZENLE?</value>
+  </data>
+  <data name="M_Recognition" xml:space="preserve">
+    <value>Start Recognition</value>
+  </data>
+  <data name="M_Save" xml:space="preserve">
+    <value>Selection Save</value>
+  </data>
+  <data name="M_StartTip" xml:space="preserve">
+    <value>Select Again Record Tool </value>
+  </data>
+  <data name="M_Factory" xml:space="preserve">
+    <value>Factory Reset</value>
   </data>
 </root>

@@ -573,12 +573,14 @@ namespace AForge.Wpf
                 };
                 BtnRecognition.Background = new SolidColorBrush(Colors.Red);
                 BtnRecognition.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
+                BtnRecognitinionImage.Source = new BitmapImage(new Uri(@"\Images\pause.png", UriKind.Relative));
             }
             else
             {
                 BtnRecognition.Background = new SolidColorBrush(Colors.LightSkyBlue);
                 BtnRecognition.Background.BeginAnimation(SolidColorBrush.ColorProperty, new ColorAnimation { BeginTime = null });
                 BtnRecognition.Background = Brushes.LightSkyBlue;
+                BtnRecognitinionImage.Source = new BitmapImage(new Uri(@"\Images\play.png",UriKind.Relative));
             }
         }
         private void BtnRecognition_OnClick(object sender, RoutedEventArgs e)
@@ -672,5 +674,10 @@ namespace AForge.Wpf
             languages.Show();
         }
 
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            var videoSettings =new VideoSettings();
+            videoSettings.Show();
+        }
     }
 }

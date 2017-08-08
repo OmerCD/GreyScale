@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AForge.Wpf"
         xmlns:p="clr-namespace:AForge.Wpf.LanguageLocalization"
+        RenderOptions.BitmapScalingMode="HighQuality"
+        Icon="Images/saveico.ico"
         mc:Ignorable="d"
         Title="Save" Height="220" Width="310" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>

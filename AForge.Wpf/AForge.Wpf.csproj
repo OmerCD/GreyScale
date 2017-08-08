@@ -143,6 +143,9 @@
       <DependentUpon>SavedTemplates.xaml</DependentUpon>
     </Compile>
     <Compile Include="TemplateGenerator.cs" />
+    <Compile Include="VideoSettings.xaml.cs">
+      <DependentUpon>VideoSettings.xaml</DependentUpon>
+    </Compile>
     <Page Include="About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SavedTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VideoSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -226,24 +233,15 @@
     <Resource Include="Fonts\SIL Open Font License.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\layers.png" />
     <Resource Include="Images\save.png" />
     <Resource Include="Images\tabs.png" />
-    <Resource Include="Images\upload.png" />
     <Resource Include="Images\video-camera.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Tanıma-1.png" />
-    <Resource Include="Images\Tanıma-2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\do-not-touch.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Tanıma.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\reset.png" />
@@ -276,10 +274,26 @@
     <Resource Include="Images\Union_flag_1606_%28Kings_Colors%29.svg.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\about.ico" />
+    <Resource Include="Images\languages.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pause.png" />
+    <Resource Include="Images\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\videoSettings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\savedTemplates.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\saveico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

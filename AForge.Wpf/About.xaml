@@ -3,25 +3,62 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:AForge.Wpf.LanguageLocalization"
         RenderOptions.BitmapScalingMode="HighQuality"
         mc:Ignorable="d"
-        Icon="Images/about.ico"
-        Title="About" Height="400" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Icon="Images/information.png"
+        Title="{x:Static p:ResLocalization.About}" Height="650" Width="600" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid>
         <DockPanel>
             <DockPanel DockPanel.Dock="Top" Margin="5">
-                <TextBlock Width="120"  Text="Program Hakkında:" Style="{StaticResource TextBlock}"/>
-                <TextBlock TextAlignment="Center" Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap" Text="Grey Scale isimli bu program AForge, EmguCV isimli açık kaynak kodlu frameworkler kullanılarak tasarlanmıştır. Tüm hakları saklıdır."/>
+                <TextBlock Width="120"  Text="{x:Static p:ResLocalization.A_About}" Style="{StaticResource TextBlock}"/>
+                <TextBlock TextAlignment="Center" Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap" Text="{x:Static p:ResLocalization.A_AboutText}"/>
             </DockPanel>
             <DockPanel DockPanel.Dock="Top" Margin="5">
-                <TextBlock Text="Lisans:" Width="120" Style="{StaticResource TextBlock}" />
-                <TextBlock TextAlignment="Center" Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap" Text="Program kapsamında verilen lisans ömür boyudur. "/>
+                <TextBlock Text="{x:Static p:ResLocalization.A_Licence}" Width="120" Style="{StaticResource TextBlock}" />
+                <TextBlock TextAlignment="Center" Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap" Text="{x:Static p:ResLocalization.A_LicenceText}"/>
             </DockPanel>
             <DockPanel DockPanel.Dock="Top" Margin="5">
-                <TextBlock Text="Emeği Geçenler:" Width="120" Style="{StaticResource TextBlock}" />
+                <TextBlock Text="{x:Static p:ResLocalization.A_Credits}" Width="120" Style="{StaticResource TextBlock}" />
                 <TextBlock TextAlignment="Center" Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap">
-                    Lorem&#10;
-                    Ipsum
+                    <LineBreak/>
+                    Ömer Can Danacıoğlu
+                    <LineBreak/>
+                    Hasan Can Gedik
+                    <LineBreak/>
+                    Mert Öztaş
+                    <LineBreak/>
+                </TextBlock>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top" Margin="5">
+                <TextBlock Text="{x:Static p:ResLocalization.A_SpecialThanks}" Width="120" Style="{StaticResource TextBlock}" />
+                <TextBlock TextAlignment="Center" Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap" Text="{x:Static p:ResLocalization.A_SpecialThanksText}">
+                    <LineBreak/>
+                    <Hyperlink NavigateUri="http://flaticon.com" RequestNavigate="Hyperlink_RequestNavigate">
+                        flaticon.com
+                    </Hyperlink> 
+                    <LineBreak/>
+                    <Hyperlink NavigateUri="https://www.flaticon.com/authors/madebyoliver" RequestNavigate="Hyperlink_RequestNavigate">
+                        madebyoliver
+                    </Hyperlink> 
+                    <LineBreak/>
+                    <Hyperlink NavigateUri="https://www.flaticon.com/authors/pixel-perfect" RequestNavigate="Hyperlink_RequestNavigate">
+                        pixel-perfect
+                    </Hyperlink>
+                    <LineBreak/>
+                    <Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik" RequestNavigate="Hyperlink_RequestNavigate">
+                        freepik
+                    </Hyperlink> 
+                    <LineBreak/>
+                </TextBlock>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top" Margin="5">
+                <TextBlock Text="E-Mail:" Width="120" Style="{StaticResource TextBlock}" />
+                <TextBlock TextAlignment="Center" Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap">
+                    <LineBreak/>
+                    <Hyperlink NavigateUri="mailto:hasancangedik@hotmail.com?subject=GreyScale Programı Hakkında&amp;body=Mesajınızı Buradan Gönderebilirsiniz." RequestNavigate="Hyperlink_RequestNavigate">
+                        hasancangedik@hotmail.com
+                    </Hyperlink> 
                 </TextBlock>
             </DockPanel>
         </DockPanel>

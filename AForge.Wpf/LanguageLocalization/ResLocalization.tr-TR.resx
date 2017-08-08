@@ -117,19 +117,86 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="A_About" xml:space="preserve">
+    <value>Program Hakkında</value>
+  </data>
+  <data name="A_AboutText" xml:space="preserve">
+    <value>
+Grey Scale isimli bu program AForge, EmguCV isimli açık kaynak kodlu frameworkler kullanılarak tasarlanmıştır. Tüm hakları saklıdır.
+</value>
+  </data>
+  <data name="A_Credits" xml:space="preserve">
+    <value>Emeği Geçenler</value>
+  </data>
+  <data name="A_Licence" xml:space="preserve">
+    <value>Lisans</value>
+  </data>
+  <data name="A_LicenceText" xml:space="preserve">
+    <value>
+Program kapsamında verilen lisans ömür boyudur.
+</value>
+  </data>
+  <data name="A_SpecialThanks" xml:space="preserve">
+    <value>Özel Teşekkürler</value>
+  </data>
+  <data name="A_SpecialThanksText" xml:space="preserve">
+    <value>
+AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi sunarız.
+
+İkonlar için linkte isimleri verilmiş olan kullanıcılara teşekkür ederiz.</value>
+  </data>
   <data name="CorrectnessLevel" xml:space="preserve">
     <value>Doğruluk Değeri</value>
   </data>
   <data name="EnterSaveName" xml:space="preserve">
     <value>Kayıt İsmini Giriniz</value>
   </data>
+  <data name="Find" xml:space="preserve">
+    <value>Bulma Oranı : 0/0</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Diller</value>
+  </data>
+  <data name="SavedTemplates" xml:space="preserve">
+    <value>Kayıtlı Şablonlar</value>
+  </data>
   <data name="SelectionThickness" xml:space="preserve">
     <value>Seçim Kalınlığı</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ayarlar</value>
+  </data>
   <data name="Title" xml:space="preserve">
-    <value>GriTon</value>
+    <value>GreyScale</value>
+  </data>
+  <data name="VideoSettings" xml:space="preserve">
+    <value>Görüntü Ayarları</value>
   </data>
   <data name="VideoSourceSelect" xml:space="preserve">
     <value>Video Kaynağını Seçin</value>
+  </data>
+  <data name="M_Add" xml:space="preserve">
+    <value>Buna Ne demeli?</value>
+  </data>
+  <data name="M_Base" xml:space="preserve">
+    <value>Seçimi Düzenleyin</value>
+  </data>
+  <data name="M_New" xml:space="preserve">
+    <value>Yeni BUNUDÜZENLE?</value>
+  </data>
+  <data name="M_Recognition" xml:space="preserve">
+    <value>Tanımayı Başlatın</value>
+  </data>
+  <data name="M_Save" xml:space="preserve">
+    <value>Seçimi Kaydet</value>
+  </data>
+  <data name="M_StartTip" xml:space="preserve">
+    <value>Kayıt Aracını Yeniden Seçin</value>
+  </data>
+  <data name="M_Factory" xml:space="preserve">
+    <value>Fabrika Ayarları</value>
   </data>
 </root>

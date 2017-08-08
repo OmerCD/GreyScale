@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AForge.Wpf"
         mc:Ignorable="d"
+        Icon="Images/savedTemplates.ico"
+        RenderOptions.BitmapScalingMode="HighQuality"
         Title="SampleSelection" Height="520" Width="700" ResizeMode="NoResize" x:Name="SampleWindow">
     <Grid>
         <Canvas x:Name="SelectionCanvas" Background="AliceBlue" Height="Auto" Width="Auto" MouseLeftButtonUp="SelectionCanvas_OnMouseLeftButtonUp" MouseMove="SelectionCanvas_OnMouseMove" MouseLeftButtonDown="SelectionCanvas_OnMouseLeftButtonDown">

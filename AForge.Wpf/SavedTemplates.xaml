@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AForge.Wpf"
         mc:Ignorable="d"
+        Icon="Images/savedTemplates.ico"
+        RenderOptions.BitmapScalingMode="HighQuality"
         Title="SavedTemplates" Height="600" Width="600">
     <Grid>
         <ListView Name="ListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >

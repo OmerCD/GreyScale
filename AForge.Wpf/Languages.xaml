@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AForge.Wpf"
+        xmlns:p="clr-namespace:AForge.Wpf.LanguageLocalization"
         mc:Ignorable="d"
-        Title="Languages" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Icon="Images/languages.ico"
+        RenderOptions.BitmapScalingMode="HighQuality"
+        Title="{x:Static p:ResLocalization.Languages}" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <ListView>
             <ListViewItem HorizontalContentAlignment="Stretch" >
