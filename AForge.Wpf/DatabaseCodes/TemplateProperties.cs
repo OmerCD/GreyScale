@@ -113,17 +113,22 @@ namespace AForge.Wpf
             dbConnection.Close();
         }
 
-        public void DeleteTemplate(int id)
+        public void DeleteTemplateFromDatabase(int id)
         {
             var dbConnection = new SQLiteConnection(DatabaseManagement.ConnectionString);
             dbConnection.Open();
-            using (var cmd = new SQLiteCommand("Delete from Where Id = @Id", dbConnection))
+            using (var cmd = new SQLiteCommand("Delete from Templates Where Id = @Id", dbConnection))
             {
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.ExecuteNonQuery();
             }
             dbConnection.Close();
-            var path = Application.StartupPath + "\\SavedTemplates\\" +id;
+            
+        }
+
+        public void DeleteTemplateFromDirectory(int id)
+        {
+            var path = Application.StartupPath + "\\SavedTemplates\\" + id;
             new DirectoryInfo(path).Delete(true);
         }
         //public string ImagePath { get; set; }

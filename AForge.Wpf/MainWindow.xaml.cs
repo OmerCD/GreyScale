@@ -682,6 +682,14 @@ namespace AForge.Wpf
             }
             selectionRectangle.Width = 0;
             selectionRectangle.Height = 0;
+            if (savedTemplates.DeletedItemIds.Count!=0)
+            {
+                var templateProp = new TemplateProperties();
+                foreach (var id in savedTemplates.DeletedItemIds)
+                {
+                    templateProp.DeleteTemplateFromDirectory(id);
+                }
+            }
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

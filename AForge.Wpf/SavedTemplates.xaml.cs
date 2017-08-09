@@ -20,6 +20,7 @@ namespace AForge.Wpf
     public partial class SavedTemplates : Window
     {
         public int SelectedId = -1;
+        public List<int> DeletedItemIds= new List<int>();
         public SavedTemplates()
         {
             InitializeComponent();
@@ -32,7 +33,11 @@ namespace AForge.Wpf
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            var selectedItem = (ListViewItem) TemplateListView.Items[TemplateListView.SelectedIndex];
+            var id = int.Parse(selectedItem.Name.Substring(1));
             TemplateListView.Sil(TemplateListView.SelectedItem);
+            new TemplateProperties().DeleteTemplateFromDatabase(id);
+            DeletedItemIds.Add(id);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

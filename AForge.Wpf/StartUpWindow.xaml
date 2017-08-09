@@ -1,11 +1,11 @@
-﻿<Window x:Class="AForge.Wpf.StartUpWindow"
+﻿<Window x:Name="StartupWindow" x:Class="AForge.Wpf.StartUpWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AForge.Wpf"
         mc:Ignorable="d"
-        Title="StartUpWindow" Height="350" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="StartUpWindow" Height="350" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="StartupWindow_Loaded">
     <Grid>
         <StackPanel>
         <TextBlock Style="{StaticResource TextBlock}" TextWrapping="Wrap" FontSize="24" Height="Auto">
@@ -27,8 +27,6 @@
                 </ProgressBar.Triggers>
             </ProgressBar>
             <TextBlock x:Name="Sonuc" Style="{StaticResource TextBlock}" TextWrapping="Wrap" Height="Auto"/>
-            <ComboBox x:Name="ComList" Width="120"/>
-            <Button Content="Onayla" Style="{StaticResource Buton}" VerticalAlignment="Bottom" Click="Button_Click" />
         </StackPanel>
     </Grid>
 </Window>
