@@ -144,7 +144,7 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
     <value>Enter Save Name</value>
   </data>
   <data name="Find" xml:space="preserve">
-    <value>Finding Rate : 0/0</value>
+    <value>Find Rate</value>
   </data>
   <data name="Languages" xml:space="preserve">
     <value>Languages</value>
@@ -180,13 +180,13 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
     <value>Special Thanks</value>
   </data>
   <data name="M_Add" xml:space="preserve">
-    <value>Buna Ne demeli? DÜZELT</value>
+    <value>Add Templates to Memory</value>
   </data>
   <data name="M_Base" xml:space="preserve">
-    <value>Selection Redesign</value>
+    <value>Selection Re-Design</value>
   </data>
   <data name="M_New" xml:space="preserve">
-    <value>New BUNUDÜZENLE?</value>
+    <value>New Project</value>
   </data>
   <data name="M_Recognition" xml:space="preserve">
     <value>Start Recognition</value>
@@ -199,5 +199,11 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
   </data>
   <data name="M_Factory" xml:space="preserve">
     <value>Factory Reset</value>
+  </data>
+  <data name="SavedTemplateCount" xml:space="preserve">
+    <value>Saved Template Count</value>
+  </data>
+  <data name="SelectionTemplateCount" xml:space="preserve">
+    <value>Selection Area Template Count</value>
   </data>
 </root>

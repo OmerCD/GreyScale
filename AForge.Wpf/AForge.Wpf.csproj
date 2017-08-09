@@ -130,6 +130,7 @@
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomListView.cs" />
+    <Compile Include="DatabaseCodes\ContourOptions.cs" />
     <Compile Include="DatabaseCodes\DatabaseManagement.cs" />
     <Compile Include="DatabaseCodes\OptionsProperties.cs" />
     <Compile Include="ImageProcessor.cs" />

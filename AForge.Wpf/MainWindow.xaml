@@ -106,7 +106,7 @@
                             <TextBlock Width="30" Text="{Binding Path=Value, ElementName=DogrulukValue}" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
-                            <TextBlock TextWrapping="Wrap" x:Name="AlanSayisi" Style="{DynamicResource TextBlock}" Text="{Binding ElementName=_processor,XPath=samples.Count}"/>
+                            <TextBlock TextWrapping="Wrap" x:Name="AlanSayisi" Style="{DynamicResource TextBlock}"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
                             <TextBlock TextWrapping="Wrap" x:Name="ResimdekiAlanSayisi" Style="{DynamicResource TextBlock}"/>

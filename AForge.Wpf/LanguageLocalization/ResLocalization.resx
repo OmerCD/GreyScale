@@ -192,4 +192,10 @@
   <data name="M_Factory" xml:space="preserve">
     <value />
   </data>
+  <data name="SavedTemplateCount" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SelectionTemplateCount" xml:space="preserve">
+    <value />
+  </data>
 </root>

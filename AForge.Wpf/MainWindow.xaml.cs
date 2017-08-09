@@ -21,6 +21,7 @@ using System.Windows.Threading;
 using AForge.Video;
 using AForge.Video.DirectShow;
 using AForge.Wpf.DatabaseCodes;
+using AForge.Wpf.LanguageLocalization;
 using ContourAnalysisNS;
 using Emgu.CV;
 using Emgu.CV.Structure;
@@ -162,9 +163,9 @@ namespace AForge.Wpf
             if (bSource == null || bSource.Height <= 1 || bSource.Width <= 1) return;
             _frame = new Image<Bgr, byte>(ToBitmap(bSource));
             _processor.ProcessImage(_frame);
-            AlanSayisi.Text = "Kayıtlı Alan Sayısı :" + _processor.templates.Count;
+            AlanSayisi.Text = ResLocalization.SavedTemplateCount+" :" + _processor.templates.Count;
             if (showSelectedAreaContourCount)
-                ResimdekiAlanSayisi.Text = "Seçilen Kısımda Alan Sayısı :" + _processor.samples.Count;
+                ResimdekiAlanSayisi.Text = ResLocalization.SelectionTemplateCount+" :" + _processor.samples.Count;
         }
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
@@ -196,7 +197,7 @@ namespace AForge.Wpf
         {
 
             ProcessFrame(_videoImage, false);
-            TxtMatches.Text = "Bulma Oranı : " + _processor.templates.Count + "/" + _processor.foundTemplates.Count;
+            TxtMatches.Text = ResLocalization.Find+" : " + _processor.templates.Count + "/" + _processor.foundTemplates.Count;
 
         }
 
@@ -352,6 +353,9 @@ namespace AForge.Wpf
 
                 //var relativePoint = selectionRectangle.TransformToVisual(videoPlayer)
                 //    .Transform(new System.Windows.Point(0, 0));
+
+                #region PositionCheck
+
                 if (relativePoint.X < imagePoint.X)
                 {
                     var diff = imagePoint.X - relativePoint.X;
@@ -390,18 +394,21 @@ namespace AForge.Wpf
                     }
                     selectionRectangle.Height = calc;
                 }
+
+                    #endregion
                 relativePoint = new System.Windows.Point(relativePoint.X - imagePoint.X, relativePoint.Y - imagePoint.Y);
 
                 Int32Rect rect = new Int32Rect((int)(relativePoint.X), (int)relativePoint.Y, (int)selectionRectangle.Width, (int)selectionRectangle.Height);
+
+                if (rect.Height < 1 || rect.Width < 1)
+                {
+                    return;
+                }
                 try
                 {
                     _croppedImage = new CroppedBitmap((BitmapSource)videoPlayer.Source, rect);
                 }
                 catch { }
-                if (rect.Height < 1 || rect.Width < 1)
-                {
-                    return;
-                }
                 ImageBrush ib = new ImageBrush(_croppedImage);
                 PaintCanvas.Background = ib;
                 PaintCanvas.Height = rect.Height;
@@ -433,7 +440,7 @@ namespace AForge.Wpf
             Canvas.SetTop(selectionRectangle, _mouseDownPos.Y);
             selectionRectangle.Width = 0;
             selectionRectangle.Height = 0;
-            _croppedImage = null;
+            //_croppedImage = null;
             // Make the drag selection box visible.
             selectionRectangle.Visibility = Visibility.Visible;
         }
@@ -522,7 +529,7 @@ namespace AForge.Wpf
             {
                 using (FileStream fs = new FileStream(fileName, FileMode.Open))
                     _processor.templates = (Templates)new BinaryFormatter().Deserialize(fs);
-                AlanSayisi.Text = "Kayıtlı Alan Sayısı :" + _processor.templates.Count;
+                AlanSayisi.Text = ResLocalization.SavedTemplateCount+" :" + _processor.templates.Count;
             }
             catch (Exception ex)
             {
@@ -547,7 +554,7 @@ namespace AForge.Wpf
             _processor.contours = ss.Contours;
             _processor.samples = ss.Samples;
             _designedSamples.AddRange(ss.Samples);
-            ResimdekiAlanSayisi.Text = "Seçilen Kısımda Alan Sayısı :" + _designedSamples.Count;
+            ResimdekiAlanSayisi.Text = ResLocalization.SelectionTemplateCount+" :" + _designedSamples.Count;
             Paint();
             if (wasActiveBefore)
             {
@@ -633,7 +640,7 @@ namespace AForge.Wpf
             _processor.templates = new Templates();
             _processor.foundTemplates = new List<FoundTemplateDesc>();
             _designedSamples = new Templates();
-            AlanSayisi.Text = "Kayıtlı Alan Sayısı :0";
+            AlanSayisi.Text = ResLocalization.SavedTemplateCount+" :0";
         }
 
         private void BtnAlanEkle_Click(object sender, RoutedEventArgs e)
@@ -649,7 +656,7 @@ namespace AForge.Wpf
             }
             else return;
             _processor.templates.AddRange(toSaveSamples);
-            AlanSayisi.Text = "Kayıtlı Alan Sayısı :" + _processor.templates.Count;
+            AlanSayisi.Text = ResLocalization.SavedTemplateCount + " :" + _processor.templates.Count;
         }
 
         private void SecimValue_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -668,12 +675,18 @@ namespace AForge.Wpf
             savedTemplates.ShowDialog();
             if (savedTemplates.SelectedId != -1)
             {
+                
                 var path = System.Windows.Forms.Application.StartupPath + "\\SavedTemplates\\" +
                            savedTemplates.SelectedId + "\\";
                 LoadTemplates(path+"templates.bin");
-                PaintCanvas.Background = new ImageBrush(new BitmapImage(new Uri(path+"image.png",UriKind.Relative))); //*ToDo* Resim küçültülecek
-                Paint();
+                var bitmapImage = new BitmapImage(new Uri(path + "image.png", UriKind.Relative));
+                PaintCanvas.Background = new ImageBrush(bitmapImage);
+                PaintCanvas.Height = bitmapImage.Height;
+                PaintCanvas.Width = bitmapImage.Width;
+                PaintCanvas.Children.Clear();
             }
+            selectionRectangle.Width = 0;
+            selectionRectangle.Height = 0;
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

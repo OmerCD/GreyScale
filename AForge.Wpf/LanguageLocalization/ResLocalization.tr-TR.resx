@@ -155,7 +155,7 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
     <value>Kayıt İsmini Giriniz</value>
   </data>
   <data name="Find" xml:space="preserve">
-    <value>Bulma Oranı : 0/0</value>
+    <value>Bulma Oranı</value>
   </data>
   <data name="Languages" xml:space="preserve">
     <value>Diller</value>
@@ -185,7 +185,7 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
     <value>Seçimi Düzenleyin</value>
   </data>
   <data name="M_New" xml:space="preserve">
-    <value>Yeni BUNUDÜZENLE?</value>
+    <value>Yeni Proje</value>
   </data>
   <data name="M_Recognition" xml:space="preserve">
     <value>Tanımayı Başlatın</value>
@@ -198,5 +198,11 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
   </data>
   <data name="M_Factory" xml:space="preserve">
     <value>Fabrika Ayarları</value>
+  </data>
+  <data name="SavedTemplateCount" xml:space="preserve">
+    <value>Kayıtlı Şablon Sayısı</value>
+  </data>
+  <data name="SelectionTemplateCount" xml:space="preserve">
+    <value>Seçili Alanda Şablon Sayısı</value>
   </data>
 </root>

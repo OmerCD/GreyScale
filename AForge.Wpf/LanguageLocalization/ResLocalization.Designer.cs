@@ -234,9 +234,27 @@ namespace AForge.Wpf.LanguageLocalization {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string SavedTemplateCount {
+            get {
+                return ResourceManager.GetString("SavedTemplateCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string SavedTemplates {
             get {
                 return ResourceManager.GetString("SavedTemplates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SelectionTemplateCount {
+            get {
+                return ResourceManager.GetString("SelectionTemplateCount", resourceCulture);
             }
         }
         

@@ -27,9 +27,10 @@ namespace AForge.Wpf
             {
                 using (var rdr = cmd.ExecuteReader())
                 {
-                    var path = Application.StartupPath + "\\SavedTemplates\\";
+                    
                     while (rdr.Read())
                     {
+                        var path = Application.StartupPath + "\\SavedTemplates\\";
                         var id = rdr["Id"].ToString();
                         var name = rdr["Name"].ToString();
                         var stuffId = rdr["StuffId"].ToString();
