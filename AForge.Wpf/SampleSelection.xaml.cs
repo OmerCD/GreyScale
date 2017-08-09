@@ -42,11 +42,15 @@ namespace AForge.Wpf
 
         private void DrawContours(List<Contour<System.Drawing.Point>> contours)
         {
+            if (contours ==null)
+            {
+                return;
+            }
+            if (contours.Count == 0) return;
             LineCanvas.Children.Clear();
 
-            for (var index = 0; index < contours.Count; index++)
+            foreach (var contour in contours)
             {
-                var contour = contours[index];
                 if (contour.Total < 2) continue;
                 var contourArray = contour.ToArray();
                 foreach (var point in contourArray)

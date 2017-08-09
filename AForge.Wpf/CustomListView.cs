@@ -12,14 +12,8 @@ using Image = System.Windows.Controls.Image;
 
 namespace AForge.Wpf
 {
-    class CustomListView
+    class CustomListView:ListView
     {
-        private ListView _list;
-        public CustomListView(ListView list)
-        {
-            _list = list;
-        }
-
         public void Guncelle()
         {
             
@@ -27,17 +21,21 @@ namespace AForge.Wpf
 
         public void Sil(object item)
         {
-            _list.Items.Remove(item);
+            Items.Remove(item);
         }
 
-        public void Ekle(string resimYolu, string text1, string text2)
+        public int GetSelectedId()
+        {
+            return Convert.ToInt32(((ListViewItem) Items[SelectedIndex]).Name.Substring(1));
+        }
+        public void Ekle(string resimYolu, string text1, string text2,string keyId)
         {
             var dock = new DockPanel();
             var img =new Image();
             var textbox1=new TextBox();
             var textbox2=new TextBox();
             var item = new ListViewItem();
-
+            item.Name = "_"+keyId;
             var imgUri = new Uri(resimYolu, UriKind.Relative);
             var bitmapImage = new BitmapImage(imgUri);
             img.Source = bitmapImage;
@@ -59,7 +57,7 @@ namespace AForge.Wpf
 
             item.Content = dock;
 
-            _list.Items.Add(item);
+            Items.Add(item);
         }
     }
 }

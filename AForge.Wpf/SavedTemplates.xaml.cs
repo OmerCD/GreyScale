@@ -19,6 +19,7 @@ namespace AForge.Wpf
     /// </summary>
     public partial class SavedTemplates : Window
     {
+        public int SelectedId = -1;
         public SavedTemplates()
         {
             InitializeComponent();
@@ -26,14 +27,30 @@ namespace AForge.Wpf
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var list = new CustomListView(ListView);
-            list.Ekle("Images/settings.png","abc","abs");
+           
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var list = new CustomListView(ListView);
-            list.Sil(ListView.SelectedItem);
+            TemplateListView.Sil(TemplateListView.SelectedItem);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            TemplateProperties.GetAllSavedTemplates(out var imagePaths, out var names, out var staffIds, out var iDs);
+            for (int i = 0; i < imagePaths.Length; i++)
+            {
+                TemplateListView.Ekle(imagePaths[i], names[i], staffIds[i], iDs[i]);
+            }
+        }
+
+        private void TemplateListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (TemplateListView.SelectedIndex!=-1)
+            {
+                SelectedId = TemplateListView.GetSelectedId();
+                Close();
+            }
         }
     }
 }

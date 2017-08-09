@@ -11,17 +11,37 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ContourAnalysisNS;
 
 namespace AForge.Wpf
 {
     /// <summary>
     /// Interaction logic for Save.xaml
     /// </summary>
-    public partial class Save : Window
+    public partial class Save
     {
-        public Save()
+        private readonly CroppedBitmap _image;
+        private readonly Templates _templates;
+        public Save(CroppedBitmap image, Templates templates)
         {
             InitializeComponent();
+            _image = image;
+            _templates = templates;
+        }
+
+        private void Kayıt_Click(object sender, RoutedEventArgs e)
+        {
+            if (TxtName.Text.Length<2 || TxtStuffId.Text.Length<1)
+            {
+                //MessageBox Uyarısı
+                //*ToDo*
+            }
+            else
+            {
+                var tP = new TemplateProperties();
+                tP.AddTemplate(_image,TxtName.Text,TxtStuffId.Text,_templates);
+                Close();
+            }
         }
     }
 }

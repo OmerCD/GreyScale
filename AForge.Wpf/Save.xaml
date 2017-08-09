@@ -12,12 +12,12 @@
     <Grid>
         <DockPanel>
             <TextBlock DockPanel.Dock="Top" Text="{x:Static p:ResLocalization.EnterSaveName}" HorizontalAlignment="Left" Margin="10,10,0,0"></TextBlock>
-            <TextBox DockPanel.Dock="Top" Name="Ad" Style="{DynamicResource TextBox}" Margin="5,0,5,0" Width="289" HorizontalAlignment="Left"></TextBox>
+            <TextBox DockPanel.Dock="Top" x:Name="TxtName" Style="{DynamicResource TextBox}" Margin="5,0,5,0" Width="289" HorizontalAlignment="Left"></TextBox>
 
             <TextBlock  DockPanel.Dock="Top" Text="ID'yi Giriniz:" HorizontalAlignment="Left" Margin="10,10,0,0"></TextBlock>
-            <TextBox   DockPanel.Dock="Top" Name="Id" Style="{DynamicResource TextBox}" Margin="5,0,5,0" Width="289"></TextBox>
+            <TextBox   DockPanel.Dock="Top" x:Name="TxtStuffId" Style="{DynamicResource TextBox}" Margin="5,0,5,0" Width="289"></TextBox>
 
-            <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" Content="Save" HorizontalAlignment="Left" Margin="5,0,0,5" Style="{StaticResource Buton}"></Button>
+            <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" Content="Save" HorizontalAlignment="Left" Margin="5,0,0,5" Style="{StaticResource Buton}" Click="Kayıt_Click"></Button>
             <Button VerticalAlignment="Bottom" Name="Iptal" Width="140" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,5,5" Style="{StaticResource Buton}"></Button>
 
         </DockPanel>
