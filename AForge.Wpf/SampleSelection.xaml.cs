@@ -55,14 +55,15 @@ namespace AForge.Wpf
                 var contourArray = contour.ToArray();
                 foreach (var point in contourArray)
                 {
-                    var line = new Line
+                    var positionBuffer = _strokeThickness * 0.08;
+                    Line line = new Line
                     {
                         StrokeThickness = _strokeThickness,
                         Stroke = Brushes.Red,
-                        X1 = point.X - 0.1,
-                        X2 = point.X + 0.1,
-                        Y1 = point.Y - 0.1,
-                        Y2 = point.Y + 0.1
+                        X1 = point.X - positionBuffer,
+                        X2 = point.X + positionBuffer,
+                        Y1 = point.Y - positionBuffer,
+                        Y2 = point.Y + positionBuffer
                     };
                     LineCanvas.Children.Add(line);
                     

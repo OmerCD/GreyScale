@@ -135,6 +135,15 @@ namespace AForge.Wpf.LanguageLocalization {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string AskForRestart {
+            get {
+                return ResourceManager.GetString("AskForRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string CorrectnessLevel {
             get {
                 return ResourceManager.GetString("CorrectnessLevel", resourceCulture);
@@ -300,6 +309,15 @@ namespace AForge.Wpf.LanguageLocalization {
         public static string VideoSourceSelect {
             get {
                 return ResourceManager.GetString("VideoSourceSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
     }

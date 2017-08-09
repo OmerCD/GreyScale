@@ -35,7 +35,7 @@ namespace AForge.Wpf
             var textbox1=new TextBox();
             var textbox2=new TextBox();
             var item = new ListViewItem {Name = "_" + keyId};
-            var imgUri = new Uri(resimYolu, UriKind.Relative);
+            var imgUri = new Uri(resimYolu, UriKind.Absolute);
             var bitmapImage = new BitmapImage(imgUri);
             img.Source = bitmapImage;
             RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.HighQuality);

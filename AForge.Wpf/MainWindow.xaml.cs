@@ -172,12 +172,6 @@ namespace AForge.Wpf
             StopCamera();
         }
 
-        private void btnStart_Click(object sender, RoutedEventArgs e)
-        {
-            StopCamera();
-            StartCamera();
-        }
-
         private void video_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
 
@@ -282,14 +276,15 @@ namespace AForge.Wpf
                     foreach (var point in contourArray)
                     {
 
+                        var positionBuffer = _strokeThickness * 0.08;
                         Line line = new Line
                         {
                             StrokeThickness = _strokeThickness,
                             Stroke = Brushes.Red,
-                            X1 = point.X - 0.1,
-                            X2 = point.X + 0.1,
-                            Y1 = point.Y - 0.1,
-                            Y2 = point.Y + 0.1
+                            X1 = point.X - positionBuffer,
+                            X2 = point.X + positionBuffer,
+                            Y1 = point.Y - positionBuffer,
+                            Y2 = point.Y + positionBuffer
                         };
                         PaintCanvas.Children.Add(line);
                     }

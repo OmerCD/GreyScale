@@ -10,8 +10,12 @@
         RenderOptions.BitmapScalingMode="HighQuality"
         Title="{x:Static p:ResLocalization.Languages}" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
-        <ListView>
-            <ListViewItem HorizontalContentAlignment="Stretch" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView x:Name="LanguageListView" Grid.Row="0">
+            <ListViewItem HorizontalContentAlignment="Stretch" x:Name="tr_TR">
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="5">
                         <Image Source="Images/Flag_of_Turkey.svg.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"/>
@@ -19,7 +23,7 @@
                     </DockPanel>
                 </DockPanel>
             </ListViewItem>
-            <ListViewItem HorizontalContentAlignment="Stretch" >
+            <ListViewItem HorizontalContentAlignment="Stretch" x:Name="en_GB" >
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="5">
                         <Image Source="Images/Union_flag_1606_(Kings_Colors).svg.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"/>
@@ -28,5 +32,9 @@
                 </DockPanel>
             </ListViewItem>
         </ListView>
+        <DockPanel Grid.Row="1" VerticalAlignment="Bottom">
+        <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" Content="Save" HorizontalAlignment="Left" Margin="5,0,0,5" Style="{StaticResource Buton}" Click="SaveClick"></Button>
+        <Button VerticalAlignment="Bottom" Name="Iptal" Width="140" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,5,5" Style="{StaticResource Buton}"></Button>
+        </DockPanel>
     </Grid>
 </Window>

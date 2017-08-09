@@ -205,4 +205,10 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
   <data name="SelectionTemplateCount" xml:space="preserve">
     <value>Seçili Alanda Şablon Sayısı</value>
   </data>
+  <data name="AskForRestart" xml:space="preserve">
+    <value>Bu işlem için program yeniden başlatılmalıdır!</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
 </root>

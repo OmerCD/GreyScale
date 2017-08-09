@@ -41,6 +41,7 @@ namespace AForge.Wpf
             for (int i = 0; i < imagePaths.Length; i++)
             {
                 TemplateListView.Ekle(imagePaths[i], names[i], staffIds[i], iDs[i]);
+                
             }
         }
 

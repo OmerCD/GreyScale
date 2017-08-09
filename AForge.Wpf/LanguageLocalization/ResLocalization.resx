@@ -198,4 +198,10 @@
   <data name="SelectionTemplateCount" xml:space="preserve">
     <value />
   </data>
+  <data name="AskForRestart" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value />
+  </data>
 </root>

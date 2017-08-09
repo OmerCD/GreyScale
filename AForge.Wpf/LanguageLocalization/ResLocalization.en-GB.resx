@@ -206,4 +206,10 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
   <data name="SelectionTemplateCount" xml:space="preserve">
     <value>Selection Area Template Count</value>
   </data>
+  <data name="AskForRestart" xml:space="preserve">
+    <value>To complete this operation program must be restarted!</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
 </root>
