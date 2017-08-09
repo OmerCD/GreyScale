@@ -26,23 +26,22 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="55"/>
-        </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FFF9F9F9" HorizontalAlignment="Stretch" FlowDirection="RightToLeft">
-            <MenuItem Style="{StaticResource MenuItem}" Height="25" Width="95" Click="RightMenuClick" >
-                <MenuItem.Background>
-                    <ImageBrush ImageSource="Images/menu.png" Stretch="Uniform"/>
-                </MenuItem.Background>
-            </MenuItem>
-            <Separator Width="Auto" Margin="2" Style="{StaticResource VerticalSeparatorStyle}"/>
-            <MenuItem Header="{x:Static p:ResLocalization.SavedTemplates}" Style="{StaticResource MenuItem}" Height="25" Click="MenuItem_Click"/>
-            <Separator Width="Auto" Margin="2" Style="{StaticResource VerticalSeparatorStyle}"/>
-            <MenuItem Header="{x:Static p:ResLocalization.Settings}" Style="{StaticResource MenuItem}">
-                <MenuItem Header="{x:Static p:ResLocalization.VideoSettings}" Style="{StaticResource MenuItem2}" Click="MenuItem_Click_3" />
-                <MenuItem Header="{x:Static p:ResLocalization.Languages}" Style="{StaticResource MenuItem2}" Click="MenuItem_Click_2" />
-            </MenuItem>
-            <Separator Width="Auto" Margin="2" Style="{StaticResource VerticalSeparatorStyle}"/>
-            <MenuItem Header="{x:Static p:ResLocalization.About}" Style="{StaticResource MenuItem}" Height="25" Click="MenuItem_Click_1"/>
-        </Menu>
+        </Grid.RowDefinitions >
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FFF9F9F9" HorizontalAlignment="Stretch" >
+            <Menu HorizontalAlignment="Stretch" FlowDirection="LeftToRight" Background="#FFF9F9F9" >
+                <MenuItem Header="{x:Static p:ResLocalization.SavedTemplates}" Style="{StaticResource MenuItem}" Height="25" Click="MenuItem_Click"/>
+                <Separator Width="Auto" Margin="2" Style="{StaticResource VerticalSeparatorStyle}"/>
+                <MenuItem Header="{x:Static p:ResLocalization.Settings}" Style="{StaticResource MenuItem}">
+                    <MenuItem Header="{x:Static p:ResLocalization.VideoSettings}" Style="{StaticResource MenuItem2}" Click="MenuItem_Click_3" />
+                    <MenuItem Header="{x:Static p:ResLocalization.Languages}" Style="{StaticResource MenuItem2}" Click="MenuItem_Click_2" />
+                </MenuItem>
+                <Separator Width="Auto" Margin="2" Style="{StaticResource VerticalSeparatorStyle}"/>
+                <MenuItem Header="{x:Static p:ResLocalization.About}" Style="{StaticResource MenuItem}" Height="25" Click="MenuItem_Click_1"/>
+            </Menu>
+            <Button Style="{StaticResource Buton}" Height="22" Width="45" Click="RightMenuClick" HorizontalAlignment="Right" Margin="0,0,2,0">
+                <Image Source="Images/menu.png" Stretch="Uniform" Height="15"/>
+            </Button>
+        </DockPanel>
         <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
             <DockPanel>
                 <Canvas MinWidth="640" MinHeight="480" Margin="2" x:Name="VideoCanvas" MouseLeftButtonDown="VideoCanvas_OnMouseLeftButtonDown" MouseMove="VideoCanvas_OnMouseMove" MouseLeftButtonUp="VideoCanvas_OnMouseLeftButtonUp" Background="AliceBlue">
@@ -57,22 +56,18 @@
         <DockPanel Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0" Margin="5">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Viewbox Grid.Column="0">
-                    <TextBlock Style="{StaticResource TextBlock}" Text="{x:Static p:ResLocalization.VideoSourceSelect}" Margin="0,10,0,0"/>
+                    <ComboBox x:Name="comboBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="300" Height="40" FontFamily="{StaticResource Web}"  DisplayMemberPath="Name" ItemsSource="{Binding VideoDevices}" SelectedItem="{Binding CurrentDevice}" SelectionChanged="comboBox_SelectionChanged" ToolTip="{x:Static p:ResLocalization.VideoSourceSelect}"/>
                 </Viewbox>
-                <Viewbox Grid.Column="1">
-                    <ComboBox x:Name="comboBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="300" Height="40" FontFamily="{StaticResource Web}"  DisplayMemberPath="Name" ItemsSource="{Binding VideoDevices}" SelectedItem="{Binding CurrentDevice}" SelectionChanged="comboBox_SelectionChanged" />
-                </Viewbox>
-                <Button Grid.Column="2" Style="{DynamicResource Buton}" Click="ButtonBase_OnClick" ToolTip="{x:Static p:ResLocalization.M_Base}">
-                    <Image Source="Images/eraser.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5"/>
+                <Button Grid.Column="1" Style="{DynamicResource Buton}" Click="ButtonBase_OnClick" ToolTip="{x:Static p:ResLocalization.M_Base}">
+                    <Image Source="Images/eraser.png"  Margin="5"/>
                 </Button>
-                <Button Grid.Column="3" Style="{DynamicResource Buton2}" Click="BtnRecognition_OnClick" x:Name="BtnRecognition" ToolTip="{x:Static p:ResLocalization.M_Recognition}">
-                    <Image Name="BtnRecognitinionImage" Source="Images/play.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5"/>
+                <Button Grid.Column="2" Style="{DynamicResource Buton2}" Click="BtnRecognition_OnClick" x:Name="BtnRecognition" ToolTip="{x:Static p:ResLocalization.M_Recognition}">
+                    <Image Name="BtnRecognitinionImage" Source="Images/play.png"  Margin="5"/>
                 </Button>
             </Grid>
         </DockPanel>
@@ -86,18 +81,18 @@
                     <DockPanel Margin="0,5,0,0">
                         <DockPanel DockPanel.Dock="Top">
                             <Button Name="YeniButon" Style="{DynamicResource Buton}" FontSize="30" Width="Auto" Height="50" Click="YeniButon_Click" ToolTip="{x:Static p:ResLocalization.M_New}">
-                                <Image Source="Images/tabs.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5"/>
+                                <Image Source="Images/tabs.png" Margin="5"/>
                             </Button>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
                             <Button x:Name="BtnSave" Style="{DynamicResource Buton}" Click="Kaydet_Click"  FontSize="30" Width="Auto" Height="50" ToolTip="{x:Static p:ResLocalization.M_Save}">
-                                <Image Source="Images/save.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5"/>
+                                <Image Source="Images/save.png" Margin="5"/>
                             </Button>
                         </DockPanel>
 
                         <DockPanel DockPanel.Dock="Top">
                             <Button Style="{DynamicResource Buton}" x:Name="BtnAlanEkle" FontSize="30" Width="Auto" Height="50" Click="BtnAlanEkle_Click" ToolTip="{x:Static p:ResLocalization.M_Add}">
-                                <Image Source="Images/add.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5"/>
+                                <Image Source="Images/add.png"  Margin="5"/>
                             </Button>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
@@ -176,7 +171,7 @@
                         <DockPanel DockPanel.Dock="Top">
                             <DockPanel DockPanel.Dock="Top">
                                 <Button x:Name="BtnFactoryDefaults" Style="{DynamicResource Buton}" Click="BtnFactoryDefaults_Click" ToolTip="{x:Static p:ResLocalization.M_Factory}">
-                                    <Image Source="Images/reset.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5"/>
+                                    <Image Source="Images/reset.png"  Margin="5"/>
                                 </Button>
                             </DockPanel>
                         </DockPanel>
