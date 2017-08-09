@@ -161,6 +161,9 @@
     <Compile Include="SavedTemplates.xaml.cs">
       <DependentUpon>SavedTemplates.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StartUpWindow.xaml.cs">
+      <DependentUpon>StartUpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TemplateGenerator.cs" />
     <Compile Include="DatabaseCodes\TemplateProperties.cs" />
     <Compile Include="VideoSettings.xaml.cs">
@@ -196,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SavedTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StartUpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

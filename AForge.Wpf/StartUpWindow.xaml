@@ -1,0 +1,34 @@
+﻿<Window x:Class="AForge.Wpf.StartUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AForge.Wpf"
+        mc:Ignorable="d"
+        Title="StartUpWindow" Height="350" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel>
+        <TextBlock Style="{StaticResource TextBlock}" TextWrapping="Wrap" FontSize="24" Height="Auto">
+            <LineBreak/>
+            GreyScale Programına Hoşgeldiniz 
+            <LineBreak/>
+            <LineBreak/>
+            Sisteminize bağlı kartlar taranıyor...
+        </TextBlock>
+            <ProgressBar Width="Auto" Height="30" Margin="5">
+                <ProgressBar.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Value" From="0" To="100" Duration="0:0:2" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </ProgressBar.Triggers>
+            </ProgressBar>
+            <TextBlock x:Name="Sonuc" Style="{StaticResource TextBlock}" TextWrapping="Wrap" Height="Auto"/>
+            <ComboBox x:Name="ComList" Width="120"/>
+            <Button Content="Onayla" Style="{StaticResource Buton}" VerticalAlignment="Bottom" Click="Button_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
