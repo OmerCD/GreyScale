@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AForge.Wpf
 {
@@ -21,7 +11,6 @@ namespace AForge.Wpf
     /// </summary>
     public partial class StartUpWindow : Window
     {
-        private int _i;
         private BackgroundWorker _backgroundWorker= new BackgroundWorker();
         public StartUpWindow()
         {

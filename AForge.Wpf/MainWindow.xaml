@@ -97,7 +97,7 @@
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
                             <TextBlock Width="150" Text="{x:Static p:ResLocalization.SelectionThickness}" FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
-                            <Slider Width="100"  Height="24" Maximum="20" Minimum="1" TickFrequency="0.5" IsSnapToTickEnabled="True" Name="SecimValue" ValueChanged="SecimValue_OnValueChanged" Value="7.5"/>
+                            <Slider Width="100"  Height="24" Maximum="5" Minimum="1"  TickFrequency="0.5" IsSnapToTickEnabled="True" Name="SecimValue" ValueChanged="SecimValue_OnValueChanged" Value="2.5"/>
                             <TextBlock Width="30" Text="{Binding Path=Value, ElementName=SecimValue}" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
@@ -115,68 +115,7 @@
                         </DockPanel>
                     </DockPanel>
                 </GroupBox>
-                <GroupBox FontFamily="{StaticResource SemiBold}" FontSize="18" DockPanel.Dock="Top" >
-                    <GroupBox.Header>
-                        <Image Source="Images/do-not-touch.png" Height="38"/>
-                    </GroupBox.Header>
-                    <DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <CheckBox Margin="2" Name="EqualizeHist" Checked="ValueChange" Unchecked="ValueChange"/>
-                            <TextBlock Text="equalizeHist" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <CheckBox Margin="2" Name="MaxRotateAngle" Unchecked="ValueChange" Checked="ValueChange" IsChecked="True"/>
-                            <TextBlock Text="maxRotateAngle" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <TextBox Style="{DynamicResource TextBox}" Name="MinContourArea" PreviewTextInput="SayiKontrol" Text="70" TextChanged="ValueChange"/>
-                            <TextBlock Text="minContourArea" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <TextBox  Style="{DynamicResource TextBox}" Name="MinContourLength" PreviewTextInput="SayiKontrol" Text="70" TextChanged="ValueChange"/>
-                            <TextBlock Text="minContourLength" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <TextBox  Style="{DynamicResource TextBox}" Name="MaxAcfDescriptorDeviation" PreviewTextInput="SayiKontrol" Text="4" TextChanged="ValueChange"/>
-                            <TextBlock Text="maxACFDescriptorDeviation" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <TextBox  Style="{DynamicResource TextBox}" Name="MinAcf" PreviewTextInput="SayiKontrol" Text="0,96" TextChanged="ValueChange"/>
-                            <TextBlock Text="minACF" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <TextBox  Style="{DynamicResource TextBox}" Name="MinIcf" PreviewTextInput="SayiKontrol" Text="0,85" TextChanged="ValueChange"/>
-                            <TextBlock Text="minICF" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <CheckBox Name="Blur" IsChecked="True" Checked="ValueChange" Unchecked="ValueChange"/>
-                            <TextBlock Text="blur" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <CheckBox Name="NoiseFilter" Unchecked="ValueChange" Checked="ValueChange"/>
-                            <TextBlock Text="noiseFilter" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <TextBox  Style="{DynamicResource TextBox}" Name="CannyThreshold" PreviewTextInput="SayiKontrol" Text="50" TextChanged="ValueChange"/>
-                            <TextBlock Text="cannyThreshold" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <TextBox  Style="{DynamicResource TextBox}" Name="AdaptiveThresholdBlockSize" PreviewTextInput="SayiKontrol" Text="19" TextChanged="ValueChange"/>
-                            <TextBlock Text="adaptiveThresholdBlockSize" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <CheckBox Name="AdaptiveNoiseFilter" IsChecked="True" Unchecked="ValueChange" Checked="ValueChange"/>
-                            <TextBlock Text="AdaptiveNoiseFilter" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Top">
-                            <DockPanel DockPanel.Dock="Top">
-                                <Button x:Name="BtnFactoryDefaults" Style="{DynamicResource Buton}" Click="BtnFactoryDefaults_Click" ToolTip="{x:Static p:ResLocalization.M_Factory}">
-                                    <Image Source="Images/reset.png"  Margin="5"/>
-                                </Button>
-                            </DockPanel>
-                        </DockPanel>
-                    </DockPanel>
-                </GroupBox>
+              
             </DockPanel>
         </ScrollViewer>
     </Grid>

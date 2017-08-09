@@ -8,9 +8,9 @@ namespace ContourAnalysisNS
     {
         public static void GenerateChars(ImageProcessor processor, char[] chars, Font font)
         {
-            Bitmap bmp = new Bitmap(400, 400);
+            var bmp = new Bitmap(400, 400);
             font = new Font(font.FontFamily, 140, font.Style);
-            Graphics gr = Graphics.FromImage(bmp);
+            var gr = Graphics.FromImage(bmp);
             //
             processor.onlyFindContours = true;
             foreach (char c in chars)
@@ -24,8 +24,8 @@ namespace ContourAnalysisNS
 
         public static void GenerateAntipatterns(ImageProcessor processor)
         {
-            Bitmap bmp = new Bitmap(200, 200);
-            Graphics gr = Graphics.FromImage(bmp);
+            var bmp = new Bitmap(200, 200);
+            var gr = Graphics.FromImage(bmp);
             //
             processor.onlyFindContours = true;
             //square

@@ -7,11 +7,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -25,16 +23,14 @@ using AForge.Wpf.LanguageLocalization;
 using ContourAnalysisNS;
 using Emgu.CV;
 using Emgu.CV.Structure;
-using Microsoft.Win32;
 using Brushes = System.Windows.Media.Brushes;
-using Size = System.Drawing.Size;
 
 namespace AForge.Wpf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : INotifyPropertyChanged
     {
 
         #region Public properties
@@ -101,7 +97,7 @@ namespace AForge.Wpf
                 var oP = new OptionsProperties();
                 return oP.GetOption<string>("Language");
             }
-            System.Threading.Thread.CurrentThread.CurrentUICulture =
+            Thread.CurrentThread.CurrentUICulture =
              new System.Globalization.CultureInfo(GetSavedLanguage());
             InitializeComponent();
             DataContext = this;
@@ -110,8 +106,7 @@ namespace AForge.Wpf
             _dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             _dispatcherTimer.Tick += DispatcherTimer_Tick;
             _processor = new ImageProcessor();
-            _designedSamples = new Templates();
-            ApplySettings();
+            _designedSamples = new Templates();          
         }
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
@@ -156,8 +151,6 @@ namespace AForge.Wpf
                 return new Bitmap(outStream);
             }
         }
-
-
         private void ProcessFrame(BitmapSource bSource, bool showSelectedAreaContourCount)
         {
             if (bSource == null || bSource.Height <= 1 || bSource.Width <= 1) return;
@@ -171,10 +164,8 @@ namespace AForge.Wpf
         {
             StopCamera();
         }
-
         private void video_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-
             BitmapImage bi;
             using (var bitmap = (Bitmap)eventArgs.Frame.Clone())
             {
@@ -183,18 +174,12 @@ namespace AForge.Wpf
             bi.Freeze(); // avoid cross thread operations and prevents leaks
             Dispatcher.BeginInvoke(new ThreadStart(delegate { videoPlayer.Source = bi; }));
             _videoImage = bi;
-
-
         }
-
         private void GetFoundTemplates()
         {
-
             ProcessFrame(_videoImage, false);
             TxtMatches.Text = ResLocalization.Find+" : " + _processor.templates.Count + "/" + _processor.foundTemplates.Count;
-
         }
-
         private void SetButtonsActivity(bool state)
         {
             YeniButon.IsEnabled = state;
@@ -219,7 +204,6 @@ namespace AForge.Wpf
                 MessageBox.Show("No video sources found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void StartCamera()
         {
             if (CurrentDevice != null)
@@ -229,7 +213,6 @@ namespace AForge.Wpf
                 _videoSource.Start();
             }
         }
-
         private void StopCamera()
         {
             if (_videoSource != null && _videoSource.IsRunning)
@@ -238,7 +221,6 @@ namespace AForge.Wpf
                 _videoSource.NewFrame -= video_NewFrame;
             }
         }
-
         #region INotifyPropertyChanged members
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -254,15 +236,8 @@ namespace AForge.Wpf
         }
 
         #endregion
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         void Paint()
         {
-
             PaintCanvas.Children.Clear();
             if (_processor.contours == null)
             {
@@ -275,7 +250,6 @@ namespace AForge.Wpf
                     var contourArray = contour.ToArray();
                     foreach (var point in contourArray)
                     {
-
                         var positionBuffer = _strokeThickness * 0.08;
                         Line line = new Line
                         {
@@ -290,51 +264,7 @@ namespace AForge.Wpf
                     }
                 }
             }
-        }
-        private void ApplySettings()
-        {
-            if (_processor == null)
-            {
-                return;
-
-            }
-            try
-            {
-                _processor.equalizeHist = (bool)EqualizeHist.IsChecked;
-                _processor.finder.maxRotateAngle = (bool)MaxRotateAngle.IsChecked ? System.Math.PI : System.Math.PI / 4; //Checkbox
-                _processor.minContourArea = int.Parse(MinContourArea.Text);
-                _processor.minContourLength = int.Parse(MinContourLength.Text);
-                _processor.finder.maxACFDescriptorDeviation = int.Parse(MaxAcfDescriptorDeviation.Text);
-                _processor.finder.minACF = Convert.ToDouble(MinAcf.Text);
-                _processor.finder.minICF = Convert.ToDouble(MinIcf.Text);
-                _processor.blur = (bool)Blur.IsChecked;
-                _processor.noiseFilter = (bool)NoiseFilter.IsChecked;
-                _processor.cannyThreshold = int.Parse(CannyThreshold.Text);
-                _processor.adaptiveThresholdBlockSize = int.Parse(AdaptiveThresholdBlockSize.Text);
-                _processor.adaptiveThresholdParameter = (bool)AdaptiveNoiseFilter.IsChecked ? 1.5 : 0.5; //Checkbox
-                //cam resolution
-                //int camWidth = 1920;
-                //int camHeight = 1080;
-                //if (this.camHeight != camHeight || this.camWidth != camWidth)
-                //{
-                //    this.camWidth = camWidth;
-                //    this.camHeight = camHeight;
-                //    ApplyCamSettings();
-                //}
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        private void BtnCrop_OnClick(object sender, RoutedEventArgs e)
-        {
-            //Crop();
-            //AddCropToElement(videoPlayer);
-            //RefreshCropImage();
-        }
-
+        }     
         private void Crop()
         {
             if (selectionRectangle != null)
@@ -345,10 +275,6 @@ namespace AForge.Wpf
                 }
                 var relativePoint = selectionRectangle.PointToScreen(new System.Windows.Point(0, 0));
                 var imagePoint = videoPlayer.PointToScreen(new System.Windows.Point(0, 0));
-
-                //var relativePoint = selectionRectangle.TransformToVisual(videoPlayer)
-                //    .Transform(new System.Windows.Point(0, 0));
-
                 #region PositionCheck
 
                 if (relativePoint.X < imagePoint.X)
@@ -389,11 +315,9 @@ namespace AForge.Wpf
                     }
                     selectionRectangle.Height = calc;
                 }
-
                     #endregion
                 relativePoint = new System.Windows.Point(relativePoint.X - imagePoint.X, relativePoint.Y - imagePoint.Y);
-
-                Int32Rect rect = new Int32Rect((int)(relativePoint.X), (int)relativePoint.Y, (int)selectionRectangle.Width, (int)selectionRectangle.Height);
+                var rect = new Int32Rect((int)(relativePoint.X), (int)relativePoint.Y, (int)selectionRectangle.Width, (int)selectionRectangle.Height);
 
                 if (rect.Height < 1 || rect.Width < 1)
                 {
@@ -404,19 +328,13 @@ namespace AForge.Wpf
                     _croppedImage = new CroppedBitmap((BitmapSource)videoPlayer.Source, rect);
                 }
                 catch { }
-                ImageBrush ib = new ImageBrush(_croppedImage);
+                var ib = new ImageBrush(_croppedImage);
                 PaintCanvas.Background = ib;
                 PaintCanvas.Height = rect.Height;
                 PaintCanvas.Width = rect.Width;
                 ProcessFrame(_croppedImage, true);
                 Paint();
             }
-        }
-
-        private void SayiKontrol(object sender, TextCompositionEventArgs e)
-        {
-            var regex = new Regex("^[0-9]([,][0-9])");
-            e.Handled = regex.IsMatch(e.Text);
         }
 
         private bool _mouseDown; // Set to 'true' when mouse is held down.
@@ -429,7 +347,6 @@ namespace AForge.Wpf
             _mouseDown = true;
             _mouseDownPos = e.GetPosition(VideoCanvas);
             VideoCanvas.CaptureMouse();
-
             // Initial placement of the drag selection box.         
             Canvas.SetLeft(selectionRectangle, _mouseDownPos.X);
             Canvas.SetTop(selectionRectangle, _mouseDownPos.Y);
@@ -439,15 +356,12 @@ namespace AForge.Wpf
             // Make the drag selection box visible.
             selectionRectangle.Visibility = Visibility.Visible;
         }
-
         private void VideoCanvas_OnMouseMove(object sender, MouseEventArgs e)
         {
             if (_mouseDown)
             {
                 // When the mouse is held down, reposition the drag selection box.
-
                 System.Windows.Point mousePos = e.GetPosition(VideoCanvas);
-
                 if (_mouseDownPos.X < mousePos.X)
                 {
                     Canvas.SetLeft(selectionRectangle, _mouseDownPos.X);
@@ -472,11 +386,6 @@ namespace AForge.Wpf
             }
         }
 
-        private void ValueChange(object sender, EventArgs e)
-        {
-            ApplySettings();
-        }
-
         private void CropWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             selectionRectangle.Visibility = Visibility.Collapsed;
@@ -492,18 +401,7 @@ namespace AForge.Wpf
             // Hide the drag selection box.
             selectionRectangle.Visibility = Visibility.Collapsed;
         }
-        private void SaveTemplates(string fileName)
-        {
-            try
-            {
-                using (FileStream fs = new FileStream(fileName, FileMode.Create))
-                    new BinaryFormatter().Serialize(fs, _designedSamples);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+
         private void Kaydet_Click(object sender, RoutedEventArgs e)
         {
             if (_processor.templates.Count == 0)
@@ -516,13 +414,12 @@ namespace AForge.Wpf
                 var save = new Save(_croppedImage, _processor.templates);
                 save.Show();
             }
-
         }
         private void LoadTemplates(string fileName)
         {
             try
             {
-                using (FileStream fs = new FileStream(fileName, FileMode.Open))
+                using (var fs = new FileStream(fileName, FileMode.Open))
                     _processor.templates = (Templates)new BinaryFormatter().Deserialize(fs);
                 AlanSayisi.Text = ResLocalization.SavedTemplateCount+" :" + _processor.templates.Count;
             }
@@ -534,7 +431,7 @@ namespace AForge.Wpf
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            bool wasActiveBefore = false;
+            var wasActiveBefore = false;
             //SampleSelection ss = new SampleSelection(_croppedImage,processor.contours);
             if (_recognition)
             {
@@ -542,8 +439,7 @@ namespace AForge.Wpf
                 Recognition = false;
             }
             ProcessFrame(_croppedImage, true);
-            SampleSelection ss = new SampleSelection(_croppedImage, _processor.samples, _processor.contours, _strokeThickness);
-
+            var ss = new SampleSelection(_croppedImage, _processor.samples, _processor.contours, _strokeThickness);
             ss.ShowDialog();
             _designedSamples.Clear();
             _processor.contours = ss.Contours;
@@ -556,17 +452,6 @@ namespace AForge.Wpf
                 Recognition = true;
             }
         }
-
-        //private void BtnYükle_OnClick(object sender, RoutedEventArgs e)
-        //{
-        //    var oPF = new OpenFileDialog { Filter = "Template|*bin" };
-        //    if (oPF.ShowDialog() == true)
-        //    {
-        //        LoadTemplates(oPF.FileName);
-        //        Paint();
-        //    }
-
-        //}
 
         void RecognitionAnimation(bool active)
         {
@@ -593,42 +478,10 @@ namespace AForge.Wpf
         }
         private void BtnRecognition_OnClick(object sender, RoutedEventArgs e)
         {
-            //Recognition frm = new Recognition();
-            //frm.ShowDialog();
-
-
             Recognition = !_recognition;
             _processor.onlyFindContours = !_recognition;
         }
 
-        private void BtnFactoryDefaults_Click(object sender, RoutedEventArgs e)
-        {
-            if (_processor == null)
-            {
-                return;
-            }
-            try
-            {
-                EqualizeHist.IsChecked = false;
-                MaxRotateAngle.IsChecked = true;
-                MinContourArea.Text = "70";
-                MinContourLength.Text = "70";
-                MaxAcfDescriptorDeviation.Text = "4";
-                MinAcf.Text = "0.96";
-                MinIcf.Text = "0.85";
-                Blur.IsChecked = true;
-                NoiseFilter.IsChecked = false;
-                CannyThreshold.Text = "50";
-                AdaptiveThresholdBlockSize.Text = "19";
-                AdaptiveNoiseFilter.IsChecked = true;
-                ApplySettings();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         private void YeniButon_Click(object sender, RoutedEventArgs e)
         {
@@ -669,8 +522,7 @@ namespace AForge.Wpf
             var savedTemplates = new SavedTemplates();
             savedTemplates.ShowDialog();
             if (savedTemplates.SelectedId != -1)
-            {
-                
+            {                
                 var path = System.Windows.Forms.Application.StartupPath + "\\SavedTemplates\\" +
                            savedTemplates.SelectedId + "\\";
                 LoadTemplates(path+"templates.bin");
@@ -695,19 +547,19 @@ namespace AForge.Wpf
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             var about = new About();
-            about.Show();
+            about.ShowDialog();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             var languages = new Languages();
-            languages.Show();
+            languages.ShowDialog();
         }
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
             var videoSettings = new VideoSettings();
-            videoSettings.Show();
+            videoSettings.ShowDialog();
         }
 
         private void RightMenuClick(object sender, RoutedEventArgs e)

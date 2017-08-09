@@ -8,8 +8,71 @@
         mc:Ignorable="d"
         Icon="Images/videoSettings.ico"
         RenderOptions.BitmapScalingMode="HighQuality"
-        Title="{x:Static p:ResLocalization.VideoSettings}" Height="300" Width="300">
+        Title="{x:Static p:ResLocalization.VideoSettings}" Height="560" Width="300">
     <Grid>
-        
+        <GroupBox FontFamily="{StaticResource SemiBold}" FontSize="18" DockPanel.Dock="Top" >
+            <GroupBox.Header>
+                <Image Source="Images/do-not-touch.png" Height="38"/>
+            </GroupBox.Header>
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <CheckBox Margin="2" Name="EqualizeHist" />
+                    <TextBlock Text="equalizeHist" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <CheckBox Margin="2" Name="MaxRotateAngle" IsChecked="True"/>
+                    <TextBlock Text="maxRotateAngle" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBox Style="{DynamicResource TextBox}" Name="MinContourArea" PreviewTextInput="SayiKontrol" Text="70" />
+                    <TextBlock Text="minContourArea" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBox  Style="{DynamicResource TextBox}" Name="MinContourLength" PreviewTextInput="SayiKontrol" Text="70" />
+                    <TextBlock Text="minContourLength" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBox  Style="{DynamicResource TextBox}" Name="MaxAcfDescriptorDeviation" PreviewTextInput="SayiKontrol" Text="4" />
+                    <TextBlock Text="maxACFDescriptorDeviation" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBox  Style="{DynamicResource TextBox}" Name="MinAcf" PreviewTextInput="SayiKontrol" Text="0,96" />
+                    <TextBlock Text="minACF" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBox  Style="{DynamicResource TextBox}" Name="MinIcf" PreviewTextInput="SayiKontrol" Text="0,85" />
+                    <TextBlock Text="minICF" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <CheckBox Name="Blur" IsChecked="True"/>
+                    <TextBlock Text="blur" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <CheckBox Name="NoiseFilter"/>
+                    <TextBlock Text="noiseFilter" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBox  Style="{DynamicResource TextBox}" Name="CannyThreshold" PreviewTextInput="SayiKontrol" Text="50" />
+                    <TextBlock Text="cannyThreshold" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBox  Style="{DynamicResource TextBox}" Name="AdaptiveThresholdBlockSize" PreviewTextInput="SayiKontrol" Text="19" />
+                    <TextBlock Text="adaptiveThresholdBlockSize" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <CheckBox Name="AdaptiveNoiseFilter" IsChecked="True"/>
+                    <TextBlock Text="AdaptiveNoiseFilter" Style="{DynamicResource TextBlock}"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <DockPanel DockPanel.Dock="Top">
+                        <Button x:Name="Accept" Content="Accept" Style="{DynamicResource Buton}">
+                        </Button>
+                        <Button x:Name="BtnFactoryDefaults" Style="{DynamicResource Buton}" Click="BtnFactoryDefaults_Click" ToolTip="{x:Static p:ResLocalization.M_Factory}">
+                            <Image Source="Images/reset.png"  Margin="5"/>
+                        </Button>
+                    </DockPanel>
+                </DockPanel>
+            </DockPanel>
+        </GroupBox>
     </Grid>
 </Window>
