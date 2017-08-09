@@ -18,16 +18,22 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="320"></ColumnDefinition>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="320" Name="RightMenu" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="55"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FFF9F9F9">
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FFF9F9F9" HorizontalAlignment="Stretch" FlowDirection="RightToLeft">
+            <MenuItem Style="{StaticResource MenuItem}" Height="25" Width="95" Click="RightMenuClick" >
+                <MenuItem.Background>
+                    <ImageBrush ImageSource="Images/menu.png" Stretch="Uniform"/>
+                </MenuItem.Background>
+            </MenuItem>
+            <Separator Width="Auto" Margin="2" Style="{StaticResource VerticalSeparatorStyle}"/>
             <MenuItem Header="{x:Static p:ResLocalization.SavedTemplates}" Style="{StaticResource MenuItem}" Height="25" Click="MenuItem_Click"/>
             <Separator Width="Auto" Margin="2" Style="{StaticResource VerticalSeparatorStyle}"/>
             <MenuItem Header="{x:Static p:ResLocalization.Settings}" Style="{StaticResource MenuItem}">
@@ -38,15 +44,15 @@
             <MenuItem Header="{x:Static p:ResLocalization.About}" Style="{StaticResource MenuItem}" Height="25" Click="MenuItem_Click_1"/>
         </Menu>
         <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-        <DockPanel>
-            <Canvas MinWidth="640" MinHeight="480" Margin="2" x:Name="VideoCanvas" MouseLeftButtonDown="VideoCanvas_OnMouseLeftButtonDown" MouseMove="VideoCanvas_OnMouseMove" MouseLeftButtonUp="VideoCanvas_OnMouseLeftButtonUp" Background="AliceBlue">
-                <Image x:Name="videoPlayer" Height="{Binding ActualHeight, ElementName=VideoCanvas}" Width="{Binding ActualWidth, ElementName=VideoCanvas}" Stretch="None"/>
-                <Rectangle x:Name="selectionRectangle" StrokeThickness="1" Stroke="LightBlue" Fill="#220000FF" Visibility="Collapsed" ClipToBounds="True"/>
-            </Canvas>
-            <Canvas  Margin="2" x:Name="PaintCanvas" Background="White">
-                <!--<Image x:Name="CroppedImage" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>-->
-            </Canvas>
-        </DockPanel>
+            <DockPanel>
+                <Canvas MinWidth="640" MinHeight="480" Margin="2" x:Name="VideoCanvas" MouseLeftButtonDown="VideoCanvas_OnMouseLeftButtonDown" MouseMove="VideoCanvas_OnMouseMove" MouseLeftButtonUp="VideoCanvas_OnMouseLeftButtonUp" Background="AliceBlue">
+                    <Image x:Name="videoPlayer" Height="{Binding ActualHeight, ElementName=VideoCanvas}" Width="{Binding ActualWidth, ElementName=VideoCanvas}" Stretch="None"/>
+                    <Rectangle x:Name="selectionRectangle" StrokeThickness="1" Stroke="LightBlue" Fill="#220000FF" Visibility="Collapsed" ClipToBounds="True"/>
+                </Canvas>
+                <Canvas  Margin="2" x:Name="PaintCanvas" Background="White">
+                    <!--<Image x:Name="CroppedImage" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>-->
+                </Canvas>
+            </DockPanel>
         </ScrollViewer>
         <DockPanel Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0" Margin="5">
             <Grid>

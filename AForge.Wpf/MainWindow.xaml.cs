@@ -679,5 +679,12 @@ namespace AForge.Wpf
             var videoSettings =new VideoSettings();
             videoSettings.Show();
         }
+
+        private void RightMenuClick(object sender, RoutedEventArgs e)
+        {
+            var buyuk = new GridLength(320, GridUnitType.Pixel);
+            var kucuk = new GridLength(0, GridUnitType.Pixel);
+            RightMenu.Width = RightMenu.Width ==buyuk  ? kucuk : buyuk;
+        }
     }
 }
