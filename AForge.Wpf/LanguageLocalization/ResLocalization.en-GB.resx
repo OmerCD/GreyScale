@@ -121,9 +121,7 @@
     <value>About</value>
   </data>
   <data name="A_AboutText" xml:space="preserve">
-    <value>
-Grey Scale isimli bu program AForge, EmguCV isimli açık kaynak kodlu frameworkler kullanılarak tasarlanmıştır. Tüm hakları saklıdır.
-</value>
+    <value>Grey Scale uses open source libraries from AForge and EmguCV and designed in that way. All Rights Reserved.</value>
     <comment>Boşlukları Değiştirmeden İngilizceye Çevir</comment>
   </data>
   <data name="A_LicenceText" xml:space="preserve">
@@ -132,10 +130,9 @@ Program kapsamında verilen lisans ömür boyudur.
 </value>
   </data>
   <data name="A_SpecialThanksText" xml:space="preserve">
-    <value>
-AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi sunarız.
+    <value>We thank all who helped develop AForge and EmguCV.
 
-İkonlar için linkte isimleri verilmiş olan kullanıcılara teşekkür ederiz.</value>
+Also we thank the designers for the icons they made  :</value>
   </data>
   <data name="CorrectnessLevel" xml:space="preserve">
     <value>Correctness Level</value>
@@ -214,5 +211,8 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
   </data>
   <data name="WrongEnter" xml:space="preserve">
     <value>There Are Fields You May Entered Wrong!</value>
+  </data>
+  <data name="ChangeLanguageWarning" xml:space="preserve">
+    <value>The changes you have made will be applied after restart of this program. Would you like to close the program now?</value>
   </data>
 </root>

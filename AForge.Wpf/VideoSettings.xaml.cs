@@ -53,8 +53,8 @@ namespace AForge.Wpf
                 Processor.minContourArea = int.Parse(MinContourArea.Text);
                 Processor.minContourLength = int.Parse(MinContourLength.Text);
                 Processor.finder.maxACFDescriptorDeviation = int.Parse(MaxAcfDescriptorDeviation.Text);
-                Processor.finder.minACF = Convert.ToDouble(MinAcf.Text);
-                Processor.finder.minICF = Convert.ToDouble(MinIcf.Text);
+                Processor.finder.minACF = Convert.ToDouble(MinAcf.Text.Replace('.',','));
+                Processor.finder.minICF = Convert.ToDouble(MinIcf.Text.Replace('.',','));
                 Processor.blur = (bool)Blur.IsChecked;
                 Processor.noiseFilter = (bool)NoiseFilter.IsChecked;
                 Processor.cannyThreshold = int.Parse(CannyThreshold.Text);
@@ -82,8 +82,8 @@ namespace AForge.Wpf
                 MinContourArea.Text = "70";
                 MinContourLength.Text = "70";
                 MaxAcfDescriptorDeviation.Text = "4";
-                MinAcf.Text = "0.96";
-                MinIcf.Text = "0.85";
+                MinAcf.Text = "0,96";
+                MinIcf.Text = "0,85";
                 Blur.IsChecked = true;
                 NoiseFilter.IsChecked = false;
                 CannyThreshold.Text = "50";

@@ -12,6 +12,8 @@ namespace AForge.Wpf
     public partial class StartUpWindow : Window
     {
         private BackgroundWorker _backgroundWorker= new BackgroundWorker();
+        private int _trialCounter=10;
+
         public StartUpWindow()
         {
             InitializeComponent();
@@ -20,26 +22,48 @@ namespace AForge.Wpf
 
         private void SearchPorts(object sender, DoWorkEventArgs e)
         {
+            bool found = false;
             var ports = SerialPort.GetPortNames();
-            foreach (var portName in ports)
+            while (_trialCounter > 0)
             {
-                var port = new SerialPort(portName, 9600);
-                port.Open();
-                port.Write("1");
-                string message = "";
-                message = Timeout(port, message);
-                string check="";
-                if(message.Length>3)
-                check = message.Substring(0, message.Length - 1);
-                if (check == "123456")
+                foreach (var portName in ports)
                 {
-                    Dispatcher.Invoke(delegate
+                    var port = new SerialPort(portName, 9600);
+                    port.Open();
+                    port.Write("1");
+                    string message = "";
+                    message = Timeout(port, message);
+                    string check = "";
+                    if (message.Length > 3)
+                        check = message.Substring(0, message.Length - 1);
+                    if (check == "123456")
                     {
-                        var mainWindow = new MainWindow();
+                        Dispatcher.Invoke(delegate
+                        {
+                            var mainWindow = new MainWindow();
 
-                        mainWindow.Show();
-                        Close();
-                    });
+                            mainWindow.Show();
+                            Close();
+
+                        });
+                        found = true;
+                    }
+                }
+                if (found)
+                {
+                    break;
+                }
+                _trialCounter--;
+            }
+            if (_trialCounter == 0)
+            {
+                if (MessageBox.Show("Uyarı", "Bağlı bir kart bulunumadı. Tekrar denemek ister misiniz?", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
+                {
+                    SearchPorts(null, null);
+                }
+                else
+                {
+                    Close();
                 }
             }
         }

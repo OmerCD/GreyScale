@@ -23,15 +23,17 @@ namespace AForge.Wpf
                 var lang =
                     ((ListViewItem)LanguageListView.Items[LanguageListView.SelectedIndex]).Name.Replace('_',
                         '-');
-                if (MessageBox.Show(ResLocalization.AskForRestart, ResLocalization.Warning, MessageBoxButton.YesNo,
+                var oP = new OptionsProperties();
+                oP.SetOption("Language", lang);
+                if (MessageBox.Show(ResLocalization.ChangeLanguageWarning, ResLocalization.Warning, MessageBoxButton.YesNo,
                         MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    var oP = new OptionsProperties();
-                    oP.SetOption("Language",lang);
+                 
                     Application.Current.Shutdown();
-                    System.Windows.Forms.Application.Restart();
+                    //System.Windows.Forms.Application.Restart();
                 }
             }
         }
+
     }
 }

@@ -144,6 +144,15 @@ namespace AForge.Wpf.LanguageLocalization {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string ChangeLanguageWarning {
+            get {
+                return ResourceManager.GetString("ChangeLanguageWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string CorrectnessLevel {
             get {
                 return ResourceManager.GetString("CorrectnessLevel", resourceCulture);

@@ -214,4 +214,7 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
   <data name="WrongEnter" xml:space="preserve">
     <value>Hatalı Girdiğiniz Alanlar Var!</value>
   </data>
+  <data name="ChangeLanguageWarning" xml:space="preserve">
+    <value>Yaptığınız değişiklik program kapatılıp açıldıktan sonra etki edecektir. Şimdi programı kapatmak ister misiniz?</value>
+  </data>
 </root>
