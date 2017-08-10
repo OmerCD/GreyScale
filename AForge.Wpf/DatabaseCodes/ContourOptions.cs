@@ -81,7 +81,7 @@ namespace AForge.Wpf.DatabaseCodes
                     if (rdr.HasRows)
                     {
                         rdr.Read();
-                        _equalizeHist = Convert.ToBoolean(rdr["EqualizeHise"]);
+                        _equalizeHist = Convert.ToBoolean(rdr["EqualizeHist"]);
                         _maxRotateAngle = Convert.ToBoolean(rdr["MaxRotateAngle"]);
                         _minContourArea = Convert.ToInt32(rdr["MinContourArea"]);
                         _minContourLength = Convert.ToInt32(rdr["MinContourLength"]);

@@ -77,7 +77,7 @@ namespace AForge.Wpf
         private VideoCaptureDevice _videoSource;
 
         private Image<Bgr, Byte> _frame;
-        private readonly ImageProcessor _processor;
+        private ImageProcessor _processor;
 
         private CroppedBitmap _croppedImage;
         private BitmapImage _videoImage;
@@ -558,8 +558,9 @@ namespace AForge.Wpf
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-            var videoSettings = new VideoSettings();
+            var videoSettings = new VideoSettings(_processor);
             videoSettings.ShowDialog();
+            _processor = videoSettings.Processor;
         }
 
         private void RightMenuClick(object sender, RoutedEventArgs e)
@@ -573,6 +574,20 @@ namespace AForge.Wpf
         {
             StopCamera();
             StartCamera();
+        }
+
+        private void CropWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var oP = new OptionsProperties();
+            SecimValue.Value = oP.GetOption<double>("ContourThickness");
+            DogrulukValue.Value = oP.GetOption<double>("SuccessRate");
+        }
+
+        private void CropWindow_Closing(object sender, CancelEventArgs e)
+        {
+            var oP = new OptionsProperties();
+            oP.SetOption("ContourThickness",SecimValue.Value);
+            oP.SetOption("SuccessRate",DogrulukValue.Value);
         }
     }
 }

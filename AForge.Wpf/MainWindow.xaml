@@ -8,12 +8,11 @@
         Width="1024"
         Height="600"
         mc:Ignorable="d" 
-        Loaded="Window_Loaded" 
         SizeChanged="CropWindow_SizeChanged"
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized" 
         Icon="Images/Logo.ico"
-        RenderOptions.BitmapScalingMode="HighQuality"
+        RenderOptions.BitmapScalingMode="HighQuality" Loaded="CropWindow_Loaded" Closing="CropWindow_Closing"
         >
     <Grid>
 

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Icon="Images/videoSettings.ico"
         RenderOptions.BitmapScalingMode="HighQuality"
-        Title="{x:Static p:ResLocalization.VideoSettings}" Height="560" Width="300">
+        Title="{x:Static p:ResLocalization.VideoSettings}" Height="560" Width="300" Loaded="Window_Loaded">
     <Grid>
         <GroupBox FontFamily="{StaticResource SemiBold}" FontSize="18" DockPanel.Dock="Top" >
             <GroupBox.Header>
@@ -65,7 +65,7 @@
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top">
                     <DockPanel DockPanel.Dock="Top">
-                        <Button x:Name="Accept" Content="Accept" Style="{DynamicResource Buton}">
+                        <Button x:Name="Accept" Content="Accept" Style="{DynamicResource Buton}" Click="Accept_Click">
                         </Button>
                         <Button x:Name="BtnFactoryDefaults" Style="{DynamicResource Buton}" Click="BtnFactoryDefaults_Click" ToolTip="{x:Static p:ResLocalization.M_Factory}">
                             <Image Source="Images/reset.png"  Margin="5"/>

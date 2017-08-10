@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
+using AForge.Wpf.DatabaseCodes;
 using ContourAnalysisNS;
 
 namespace AForge.Wpf
@@ -11,42 +12,56 @@ namespace AForge.Wpf
     /// </summary>
     public partial class VideoSettings : Window
     {
-        private ImageProcessor _processor;
+        public ImageProcessor Processor;
+        ContourOptions _contourOptions = new ContourOptions();
 
-        public VideoSettings()
+        public VideoSettings(ImageProcessor processor)
         {
             InitializeComponent();
+            Processor = processor;
+        }
+
+        private void LoadSettingsFromDatabase()
+        {
+            _contourOptions.LoadSavedOptions();
+            EqualizeHist.IsChecked = _contourOptions.EqualizeHist;
+            MaxRotateAngle.IsChecked = _contourOptions.MaxRotateAngle;
+            MinContourArea.Text = _contourOptions.MinContourArea.ToString();
+            MinContourLength.Text = _contourOptions.MinContourLength.ToString();
+            MaxAcfDescriptorDeviation.Text = _contourOptions.MaxAcfDescriptorDeviation.ToString();
+            MinAcf.Text = _contourOptions.MinAcf.ToString();
+            MinIcf.Text = _contourOptions.MinIcf.ToString();
+            Blur.IsChecked = _contourOptions.Blur;
+            NoiseFilter.IsChecked = _contourOptions.NoiseFilter;
+            CannyThreshold.Text = _contourOptions.CannyThreshold.ToString();
+            AdaptiveThresholdBlockSize.Text = _contourOptions.AdaptiveThresholdBlockSize.ToString();
+            AdaptiveNoiseFilter.IsChecked = _contourOptions.AdaptiveNoiseFilter;
         }
         private void ApplySettings()
         {
-            if (_processor == null)
+            if (Processor == null)
             {
                 return;
 
             }
             try
             {
-                _processor.equalizeHist = (bool)EqualizeHist.IsChecked;
-                _processor.finder.maxRotateAngle = (bool)MaxRotateAngle.IsChecked ? System.Math.PI : System.Math.PI / 4; //Checkbox
-                _processor.minContourArea = int.Parse(MinContourArea.Text);
-                _processor.minContourLength = int.Parse(MinContourLength.Text);
-                _processor.finder.maxACFDescriptorDeviation = int.Parse(MaxAcfDescriptorDeviation.Text);
-                _processor.finder.minACF = Convert.ToDouble(MinAcf.Text);
-                _processor.finder.minICF = Convert.ToDouble(MinIcf.Text);
-                _processor.blur = (bool)Blur.IsChecked;
-                _processor.noiseFilter = (bool)NoiseFilter.IsChecked;
-                _processor.cannyThreshold = int.Parse(CannyThreshold.Text);
-                _processor.adaptiveThresholdBlockSize = int.Parse(AdaptiveThresholdBlockSize.Text);
-                _processor.adaptiveThresholdParameter = (bool)AdaptiveNoiseFilter.IsChecked ? 1.5 : 0.5; //Checkbox
-                //cam resolution
-                //int camWidth = 1920;
-                //int camHeight = 1080;
-                //if (this.camHeight != camHeight || this.camWidth != camWidth)
-                //{
-                //    this.camWidth = camWidth;
-                //    this.camHeight = camHeight;
-                //    ApplyCamSettings();
-                //}
+                var rotateAngle = (bool) MaxRotateAngle.IsChecked ? System.Math.PI : System.Math.PI / 4;
+                var noiseFilter = (bool)AdaptiveNoiseFilter.IsChecked ? 1.5 : 0.5;
+                Processor.equalizeHist = (bool)EqualizeHist.IsChecked;
+                Processor.finder.maxRotateAngle = rotateAngle;
+                Processor.minContourArea = int.Parse(MinContourArea.Text);
+                Processor.minContourLength = int.Parse(MinContourLength.Text);
+                Processor.finder.maxACFDescriptorDeviation = int.Parse(MaxAcfDescriptorDeviation.Text);
+                Processor.finder.minACF = Convert.ToDouble(MinAcf.Text);
+                Processor.finder.minICF = Convert.ToDouble(MinIcf.Text);
+                Processor.blur = (bool)Blur.IsChecked;
+                Processor.noiseFilter = (bool)NoiseFilter.IsChecked;
+                Processor.cannyThreshold = int.Parse(CannyThreshold.Text);
+                Processor.adaptiveThresholdBlockSize = int.Parse(AdaptiveThresholdBlockSize.Text);
+                Processor.adaptiveThresholdParameter = noiseFilter;
+
+                _contourOptions.SaveOptions(Processor.equalizeHist,rotateAngle==System.Math.PI,Processor.minContourArea,Processor.minContourLength,Processor.finder.maxACFDescriptorDeviation,Processor.finder.minACF,Processor.finder.minICF,Processor.blur,Processor.noiseFilter,Processor.cannyThreshold,Processor.adaptiveThresholdBlockSize,noiseFilter==1.5);
 
             }
             catch (Exception ex)
@@ -56,7 +71,7 @@ namespace AForge.Wpf
         }
         private void BtnFactoryDefaults_Click(object sender, RoutedEventArgs e)
         {
-            if (_processor == null)
+            if (Processor == null)
             {
                 return;
             }
@@ -86,6 +101,17 @@ namespace AForge.Wpf
         {
             var regex = new Regex("^[0-9]([,][0-9])");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void Accept_Click(object sender, RoutedEventArgs e)
+        {
+            ApplySettings();
+            Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadSettingsFromDatabase();
         }
     }
 }
