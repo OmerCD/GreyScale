@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Icon="Images/languages.ico"
         RenderOptions.BitmapScalingMode="HighQuality"
-        Title="{x:Static p:ResLocalization.Languages}" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="{x:Static p:ResLocalization.Languages}" Height="205" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -33,8 +33,12 @@
             </ListViewItem>
         </ListView>
         <DockPanel Grid.Row="1" VerticalAlignment="Bottom">
-        <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" Content="Save" HorizontalAlignment="Left" Margin="5,0,0,5" Style="{StaticResource Buton}" Click="SaveClick"></Button>
-        <Button VerticalAlignment="Bottom" Name="Iptal" Width="140" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,5,5" Style="{StaticResource Buton}"></Button>
+        <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" HorizontalAlignment="Left"  Style="{StaticResource Buton}" Click="SaveClick">
+            <Image Source="Images/checked.png" Width="35"/>
+            </Button>
+        <Button VerticalAlignment="Bottom" Name="Iptal" Width="140" HorizontalAlignment="Right" Style="{StaticResource Buton}">
+                <Image Source="Images/cancel.png" Width="30"/>
+            </Button>
         </DockPanel>
     </Grid>
 </Window>

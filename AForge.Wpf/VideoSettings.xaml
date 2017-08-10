@@ -64,11 +64,12 @@
                     <TextBlock Text="AdaptiveNoiseFilter" Style="{DynamicResource TextBlock}"/>
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top">
-                    <DockPanel DockPanel.Dock="Top">
-                        <Button x:Name="Accept" Content="Accept" Style="{DynamicResource Buton}" Click="Accept_Click">
+                    <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                        <Button x:Name="Accept" Style="{DynamicResource Buton}" Click="Accept_Click" Width="135" Height="45">
+                            <Image Source="Images/checked.png" Width="35"/>
                         </Button>
-                        <Button x:Name="BtnFactoryDefaults" Style="{DynamicResource Buton}" Click="BtnFactoryDefaults_Click" ToolTip="{x:Static p:ResLocalization.M_Factory}">
-                            <Image Source="Images/reset.png"  Margin="5"/>
+                        <Button x:Name="BtnFactoryDefaults" Width="135" Height="45" Style="{DynamicResource Buton}" Click="BtnFactoryDefaults_Click" ToolTip="{x:Static p:ResLocalization.M_Factory}">
+                            <Image Source="Images/reset.png" Width="35"/>
                         </Button>
                     </DockPanel>
                 </DockPanel>
