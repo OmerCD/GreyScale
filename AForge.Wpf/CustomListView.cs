@@ -27,8 +27,8 @@ namespace AForge.Wpf
         {
             var dock = new DockPanel();
             var img =new Image();
-            var textbox1=new TextBox();
-            var textbox2=new TextBox();
+            var textBlock1=new TextBlock();
+            var textBlock2 = new TextBlock();
             var item = new ListViewItem {Name = "_" + keyId};
             var imgUri = new Uri(resimYolu, UriKind.Absolute);
             var bitmapImage = new BitmapImage(imgUri);
@@ -37,17 +37,17 @@ namespace AForge.Wpf
             img.Width = 200;
             img.Margin=new Thickness(0,0,15,0);
 
-            textbox1.Text = text1;
-            textbox1.Margin = new Thickness(0, 0, 15, 0);
-            textbox1.Style = Application.Current.FindResource("TextBox") as Style;
+            textBlock1.Text = text1;
+            textBlock1.Margin = new Thickness(0, 0, 15, 0);
+            textBlock1.Style = Application.Current.FindResource("TextBlock") as Style;
 
-            textbox2.Text = text2;
-            textbox2.Margin = new Thickness(0, 0, 15, 0);
-            textbox2.Style = Application.Current.FindResource("TextBox") as Style;
+            textBlock2.Text = text2;
+            textBlock2.Margin = new Thickness(0, 0, 15, 0);
+            textBlock2.Style = Application.Current.FindResource("TextBlock") as Style;
 
             dock.Children.Add(img);
-            dock.Children.Add(textbox1);
-            dock.Children.Add(textbox2);
+            dock.Children.Add(textBlock1);
+            dock.Children.Add(textBlock2);
 
             item.Content = dock;
 

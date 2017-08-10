@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO.Ports;
 using System.Threading;
@@ -13,8 +14,8 @@ namespace AForge.Wpf
     /// </summary>
     public partial class StartUpWindow : Window
     {
-        private BackgroundWorker _backgroundWorker= new BackgroundWorker();
-        private int _trialCounter=10;
+        private BackgroundWorker _backgroundWorker = new BackgroundWorker();
+        private int _trialCounter = 10;
 
         public StartUpWindow()
         {
@@ -35,12 +36,17 @@ namespace AForge.Wpf
         {
             bool found = false;
             var ports = SerialPort.GetPortNames();
+            var sPorts = new List<SerialPort>();
+            foreach (string portName in ports)
+            {
+                sPorts.Add(new SerialPort(portName, 9600));
+            }
             while (_trialCounter > 0)
             {
-                foreach (var portName in ports)
+                foreach (var port in sPorts)
                 {
-                    var port = new SerialPort(portName, 9600);
-                    port.Open();
+                    if (!port.IsOpen)
+                        port.Open();
                     port.Write("1");
                     string message = "";
                     message = Timeout(port, message);
@@ -68,24 +74,23 @@ namespace AForge.Wpf
             }
             if (_trialCounter == 0)
             {
-                if (MessageBox.Show("Uyarı", "Bağlı bir kart bulunumadı. Tekrar denemek ister misiniz?", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
-                {
-                    SearchPorts(null, null);
-                }
-                else
-                {
-                    Close();
-                }
+                MessageBox.Show("Bağlı bir kart bulunumadı. Lütfen kartı takıp programı yeniden açın.", "Hata",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                Dispatcher.Invoke(() => Close());
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
-            
+
+
         }
 
         private static string Timeout(SerialPort port, string message)
         {
+            if (!port.IsOpen)
+            {
+                port.Open();
+            }
             var task = Task.Run(() => message = port.ReadLine());
             if (task.Wait(TimeSpan.FromSeconds(3)))
             {
