@@ -144,6 +144,15 @@ namespace AForge.Wpf.LanguageLocalization {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string ChangeLanguageWarning {
             get {
                 return ResourceManager.GetString("ChangeLanguageWarning", resourceCulture);
@@ -156,6 +165,15 @@ namespace AForge.Wpf.LanguageLocalization {
         public static string CorrectnessLevel {
             get {
                 return ResourceManager.GetString("CorrectnessLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EnterId {
+            get {
+                return ResourceManager.GetString("EnterId", resourceCulture);
             }
         }
         
@@ -252,6 +270,42 @@ namespace AForge.Wpf.LanguageLocalization {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string NoTemplatesError {
+            get {
+                return ResourceManager.GetString("NoTemplatesError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SampleCount {
+            get {
+                return ResourceManager.GetString("SampleCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SampleSelection {
+            get {
+                return ResourceManager.GetString("SampleSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string SavedTemplateCount {
             get {
                 return ResourceManager.GetString("SavedTemplateCount", resourceCulture);
@@ -264,6 +318,15 @@ namespace AForge.Wpf.LanguageLocalization {
         public static string SavedTemplates {
             get {
                 return ResourceManager.GetString("SavedTemplates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SearchingForConnectedDevices {
+            get {
+                return ResourceManager.GetString("SearchingForConnectedDevices", resourceCulture);
             }
         }
         
@@ -327,6 +390,15 @@ namespace AForge.Wpf.LanguageLocalization {
         public static string Warning {
             get {
                 return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string WelcomeToGreyScale {
+            get {
+                return ResourceManager.GetString("WelcomeToGreyScale", resourceCulture);
             }
         }
         

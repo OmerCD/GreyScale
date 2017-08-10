@@ -90,15 +90,7 @@ namespace AForge.Wpf
 
         public MainWindow()
         {
-            var db = new DatabaseManagement();
-            db.CreateDatabase();
-            string GetSavedLanguage()
-            {
-                var oP = new OptionsProperties();
-                return oP.GetOption<string>("Language");
-            }
-            Thread.CurrentThread.CurrentUICulture =
-             new System.Globalization.CultureInfo(GetSavedLanguage());
+           
             InitializeComponent();
             DataContext = this;
             GetVideoDevices();
@@ -406,8 +398,7 @@ namespace AForge.Wpf
         {
             if (_processor.templates.Count == 0)
             {
-                MessageBox.Show(ResLocalization.WrongEnter, ResLocalization.Warning, MessageBoxButton.OK, MessageBoxImage.Warning);
-                //*ToDo*
+                MessageBox.Show(ResLocalization.NoTemplatesError, ResLocalization.Warning, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {

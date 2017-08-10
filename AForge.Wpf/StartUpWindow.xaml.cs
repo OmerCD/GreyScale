@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO.Ports;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using AForge.Wpf.DatabaseCodes;
 
 namespace AForge.Wpf
 {
@@ -16,6 +18,15 @@ namespace AForge.Wpf
 
         public StartUpWindow()
         {
+            var db = new DatabaseManagement();
+            db.CreateDatabase();
+            string GetSavedLanguage()
+            {
+                var oP = new OptionsProperties();
+                return oP.GetOption<string>("Language");
+            }
+            Thread.CurrentThread.CurrentUICulture =
+                new System.Globalization.CultureInfo(GetSavedLanguage());
             InitializeComponent();
             _backgroundWorker.DoWork += SearchPorts;
         }

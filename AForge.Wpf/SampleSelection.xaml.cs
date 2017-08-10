@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using AForge.Wpf.LanguageLocalization;
 using ContourAnalysisNS;
 using Emgu.CV;
 using Brushes = System.Windows.Media.Brushes;
@@ -71,7 +72,7 @@ namespace AForge.Wpf
             _contours = contours;
             _strokeThickness = strokeThickness;
             DrawContours(contours);
-            
+            SampleWindow.Title = ResLocalization.SampleSelection + " | " + ResLocalization.SampleCount + " :" + _samples.Count;
         }
 
         #region MouseCapture
@@ -193,7 +194,7 @@ namespace AForge.Wpf
                 _samples.Remove(removeSamples[index]);
                 _contours.Remove(removingContours[index]);
             }
-            SampleWindow.Title = "Alan Seçimi| Alan Sayısı :" + _samples.Count;
+            SampleWindow.Title = ResLocalization.SampleSelection+" | "+ResLocalization.SampleCount+" :" + _samples.Count;
         }
     }
 }

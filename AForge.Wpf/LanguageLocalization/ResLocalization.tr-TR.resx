@@ -179,7 +179,7 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
     <value>Video Kaynağını Seçin</value>
   </data>
   <data name="M_Add" xml:space="preserve">
-    <value>Buna Ne demeli?</value>
+    <value>Şablonları Hafızaya Ekle</value>
   </data>
   <data name="M_Base" xml:space="preserve">
     <value>Seçimi Düzenleyin</value>
@@ -216,5 +216,29 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
   </data>
   <data name="ChangeLanguageWarning" xml:space="preserve">
     <value>Yaptığınız değişiklik program kapatılıp açıldıktan sonra etki edecektir. Şimdi programı kapatmak ister misiniz?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="EnterId" xml:space="preserve">
+    <value>ID'yi Giriniz :</value>
+  </data>
+  <data name="NoTemplatesError" xml:space="preserve">
+    <value>Kaydetmek için herhangi bir şablonu hafızaya eklemediniz.</value>
+  </data>
+  <data name="SampleCount" xml:space="preserve">
+    <value>Alan Sayısı</value>
+  </data>
+  <data name="SampleSelection" xml:space="preserve">
+    <value>Alan Seçimi</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="SearchingForConnectedDevices" xml:space="preserve">
+    <value>Sisteminize bağlı kartlar taranıyor...</value>
+  </data>
+  <data name="WelcomeToGreyScale" xml:space="preserve">
+    <value>GreyScale Programına Hoşgeldiniz</value>
   </data>
 </root>

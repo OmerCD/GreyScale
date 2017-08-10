@@ -215,4 +215,28 @@ Also we thank the designers for the icons they made  :</value>
   <data name="ChangeLanguageWarning" xml:space="preserve">
     <value>The changes you have made will be applied after restart of this program. Would you like to close the program now?</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EnterId" xml:space="preserve">
+    <value>Enter ID :</value>
+  </data>
+  <data name="NoTemplatesError" xml:space="preserve">
+    <value>You haven't add any templates to the memory to save.</value>
+  </data>
+  <data name="SampleCount" xml:space="preserve">
+    <value>Sample Count</value>
+  </data>
+  <data name="SampleSelection" xml:space="preserve">
+    <value>Sample Selection</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SearchingForConnectedDevices" xml:space="preserve">
+    <value>Searching For Connected Devices...</value>
+  </data>
+  <data name="WelcomeToGreyScale" xml:space="preserve">
+    <value>Welcome To GreyScale</value>
+  </data>
 </root>
