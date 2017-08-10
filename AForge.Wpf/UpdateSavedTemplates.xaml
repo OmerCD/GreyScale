@@ -1,0 +1,25 @@
+﻿<Window x:Class="AForge.Wpf.UpdateSavedTemplates"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AForge.Wpf"
+        xmlns:languageLocalization="clr-namespace:AForge.Wpf.LanguageLocalization"
+        mc:Ignorable="d"
+        RenderOptions.BitmapScalingMode="HighQuality"
+        Icon="Images/saveico.ico"
+        Title="{x:Static languageLocalization:ResLocalization.UpdateSavedTemplate}" Height="225" Width="300">
+    <Grid>
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Text="{x:Static languageLocalization:ResLocalization.EnterSaveName}" HorizontalAlignment="Left" Margin="10,10,0,0"></TextBlock>
+            <TextBox DockPanel.Dock="Top" x:Name="TxtName" Style="{DynamicResource TextBox}" Margin="5,0,5,0" Width="289" HorizontalAlignment="Left"></TextBox>
+
+            <TextBlock  DockPanel.Dock="Top" Text="{x:Static languageLocalization:ResLocalization.EnterId}" HorizontalAlignment="Left" Margin="10,10,0,0"></TextBlock>
+            <TextBox   DockPanel.Dock="Top" x:Name="TxtStuffId" Style="{DynamicResource TextBox}" Margin="5,0,5,0" Width="289"></TextBox>
+
+            <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" Content="{x:Static languageLocalization:ResLocalization.Save}" HorizontalAlignment="Left" Margin="5,0,0,5" Style="{StaticResource Buton}"/>
+            <Button VerticalAlignment="Bottom" Name="Iptal" Width="140" Content="{x:Static languageLocalization:ResLocalization.Cancel}" HorizontalAlignment="Right" Margin="0,0,5,5" Style="{StaticResource Buton}"/>
+
+        </DockPanel>
+    </Grid>
+</Window>

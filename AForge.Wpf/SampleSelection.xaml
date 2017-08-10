@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AForge.Wpf"
+        xmlns:p="clr-namespace:AForge.Wpf.LanguageLocalization"
         mc:Ignorable="d"
         Icon="Images/savedTemplates.ico"
         RenderOptions.BitmapScalingMode="HighQuality"
-        Title="SampleSelection" Height="520" Width="700" ResizeMode="NoResize" x:Name="SampleWindow">
+        Title="{x:Static p:ResLocalization.SampleSelection}" Height="520" Width="700" ResizeMode="NoResize" x:Name="SampleWindow">
     <Grid>
         <Canvas x:Name="SelectionCanvas" Background="AliceBlue" Height="Auto" Width="Auto" MouseLeftButtonUp="SelectionCanvas_OnMouseLeftButtonUp" MouseMove="SelectionCanvas_OnMouseMove" MouseLeftButtonDown="SelectionCanvas_OnMouseLeftButtonDown">
             <Image x:Name="SelectionImage" Stretch="None"></Image>

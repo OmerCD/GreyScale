@@ -40,10 +40,19 @@ namespace AForge.Wpf
             textBlock1.Text = text1;
             textBlock1.Margin = new Thickness(0, 0, 15, 0);
             textBlock1.Style = Application.Current.FindResource("TextBlock") as Style;
+            textBlock1.FontSize = 24;
+            textBlock1.Background = Brushes.LightBlue;
+            textBlock1.Width = 120;
+            textBlock1.Foreground = Brushes.White;
 
             textBlock2.Text = text2;
             textBlock2.Margin = new Thickness(0, 0, 15, 0);
             textBlock2.Style = Application.Current.FindResource("TextBlock") as Style;
+            textBlock2.FontSize = 24;
+            textBlock2.Background = Brushes.LightCoral;
+            textBlock2.Width = 120;
+            textBlock2.Foreground = Brushes.White;
+
 
             dock.Children.Add(img);
             dock.Children.Add(textBlock1);

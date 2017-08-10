@@ -166,6 +166,9 @@
     </Compile>
     <Compile Include="TemplateGenerator.cs" />
     <Compile Include="DatabaseCodes\TemplateProperties.cs" />
+    <Compile Include="UpdateSavedTemplates.xaml.cs">
+      <DependentUpon>UpdateSavedTemplates.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VideoSettings.xaml.cs">
       <DependentUpon>VideoSettings.xaml</DependentUpon>
     </Compile>
@@ -203,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StartUpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateSavedTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -326,6 +333,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\startup.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" />

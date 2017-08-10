@@ -56,9 +56,12 @@
                 <TextBlock Text="E-Mail:" Width="120" Style="{StaticResource TextBlock}" />
                 <TextBlock TextAlignment="Center" Width="Auto" Height="Auto" Background="LightSkyBlue" Foreground="White" FontSize="16" FontFamily="{StaticResource SemiBold}" TextWrapping="Wrap">
                     <LineBreak/>
-                    <Hyperlink NavigateUri="mailto:hasancangedik@hotmail.com?subject=GreyScale Programı Hakkında&amp;body=Mesajınızı Buradan Gönderebilirsiniz." RequestNavigate="Hyperlink_RequestNavigate">
+                    <Hyperlink NavigateUri="mailto:hasancangedik@hotmail.com?subject=About GreyScale Application&amp;" RequestNavigate="Hyperlink_RequestNavigate">
                         hasancangedik@hotmail.com
                     </Hyperlink> 
+                    <Hyperlink NavigateUri="mailto:omercd@hotmail.com.tr?subject=About GreyScale Application&amp;" RequestNavigate="Hyperlink_RequestNavigate">
+                        omercd@hotmail.com.tr
+                    </Hyperlink>
                 </TextBlock>
             </DockPanel>
         </DockPanel>

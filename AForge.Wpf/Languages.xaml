@@ -33,10 +33,10 @@
             </ListViewItem>
         </ListView>
         <DockPanel Grid.Row="1" VerticalAlignment="Bottom">
-        <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" HorizontalAlignment="Left"  Style="{StaticResource Buton}" Click="SaveClick">
+            <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" HorizontalAlignment="Left"  Style="{StaticResource Buton}" Click="SaveClick">
             <Image Source="Images/checked.png" Width="35"/>
             </Button>
-        <Button VerticalAlignment="Bottom" Name="Iptal" Width="140" HorizontalAlignment="Right" Style="{StaticResource Buton}">
+            <Button VerticalAlignment="Bottom" Name="Iptal" Width="140" HorizontalAlignment="Right" Style="{StaticResource Buton}" Click="CloseClick">
                 <Image Source="Images/cancel.png" Width="30"/>
             </Button>
         </DockPanel>

@@ -4,25 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AForge.Wpf"
+        xmlns:languageLocalization="clr-namespace:AForge.Wpf.LanguageLocalization"
         mc:Ignorable="d"
         Icon="Images/savedTemplates.ico"
         RenderOptions.BitmapScalingMode="HighQuality"
-        Title="SavedTemplates" Height="600" Width="600" Loaded="Window_Loaded">
+        Title="{x:Static languageLocalization:ResLocalization.SavedTemplates}" Height="600" Width="600" Loaded="Window_Loaded">
     <Grid>
         <local:CustomListView x:Name="TemplateListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDoubleClick="TemplateListView_MouseDoubleClick" >
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Sil" Click="MenuItem_Click"/>
+                    <MenuItem Header="{x:Static languageLocalization:ResLocalization.Delete}" Click="MenuItem_Click"/>
+                    <MenuItem Header="{x:Static languageLocalization:ResLocalization.Update}" Click="MenuItem2_Click"/>
                 </ContextMenu>
             </ListView.ContextMenu>
-            <!--<ListViewItem HorizontalContentAlignment="Stretch" >
-                <DockPanel>
-                    <Image Source="Images/settings.png" Width="200" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,15,0"/>
-                    <TextBlock Text="ListViewItem1" Style="{StaticResource TextBlock}" Margin="0,0,15,0"/>
-                    <TextBlock Text="ListViewItem2" Style="{StaticResource TextBlock}" Margin="0,0,15,0"/>
-                </DockPanel>
-            </ListViewItem>-->
-            <!--<Button Content="Button" Width="75" Click="Button_Click"/>-->
         </local:CustomListView>
 
     </Grid>

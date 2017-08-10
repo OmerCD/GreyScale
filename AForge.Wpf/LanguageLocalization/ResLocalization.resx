@@ -234,4 +234,13 @@
   <data name="WelcomeToGreyScale" xml:space="preserve">
     <value />
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UpdateSavedTemplate" xml:space="preserve">
+    <value />
+  </data>
 </root>

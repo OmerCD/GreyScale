@@ -144,9 +144,8 @@ Program kapsamında verilen lisans ömür boyudur.
   </data>
   <data name="A_SpecialThanksText" xml:space="preserve">
     <value>
-AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi sunarız.
 
-İkonlar için linkte isimleri verilmiş olan kullanıcılara teşekkür ederiz.</value>
+?</value>
   </data>
   <data name="CorrectnessLevel" xml:space="preserve">
     <value>Doğruluk Değeri</value>
@@ -240,5 +239,14 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
   </data>
   <data name="WelcomeToGreyScale" xml:space="preserve">
     <value>GreyScale Programına Hoşgeldiniz</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Güncelle</value>
+  </data>
+  <data name="UpdateSavedTemplate" xml:space="preserve">
+    <value>Güncelle</value>
   </data>
 </root>

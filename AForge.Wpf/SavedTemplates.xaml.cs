@@ -49,5 +49,11 @@ namespace AForge.Wpf
                 Close();
             }
         }
+
+        private void MenuItem2_Click(object sender, RoutedEventArgs e)
+        {
+            var update= new UpdateSavedTemplates();
+            update.ShowDialog();
+        }
     }
 }

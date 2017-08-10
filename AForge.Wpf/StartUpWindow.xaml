@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:AForge.Wpf"
         xmlns:p="clr-namespace:AForge.Wpf.LanguageLocalization"
         mc:Ignorable="d"
-        Title="StartUpWindow" Height="350" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="StartupWindow_Loaded">
+        Icon="Images/Logo.ico"
+        Title="GreyScale"
+        Height="350" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="StartupWindow_Loaded">
     <Grid>
         <StackPanel>
         <TextBlock Style="{StaticResource TextBlock}" TextWrapping="Wrap" FontSize="24" Height="Auto">

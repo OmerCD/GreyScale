@@ -35,5 +35,9 @@ namespace AForge.Wpf
             }
         }
 
+        private void CloseClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
