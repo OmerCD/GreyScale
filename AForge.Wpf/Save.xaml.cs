@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Media.Imaging;
+using AForge.Wpf.LanguageLocalization;
 using ContourAnalysisNS;
 
 namespace AForge.Wpf
@@ -22,7 +23,7 @@ namespace AForge.Wpf
         {
             if (TxtName.Text.Length<2 || TxtStuffId.Text.Length<1)
             {
-                //MessageBox Uyarısı
+                MessageBox.Show(ResLocalization.WrongEnter, ResLocalization.Warning, MessageBoxButton.OK,MessageBoxImage.Warning);
                 //*ToDo*
             }
             else

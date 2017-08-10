@@ -204,4 +204,7 @@
   <data name="Warning" xml:space="preserve">
     <value />
   </data>
+  <data name="WrongEnter" xml:space="preserve">
+    <value />
+  </data>
 </root>

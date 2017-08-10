@@ -320,5 +320,14 @@ namespace AForge.Wpf.LanguageLocalization {
                 return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string WrongEnter {
+            get {
+                return ResourceManager.GetString("WrongEnter", resourceCulture);
+            }
+        }
     }
 }

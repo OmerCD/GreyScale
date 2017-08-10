@@ -406,7 +406,7 @@ namespace AForge.Wpf
         {
             if (_processor.templates.Count == 0)
             {
-                //MessageBox gösterilecek
+                MessageBox.Show(ResLocalization.WrongEnter, ResLocalization.Warning, MessageBoxButton.OK, MessageBoxImage.Warning);
                 //*ToDo*
             }
             else

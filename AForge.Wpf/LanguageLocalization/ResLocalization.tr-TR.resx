@@ -211,4 +211,7 @@ AForge ve EmguCV'yi geliştiren tüm yazılımcılara özel teşekkürlerimizi s
   <data name="Warning" xml:space="preserve">
     <value>Uyarı</value>
   </data>
+  <data name="WrongEnter" xml:space="preserve">
+    <value>Hatalı Girdiğiniz Alanlar Var!</value>
+  </data>
 </root>
