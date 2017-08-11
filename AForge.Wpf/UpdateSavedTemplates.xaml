@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         RenderOptions.BitmapScalingMode="HighQuality"
         Icon="Images/saveico.ico"
-        Title="{x:Static languageLocalization:ResLocalization.UpdateSavedTemplate}" Height="225" Width="300">
+        Title="{x:Static languageLocalization:ResLocalization.UpdateSavedTemplate}" Height="225" Width="300" Loaded="Window_Loaded">
     <Grid>
         <DockPanel>
             <TextBlock DockPanel.Dock="Top" Text="{x:Static languageLocalization:ResLocalization.EnterSaveName}" HorizontalAlignment="Left" Margin="10,10,0,0"></TextBlock>
@@ -17,8 +17,8 @@
             <TextBlock  DockPanel.Dock="Top" Text="{x:Static languageLocalization:ResLocalization.EnterId}" HorizontalAlignment="Left" Margin="10,10,0,0"></TextBlock>
             <TextBox   DockPanel.Dock="Top" x:Name="TxtStuffId" Style="{DynamicResource TextBox}" Margin="5,0,5,0" Width="289"></TextBox>
 
-            <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" Content="{x:Static languageLocalization:ResLocalization.Save}" HorizontalAlignment="Left" Margin="5,0,0,5" Style="{StaticResource Buton}"/>
-            <Button VerticalAlignment="Bottom" Name="Iptal" Width="140" Content="{x:Static languageLocalization:ResLocalization.Cancel}" HorizontalAlignment="Right" Margin="0,0,5,5" Style="{StaticResource Buton}"/>
+            <Button VerticalAlignment="Bottom" Name="Kayıt" Width="140" Content="{x:Static languageLocalization:ResLocalization.Save}" HorizontalAlignment="Left" Margin="5,0,0,5" Style="{StaticResource Buton}" Click="Kayıt_Click"/>
+            <Button VerticalAlignment="Bottom" Name="Iptal" Width="140" Content="{x:Static languageLocalization:ResLocalization.Cancel}" HorizontalAlignment="Right" Margin="0,0,5,5" Style="{StaticResource Buton}" Click="Iptal_Click"/>
 
         </DockPanel>
     </Grid>

@@ -19,10 +19,8 @@ namespace AForge.Wpf
             Items.Remove(item);
         }
 
-        public int GetSelectedId()
-        {
-            return Convert.ToInt32(((ListViewItem) Items[SelectedIndex]).Name.Substring(1));
-        }
+        public int GetSelectedId => Convert.ToInt32(((ListViewItem) Items[SelectedIndex]).Name.Substring(1));
+
         public void Ekle(string resimYolu, string text1, string text2,string keyId)
         {
             var dock = new DockPanel();

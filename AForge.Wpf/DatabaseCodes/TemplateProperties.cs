@@ -100,7 +100,7 @@ namespace AForge.Wpf
         {
             var dbConnection = new SQLiteConnection(DatabaseManagement.ConnectionString);
             dbConnection.Open();
-            using (var cmd = new SQLiteCommand("Update Templates Set ImagePath = @IP,Name = @N ,StuffId=@SI,TemplatePath = @TP Where Id = @Id", dbConnection))
+            using (var cmd = new SQLiteCommand("Update Templates Set Name = @N ,StuffId=@SI Where Id = @Id", dbConnection))
             {
                 cmd.Parameters.AddWithValue("@N", name);
                 cmd.Parameters.AddWithValue("@SI", stuffId);
@@ -123,6 +123,23 @@ namespace AForge.Wpf
             
         }
 
+        public void GetTemplateNameAndId(int id,out string name,out string stuffId)
+        {
+            name = stuffId="";
+            var dbConnection = new SQLiteConnection(DatabaseManagement.ConnectionString);
+            dbConnection.Open();
+            using (var cmd = new SQLiteCommand("Select Name,StuffId From Templates", dbConnection))
+            {
+                using (var rdr = cmd.ExecuteReader())
+                {
+                    if (!rdr.HasRows) return;
+                    rdr.Read();
+                    name = rdr["Name"].ToString();
+                    stuffId = rdr["StuffId"].ToString();
+                    rdr.Close();
+                }
+            }
+        }
         public void DeleteTemplateFromDirectory(int id)
         {
             var path = Application.StartupPath + "\\SavedTemplates\\" + id;

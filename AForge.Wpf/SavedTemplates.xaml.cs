@@ -33,11 +33,17 @@ namespace AForge.Wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            RefreshListView();
+        }
+
+        private void RefreshListView()
+        {
+            TemplateListView.Items.Clear();
             TemplateProperties.GetAllSavedTemplates(out var imagePaths, out var names, out var staffIds, out var iDs);
             for (int i = 0; i < imagePaths.Length; i++)
             {
                 TemplateListView.Ekle(imagePaths[i], names[i], staffIds[i], iDs[i]);
-                
+
             }
         }
 
@@ -45,15 +51,16 @@ namespace AForge.Wpf
         {
             if (TemplateListView.SelectedIndex!=-1)
             {
-                SelectedId = TemplateListView.GetSelectedId();
+                SelectedId = TemplateListView.GetSelectedId;
                 Close();
             }
         }
 
         private void MenuItem2_Click(object sender, RoutedEventArgs e)
         {
-            var update= new UpdateSavedTemplates();
+            var update= new UpdateSavedTemplates(TemplateListView.GetSelectedId);
             update.ShowDialog();
+            RefreshListView();
         }
     }
 }
