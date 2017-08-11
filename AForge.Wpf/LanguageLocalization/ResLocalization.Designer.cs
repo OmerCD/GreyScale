@@ -297,6 +297,15 @@ namespace AForge.Wpf.LanguageLocalization {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string NoChangeAllowed {
+            get {
+                return ResourceManager.GetString("NoChangeAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string NoTemplatesError {
             get {
                 return ResourceManager.GetString("NoTemplatesError", resourceCulture);

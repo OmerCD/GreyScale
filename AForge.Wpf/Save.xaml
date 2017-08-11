@@ -8,7 +8,7 @@
         RenderOptions.BitmapScalingMode="HighQuality"
         Icon="Images/saveico.ico"
         mc:Ignorable="d"
-        Title="{x:Static p:ResLocalization.Save}" Height="220" Width="310" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="{x:Static p:ResLocalization.Save}" Height="220" Width="310" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <DockPanel>
             <TextBlock DockPanel.Dock="Top" Text="{x:Static p:ResLocalization.EnterSaveName}" HorizontalAlignment="Left" Margin="10,10,0,0"></TextBlock>

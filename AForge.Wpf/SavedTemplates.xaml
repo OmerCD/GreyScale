@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Icon="Images/savedTemplates.ico"
         RenderOptions.BitmapScalingMode="HighQuality"
-        Title="{x:Static languageLocalization:ResLocalization.SavedTemplates}" Height="600" Width="600" Loaded="Window_Loaded">
+        Title="{x:Static languageLocalization:ResLocalization.SavedTemplates}" Height="600" Width="600" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <local:CustomListView x:Name="TemplateListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDoubleClick="TemplateListView_MouseDoubleClick" >
             <ListView.ContextMenu>

@@ -74,6 +74,7 @@ namespace AForge.Wpf
         private double _strokeThickness;
 
         private bool _recognition;
+        private bool _lockSelection;
         private VideoCaptureDevice _videoSource;
 
         private Image<Bgr, Byte> _frame;
@@ -388,7 +389,14 @@ namespace AForge.Wpf
             // Release the mouse capture and stop tracking it.
             _mouseDown = false;
             VideoCanvas.ReleaseMouseCapture();
+            if(!_lockSelection)
             Crop();
+            else
+            {
+                MessageBox.Show(
+                    ResLocalization.NoChangeAllowed,
+                    ResLocalization.Warning, MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
 
             // Hide the drag selection box.
             selectionRectangle.Visibility = Visibility.Collapsed;
@@ -396,16 +404,30 @@ namespace AForge.Wpf
 
         private void Kaydet_Click(object sender, RoutedEventArgs e)
         {
-            if (_processor.templates.Count == 0)
+            if (!_lockSelection)
             {
-                MessageBox.Show(ResLocalization.NoTemplatesError, ResLocalization.Warning, MessageBoxButton.OK, MessageBoxImage.Warning);
+                if (_processor.templates.Count == 0)
+                {
+                    MessageBox.Show(ResLocalization.NoTemplatesError, ResLocalization.Warning, MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                }
+                else
+                {
+                    var save = new Save(_croppedImage, _processor.templates);
+                    if (save.ShowDialog() == true)
+                    {
+                        _lockSelection = true;
+                    }
+                }
             }
             else
             {
-                var save = new Save(_croppedImage, _processor.templates);
-                save.Show();
+                MessageBox.Show(
+                    ResLocalization.NoChangeAllowed,
+                    ResLocalization.Warning, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
         private void LoadTemplates(string fileName)
         {
             try
@@ -476,6 +498,7 @@ namespace AForge.Wpf
 
         private void YeniButon_Click(object sender, RoutedEventArgs e)
         {
+            _lockSelection = false;
             _processor.templates = new Templates();
             _processor.foundTemplates = new List<FoundTemplateDesc>();
             _designedSamples = new Templates();
@@ -484,18 +507,27 @@ namespace AForge.Wpf
 
         private void BtnAlanEkle_Click(object sender, RoutedEventArgs e)
         {
-            Templates toSaveSamples;
-            if (_designedSamples.Count > 0)
+            if (!_lockSelection)
             {
-                toSaveSamples = _designedSamples;
+                Templates toSaveSamples;
+                if (_designedSamples.Count > 0)
+                {
+                    toSaveSamples = _designedSamples;
+                }
+                else if (_processor.samples.Count > 0)
+                {
+                    toSaveSamples = _processor.samples;
+                }
+                else return;
+                _processor.templates.AddRange(toSaveSamples);
+                AlanSayisi.Text = ResLocalization.SavedTemplateCount + " :" + _processor.templates.Count;
             }
-            else if (_processor.samples.Count > 0)
+            else
             {
-                toSaveSamples = _processor.samples;
+                MessageBox.Show(
+                    ResLocalization.NoChangeAllowed,
+                    ResLocalization.Warning, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            else return;
-            _processor.templates.AddRange(toSaveSamples);
-            AlanSayisi.Text = ResLocalization.SavedTemplateCount + " :" + _processor.templates.Count;
         }
 
         private void SecimValue_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -513,7 +545,8 @@ namespace AForge.Wpf
             var savedTemplates = new SavedTemplates();
             savedTemplates.ShowDialog();
             if (savedTemplates.SelectedId != -1)
-            {                
+            {
+                _lockSelection = true;            
                 var path = System.Windows.Forms.Application.StartupPath + "\\SavedTemplates\\" +
                            savedTemplates.SelectedId + "\\";
                 LoadTemplates(path+"templates.bin");

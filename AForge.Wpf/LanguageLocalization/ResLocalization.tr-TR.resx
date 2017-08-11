@@ -255,4 +255,7 @@ Program kapsamında verilen lisans ömür boyudur.
   <data name="Error" xml:space="preserve">
     <value>Hata</value>
   </data>
+  <data name="NoChangeAllowed" xml:space="preserve">
+    <value>Kayıtlı bir proje üzerinde değişiklik yapmaya çalışıyorsunuz. Lütfen yeni bir proje açın.</value>
+  </data>
 </root>

@@ -253,4 +253,7 @@ Also we thank the designers for the icons they made  :</value>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="NoChangeAllowed" xml:space="preserve">
+    <value>You are trying to change a saved project. Please create new project.</value>
+  </data>
 </root>

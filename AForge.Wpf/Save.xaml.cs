@@ -30,6 +30,7 @@ namespace AForge.Wpf
             {
                 var tP = new TemplateProperties();
                 tP.AddTemplate(_image,TxtName.Text,TxtStuffId.Text,_templates);
+                DialogResult = true;
                 Close();
             }
         }
