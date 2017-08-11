@@ -137,7 +137,7 @@ Also we thank the designers for the icons they made  :</value>
     <value>Correctness Level</value>
   </data>
   <data name="EnterSaveName" xml:space="preserve">
-    <value>Enter Save Name</value>
+    <value>Enter Save Name :</value>
   </data>
   <data name="Find" xml:space="preserve">
     <value>Find Rate</value>
@@ -246,5 +246,11 @@ Also we thank the designers for the icons they made  :</value>
   </data>
   <data name="UpdateSavedTemplate" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>Scan couldn't find any device. Please plug your device and start this program.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
   </data>
 </root>

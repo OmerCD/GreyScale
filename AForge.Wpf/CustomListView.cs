@@ -37,19 +37,23 @@ namespace AForge.Wpf
 
             textBlock1.Text = text1;
             textBlock1.Margin = new Thickness(0, 0, 15, 0);
-            textBlock1.Style = Application.Current.FindResource("TextBlock") as Style;
             textBlock1.FontSize = 24;
+            textBlock1.FontFamily= Application.Current.FindResource("SemiBold") as FontFamily;
             textBlock1.Background = Brushes.LightBlue;
-            textBlock1.Width = 120;
+            textBlock1.Width = 150;
+            textBlock1.Height = 100;
             textBlock1.Foreground = Brushes.White;
+            textBlock1.TextAlignment=TextAlignment.Center;
 
             textBlock2.Text = text2;
             textBlock2.Margin = new Thickness(0, 0, 15, 0);
-            textBlock2.Style = Application.Current.FindResource("TextBlock") as Style;
+            textBlock2.FontFamily = Application.Current.FindResource("SemiBold") as FontFamily;
             textBlock2.FontSize = 24;
-            textBlock2.Background = Brushes.LightCoral;
-            textBlock2.Width = 120;
+            textBlock2.Background = Brushes.CornflowerBlue;
+            textBlock2.Width = 150;
+            textBlock2.Height = 100;
             textBlock2.Foreground = Brushes.White;
+            textBlock2.TextAlignment = TextAlignment.Center;
 
 
             dock.Children.Add(img);

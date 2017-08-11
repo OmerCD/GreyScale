@@ -180,6 +180,15 @@ namespace AForge.Wpf.LanguageLocalization {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string DeviceNotFound {
+            get {
+                return ResourceManager.GetString("DeviceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string EnterId {
             get {
                 return ResourceManager.GetString("EnterId", resourceCulture);
@@ -192,6 +201,15 @@ namespace AForge.Wpf.LanguageLocalization {
         public static string EnterSaveName {
             get {
                 return ResourceManager.GetString("EnterSaveName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         

@@ -151,7 +151,7 @@ Program kapsamında verilen lisans ömür boyudur.
     <value>Doğruluk Değeri</value>
   </data>
   <data name="EnterSaveName" xml:space="preserve">
-    <value>Kayıt İsmini Giriniz</value>
+    <value>Kayıt İsmini Giriniz :</value>
   </data>
   <data name="Find" xml:space="preserve">
     <value>Bulma Oranı</value>
@@ -248,5 +248,11 @@ Program kapsamında verilen lisans ömür boyudur.
   </data>
   <data name="UpdateSavedTemplate" xml:space="preserve">
     <value>Güncelle</value>
+  </data>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>Bağlı bir kart bulunumadı. Lütfen kartı takıp programı yeniden açın.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Hata</value>
   </data>
 </root>

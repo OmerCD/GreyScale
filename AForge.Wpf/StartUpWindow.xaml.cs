@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using AForge.Wpf.DatabaseCodes;
+using AForge.Wpf.LanguageLocalization;
 
 namespace AForge.Wpf
 {
@@ -74,7 +75,7 @@ namespace AForge.Wpf
             }
             if (_trialCounter == 0)
             {
-                MessageBox.Show("Bağlı bir kart bulunumadı. Lütfen kartı takıp programı yeniden açın.", "Hata",
+                MessageBox.Show(ResLocalization.DeviceNotFound, ResLocalization.Error,
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 Dispatcher.Invoke(() => Close());
             }
