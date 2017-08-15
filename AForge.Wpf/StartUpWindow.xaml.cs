@@ -30,7 +30,12 @@ namespace AForge.Wpf
             Thread.CurrentThread.CurrentUICulture =
                 new System.Globalization.CultureInfo(GetSavedLanguage());
             InitializeComponent();
-            _backgroundWorker.DoWork += SearchPorts;
+
+            //_backgroundWorker.DoWork += SearchPorts; todo
+            var mainWindow = new MainWindow();
+
+            mainWindow.Show();
+            Close();
         }
 
         private void SearchPorts(object sender, DoWorkEventArgs e)

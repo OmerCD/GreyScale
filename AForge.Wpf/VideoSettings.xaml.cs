@@ -17,6 +17,7 @@ namespace AForge.Wpf
 
         public VideoSettings(ImageProcessor processor)
         {
+            ContourOptions.SaveOption("AdaptiveThresholdBlockSize", processor.adaptiveThresholdBlockSize);
             InitializeComponent();
             Processor = processor;
         }

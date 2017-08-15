@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
+using ListViewItem = System.Windows.Controls.ListViewItem;
+using Size = System.Drawing.Size;
 
 namespace AForge.Wpf
 {

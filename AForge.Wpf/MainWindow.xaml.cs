@@ -91,7 +91,7 @@ namespace AForge.Wpf
 
         public MainWindow()
         {
-           
+
             InitializeComponent();
             DataContext = this;
             GetVideoDevices();
@@ -99,7 +99,7 @@ namespace AForge.Wpf
             _dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             _dispatcherTimer.Tick += DispatcherTimer_Tick;
             _processor = new ImageProcessor();
-            _designedSamples = new Templates();          
+            _designedSamples = new Templates();
         }
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
@@ -149,9 +149,9 @@ namespace AForge.Wpf
             if (bSource == null || bSource.Height <= 1 || bSource.Width <= 1) return;
             _frame = new Image<Bgr, byte>(ToBitmap(bSource));
             _processor.ProcessImage(_frame);
-            AlanSayisi.Text = ResLocalization.SavedTemplateCount+" :" + _processor.templates.Count;
+            AlanSayisi.Text = ResLocalization.SavedTemplateCount + " :" + _processor.templates.Count;
             if (showSelectedAreaContourCount)
-                ResimdekiAlanSayisi.Text = ResLocalization.SelectionTemplateCount+" :" + _processor.samples.Count;
+                ResimdekiAlanSayisi.Text = ResLocalization.SelectionTemplateCount + " :" + _processor.samples.Count;
         }
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
@@ -171,7 +171,7 @@ namespace AForge.Wpf
         private void GetFoundTemplates()
         {
             ProcessFrame(_videoImage, false);
-            TxtMatches.Text = ResLocalization.Find+" : " + _processor.templates.Count + "/" + _processor.foundTemplates.Count;
+            TxtMatches.Text = ResLocalization.Find + " : " + _processor.templates.Count + "/" + _processor.foundTemplates.Count;
         }
         private void SetButtonsActivity(bool state)
         {
@@ -257,7 +257,7 @@ namespace AForge.Wpf
                     }
                 }
             }
-        }     
+        }
         private void Crop()
         {
             if (selectionRectangle != null)
@@ -308,7 +308,7 @@ namespace AForge.Wpf
                     }
                     selectionRectangle.Height = calc;
                 }
-                    #endregion
+                #endregion
                 relativePoint = new System.Windows.Point(relativePoint.X - imagePoint.X, relativePoint.Y - imagePoint.Y);
                 var rect = new Int32Rect((int)(relativePoint.X), (int)relativePoint.Y, (int)selectionRectangle.Width, (int)selectionRectangle.Height);
 
@@ -389,8 +389,8 @@ namespace AForge.Wpf
             // Release the mouse capture and stop tracking it.
             _mouseDown = false;
             VideoCanvas.ReleaseMouseCapture();
-            if(!_lockSelection)
-            Crop();
+            if (!_lockSelection)
+                Crop();
             else
             {
                 MessageBox.Show(
@@ -413,7 +413,7 @@ namespace AForge.Wpf
                 }
                 else
                 {
-                    var save = new Save(_croppedImage, _processor.templates);
+                    var save = new Save(_croppedImage, _processor.templates, _processor.contours, _strokeThickness);
                     if (save.ShowDialog() == true)
                     {
                         _lockSelection = true;
@@ -428,20 +428,20 @@ namespace AForge.Wpf
             }
         }
 
+
         private void LoadTemplates(string fileName)
         {
             try
             {
                 using (var fs = new FileStream(fileName, FileMode.Open))
                     _processor.templates = (Templates)new BinaryFormatter().Deserialize(fs);
-                AlanSayisi.Text = ResLocalization.SavedTemplateCount+" :" + _processor.templates.Count;
+                AlanSayisi.Text = ResLocalization.SavedTemplateCount + " :" + _processor.templates.Count;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             var wasActiveBefore = false;
@@ -458,7 +458,7 @@ namespace AForge.Wpf
             _processor.contours = ss.Contours;
             _processor.samples = ss.Samples;
             _designedSamples.AddRange(ss.Samples);
-            ResimdekiAlanSayisi.Text = ResLocalization.SelectionTemplateCount+" :" + _designedSamples.Count;
+            ResimdekiAlanSayisi.Text = ResLocalization.SelectionTemplateCount + " :" + _designedSamples.Count;
             Paint();
             if (wasActiveBefore)
             {
@@ -502,7 +502,7 @@ namespace AForge.Wpf
             _processor.templates = new Templates();
             _processor.foundTemplates = new List<FoundTemplateDesc>();
             _designedSamples = new Templates();
-            AlanSayisi.Text = ResLocalization.SavedTemplateCount+" :0";
+            AlanSayisi.Text = ResLocalization.SavedTemplateCount + " :0";
         }
 
         private void BtnAlanEkle_Click(object sender, RoutedEventArgs e)
@@ -546,10 +546,10 @@ namespace AForge.Wpf
             savedTemplates.ShowDialog();
             if (savedTemplates.SelectedId != -1)
             {
-                _lockSelection = true;            
+                _lockSelection = true;
                 var path = System.Windows.Forms.Application.StartupPath + "\\SavedTemplates\\" +
                            savedTemplates.SelectedId + "\\";
-                LoadTemplates(path+"templates.bin");
+                LoadTemplates(path + "templates.bin");
                 var bitmapImage = new BitmapImage(new Uri(path + "image.png", UriKind.Relative));
                 PaintCanvas.Background = new ImageBrush(bitmapImage);
                 PaintCanvas.Height = bitmapImage.Height;
@@ -558,7 +558,7 @@ namespace AForge.Wpf
             }
             selectionRectangle.Width = 0;
             selectionRectangle.Height = 0;
-            if (savedTemplates.DeletedItemIds.Count!=0)
+            if (savedTemplates.DeletedItemIds.Count != 0)
             {
                 var templateProp = new TemplateProperties();
                 foreach (var id in savedTemplates.DeletedItemIds)
@@ -585,6 +585,7 @@ namespace AForge.Wpf
             var videoSettings = new VideoSettings(_processor);
             videoSettings.ShowDialog();
             _processor = videoSettings.Processor;
+            DetailSlider.Value = ContourOptions.GetOption<double>("AdaptiveThresholdBlockSize");
         }
 
         private void RightMenuClick(object sender, RoutedEventArgs e)
@@ -605,13 +606,23 @@ namespace AForge.Wpf
             var oP = new OptionsProperties();
             SecimValue.Value = oP.GetOption<double>("ContourThickness");
             DogrulukValue.Value = oP.GetOption<double>("SuccessRate");
+            DetailSlider.Value = ContourOptions.GetOption<double>("AdaptiveThresholdBlockSize");
         }
 
         private void CropWindow_Closing(object sender, CancelEventArgs e)
         {
             var oP = new OptionsProperties();
-            oP.SetOption("ContourThickness",SecimValue.Value);
-            oP.SetOption("SuccessRate",DogrulukValue.Value);
+            oP.SetOption("ContourThickness", SecimValue.Value);
+            oP.SetOption("SuccessRate", DogrulukValue.Value);
+            ContourOptions.SaveOption("AdaptiveThresholdBlockSize", DetailSlider.Value);
+        }
+
+        private void DetailSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (_processor != null)
+            {
+                _processor.adaptiveThresholdBlockSize = (int)DetailSlider.Value;
+            }
         }
     }
 }

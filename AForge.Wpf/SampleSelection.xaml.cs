@@ -172,7 +172,8 @@ namespace AForge.Wpf
 
     #endregion
     private void RemoveContoursSelected(double top, double left, double bottom, double right)
-        {
+    {
+        if (_contours == null) return;
             var removingContours = new List<Contour<System.Drawing.Point>>(_contours.Count);
             var removeSamples = new List<Template>();
             for (var q = 0; q < _contours.Count; q++)

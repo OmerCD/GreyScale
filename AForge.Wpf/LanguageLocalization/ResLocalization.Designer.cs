@@ -180,6 +180,15 @@ namespace AForge.Wpf.LanguageLocalization {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string DetailAmount {
+            get {
+                return ResourceManager.GetString("DetailAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string DeviceNotFound {
             get {
                 return ResourceManager.GetString("DeviceNotFound", resourceCulture);
@@ -219,6 +228,15 @@ namespace AForge.Wpf.LanguageLocalization {
         public static string Find {
             get {
                 return ResourceManager.GetString("Find", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Image {
+            get {
+                return ResourceManager.GetString("Image", resourceCulture);
             }
         }
         
@@ -291,6 +309,15 @@ namespace AForge.Wpf.LanguageLocalization {
         public static string M_StartTip {
             get {
                 return ResourceManager.GetString("M_StartTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         

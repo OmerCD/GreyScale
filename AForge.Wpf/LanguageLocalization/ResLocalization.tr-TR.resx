@@ -258,4 +258,13 @@ Program kapsamında verilen lisans ömür boyudur.
   <data name="NoChangeAllowed" xml:space="preserve">
     <value>Kayıtlı bir proje üzerinde değişiklik yapmaya çalışıyorsunuz. Lütfen yeni bir proje açın.</value>
   </data>
+  <data name="DetailAmount" xml:space="preserve">
+    <value>Detay Düzeyi</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Resim</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>İsim</value>
+  </data>
 </root>

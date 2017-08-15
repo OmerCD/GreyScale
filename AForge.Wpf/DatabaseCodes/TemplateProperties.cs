@@ -4,8 +4,10 @@ using System.Data.SQLite;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ContourAnalysisNS;
+using Emgu.CV;
 using MessageBox = System.Windows.MessageBox;
 
 namespace AForge.Wpf
@@ -45,30 +47,27 @@ namespace AForge.Wpf
             staffIds = sI.ToArray();
             iDs = i.ToArray();
         }
-        private void CreateFiles(int id, CroppedBitmap image,Templates templates)
+
+        private void CreateFiles(int id, ImageSource image,Templates templates)
         {
             bool CreateDirectory(string directoryPath) {
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                    return true;
-                }
-                return false;
+                if (Directory.Exists(directoryPath)) return false;
+                Directory.CreateDirectory(directoryPath);
+                return true;
             }
             var path = Application.StartupPath+"\\SavedTemplates";
             CreateDirectory(path);
             path += $"\\{id}\\";
-            if (CreateDirectory(path))
-            {
-                SaveCroppedBitmap(image, path + "image.png");
-                SaveTemplates(templates, path + "templates.bin");
-            }
+            if (!CreateDirectory(path)) return;
+
+            SaveCroppedBitmap(image, path + "image.png");
+            SaveTemplates(templates, path + "templates.bin");
         }
-        void SaveCroppedBitmap(CroppedBitmap image, string path)
+        void SaveCroppedBitmap(ImageSource image, string path)
         {
             FileStream mStream = new FileStream(path, FileMode.Create);
             JpegBitmapEncoder jEncoder = new JpegBitmapEncoder();
-            jEncoder.Frames.Add(BitmapFrame.Create(image));
+            jEncoder.Frames.Add(BitmapFrame.Create((BitmapSource)image));
             jEncoder.Save(mStream);
         }
         private void SaveTemplates(Templates templates,string fileName)
@@ -83,7 +82,7 @@ namespace AForge.Wpf
                 MessageBox.Show(ex.Message);
             }
         }
-        public void AddTemplate(CroppedBitmap image, string name, string stuffId, Templates templates)
+        public void AddTemplate(ImageSource image, string name, string stuffId, Templates templates)
         {
             var dbConnection = new SQLiteConnection(DatabaseManagement.ConnectionString);
             dbConnection.Open();

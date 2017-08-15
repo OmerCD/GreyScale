@@ -161,6 +161,9 @@
     <Compile Include="SavedTemplates.xaml.cs">
       <DependentUpon>SavedTemplates.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveImageWindows.xaml.cs">
+      <DependentUpon>SaveImageWindows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StartUpWindow.xaml.cs">
       <DependentUpon>StartUpWindow.xaml</DependentUpon>
     </Compile>
@@ -202,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SavedTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaveImageWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

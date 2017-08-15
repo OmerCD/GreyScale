@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Core.Objects;
 using System.Data.SQLite;
 
 namespace AForge.Wpf.DatabaseCodes
@@ -18,6 +19,35 @@ namespace AForge.Wpf.DatabaseCodes
         private int _adaptiveThresholdBlockSize;
         private bool _adaptiveNoiseFilter;
 
+        public static void SaveOption<T>(string columnName, T value)
+        {
+
+            var con = new SQLiteConnection(DatabaseManagement.ConnectionString);
+            con.Open();
+            using (var cmd = new SQLiteCommand($"Update ContourOptions Set {columnName} = @V", con))
+            {
+                cmd.Parameters.AddWithValue("@V", value);
+                cmd.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+
+        public static T GetOption<T>(string columnName)
+        {
+            var con = new SQLiteConnection(DatabaseManagement.ConnectionString);
+            con.Open();
+            object returnObject;
+            using (var cmd = new SQLiteCommand($"Select {columnName} From ContourOptions", con))
+            {
+                returnObject = cmd.ExecuteScalar();
+            }
+            con.Close();
+            if (returnObject == null)
+            {
+                return (T)Convert.ChangeType(new object(), typeof(T));
+            }
+            return (T)Convert.ChangeType(returnObject, typeof(T));
+        }
         public void SaveOptions(bool equalizeHist, bool maxRotateAngle, int minContourArea, int minContourLength, int maxAcfDescriptorDeviation, double minAcf, double minIcf, bool blur, bool noiseFilter, int cannyThreshold, int adaptiveThresholdBlockSize, bool adaptiveNoiseFilter)
         {
             _equalizeHist = equalizeHist;

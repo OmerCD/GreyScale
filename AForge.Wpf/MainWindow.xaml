@@ -111,6 +111,9 @@
                             <TextBlock TextWrapping="Wrap" x:Name="ResimdekiAlanSayisi" Style="{DynamicResource TextBlock}"/>
                         </DockPanel>
                         <DockPanel>
+                            <TextBlock Width="150" Text="{x:Static p:ResLocalization.DetailAmount}"  FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"></TextBlock>
+                            <Slider  Width="100"  Height="24" Minimum="4" Maximum="450" x:Name="DetailSlider" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="DetailSlider_OnValueChanged"></Slider>
+                            <TextBlock Width="30" Text="{Binding Path=Value, ElementName=DetailSlider}" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
                         </DockPanel>
                     </DockPanel>
                 </GroupBox>

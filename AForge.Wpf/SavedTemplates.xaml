@@ -10,7 +10,39 @@
         RenderOptions.BitmapScalingMode="HighQuality"
         Title="{x:Static languageLocalization:ResLocalization.SavedTemplates}" Height="600" Width="600" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
-        <local:CustomListView x:Name="TemplateListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDoubleClick="TemplateListView_MouseDoubleClick" >
+        <local:CustomListView x:Name="TemplateListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDoubleClick="TemplateListView_MouseDoubleClick" Background="LightSkyBlue">
+            <local:CustomListView.View>
+                <GridView>
+                    <GridViewColumn Header="{x:Static languageLocalization:ResLocalization.Image}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Background="Black">
+                                <Image Source="{Binding ImagePath}" Width="200" Height="200"></Image>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static languageLocalization:ResLocalization.Name}" x:Name="NameColumn" Width="250">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid HorizontalAlignment="Center" Background="DarkBlue" Height="200" Width="{Binding ActualWidth, ElementName=NameColumn}">
+                                    <TextBlock Text="{Binding Name}" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Id" x:Name="StuffIdColumn" Width="250">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Background="Red" Height="200" Width="{Binding ActualWidth, ElementName=StuffIdColumn}">
+                                    <TextBlock Text="{Binding StuffId}" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                </GridView>
+            </local:CustomListView.View>
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="{x:Static languageLocalization:ResLocalization.Delete}" Click="MenuItem_Click"/>
