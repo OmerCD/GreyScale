@@ -8,9 +8,9 @@
         mc:Ignorable="d"
         Icon="Images/savedTemplates.ico"
         RenderOptions.BitmapScalingMode="HighQuality"
-        Title="{x:Static languageLocalization:ResLocalization.SavedTemplates}" Height="600" Width="600" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="{x:Static languageLocalization:ResLocalization.SavedTemplates}" Height="600" Width="770" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <local:CustomListView x:Name="TemplateListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDoubleClick="TemplateListView_MouseDoubleClick" Background="LightSkyBlue">
+        <local:CustomListView x:Name="TemplateListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDoubleClick="TemplateListView_MouseDoubleClick">
             <local:CustomListView.View>
                 <GridView>
                     <GridViewColumn Header="{x:Static languageLocalization:ResLocalization.Image}">
@@ -25,17 +25,17 @@
                     <GridViewColumn Header="{x:Static languageLocalization:ResLocalization.Name}" x:Name="NameColumn" Width="250">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Grid HorizontalAlignment="Center" Background="DarkBlue" Height="200" Width="{Binding ActualWidth, ElementName=NameColumn}">
-                                    <TextBlock Text="{Binding Name}" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                <Grid HorizontalAlignment="Center" Background="DeepSkyBlue" Height="200" Width="{Binding ActualWidth, ElementName=NameColumn}">
+                                    <TextBlock Padding="10" Text="{Binding Name}" Margin="10" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Web}" TextWrapping="Wrap"/>
                                 </Grid>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Id" x:Name="StuffIdColumn" Width="250">
+                    <GridViewColumn Header="ID" x:Name="StuffIdColumn" Width="250">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Grid Background="Red" Height="200" Width="{Binding ActualWidth, ElementName=StuffIdColumn}">
-                                    <TextBlock Text="{Binding StuffId}" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                <Grid Background="Tomato" Height="200" Width="{Binding ActualWidth, ElementName=StuffIdColumn}">
+                                    <TextBlock Padding="10" Text="{Binding StuffId}" Margin="10"  Foreground="White" FontSize="24" VerticalAlignment="Center" FontFamily="{StaticResource Web}" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                                 </Grid>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

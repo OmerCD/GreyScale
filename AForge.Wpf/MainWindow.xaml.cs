@@ -503,6 +503,7 @@ namespace AForge.Wpf
             _processor.foundTemplates = new List<FoundTemplateDesc>();
             _designedSamples = new Templates();
             AlanSayisi.Text = ResLocalization.SavedTemplateCount + " :0";
+            PaintCanvas.Background = Brushes.White;
         }
 
         private void BtnAlanEkle_Click(object sender, RoutedEventArgs e)
@@ -623,6 +624,16 @@ namespace AForge.Wpf
             {
                 _processor.adaptiveThresholdBlockSize = (int)DetailSlider.Value;
             }
+        }
+
+        private void Arttir(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Eksilt(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

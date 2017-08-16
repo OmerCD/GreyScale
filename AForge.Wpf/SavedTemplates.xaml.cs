@@ -20,11 +20,6 @@ namespace AForge.Wpf
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             var selectedItem = (ListViewItem) TemplateListView.Items[TemplateListView.SelectedIndex];

@@ -13,6 +13,8 @@
         WindowState="Maximized" 
         Icon="Images/Logo.ico"
         RenderOptions.BitmapScalingMode="HighQuality" Loaded="CropWindow_Loaded" Closing="CropWindow_Closing"
+        MinWidth="950"
+        MinHeight="600"
         >
     <Grid>
 
@@ -104,20 +106,27 @@
                             <Slider Width="100"  Height="24" Maximum="100" Minimum="0" TickFrequency="1" IsSnapToTickEnabled="True" Name="DogrulukValue" ValueChanged="DogrulukValue_OnValueChanged" Value="60"/>
                             <TextBlock Width="30" Text="{Binding Path=Value, ElementName=DogrulukValue}" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
                         </DockPanel>
+
+                        <DockPanel DockPanel.Dock="Top">
+                            <TextBlock Width="150" Text="{x:Static p:ResLocalization.DetailAmount}"  FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"></TextBlock>
+                            <Slider  Width="100"  Height="24" Minimum="4" Maximum="450" x:Name="DetailSlider" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="DetailSlider_OnValueChanged"></Slider>
+                            <TextBlock Width="30" Text="{Binding Path=Value, ElementName=DetailSlider}" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top" Width="130" HorizontalAlignment="Right" Margin="0,0,25,50">
+                            <Button Width="50" Height="50" Click="Arttir" Content="+" Style="{StaticResource Buton}" FontSize="30"/>
+                            <Button Width="50" Height="50" Click="Eksilt" Content="-" Style="{StaticResource Buton}" FontSize="30"/>
+
+                        </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
                             <TextBlock TextWrapping="Wrap" x:Name="AlanSayisi" Style="{DynamicResource TextBlock}"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
                             <TextBlock TextWrapping="Wrap" x:Name="ResimdekiAlanSayisi" Style="{DynamicResource TextBlock}"/>
                         </DockPanel>
-                        <DockPanel>
-                            <TextBlock Width="150" Text="{x:Static p:ResLocalization.DetailAmount}"  FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"></TextBlock>
-                            <Slider  Width="100"  Height="24" Minimum="4" Maximum="450" x:Name="DetailSlider" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="DetailSlider_OnValueChanged"></Slider>
-                            <TextBlock Width="30" Text="{Binding Path=Value, ElementName=DetailSlider}" TextWrapping="Wrap" Style="{DynamicResource TextBlock}"/>
-                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top"/>
                     </DockPanel>
                 </GroupBox>
-              
+
             </DockPanel>
         </ScrollViewer>
     </Grid>
