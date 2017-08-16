@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO.Ports;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,7 +16,7 @@ namespace AForge.Wpf
     /// </summary>
     public partial class StartUpWindow : Window
     {
-        private BackgroundWorker _backgroundWorker = new BackgroundWorker();
+        private readonly BackgroundWorker _backgroundWorker = new BackgroundWorker();
         private int _trialCounter = 10;
 
         public StartUpWindow()
@@ -31,7 +32,7 @@ namespace AForge.Wpf
                 new System.Globalization.CultureInfo(GetSavedLanguage());
             InitializeComponent();
 
-            //_backgroundWorker.DoWork += SearchPorts; todo
+            _backgroundWorker.DoWork += SearchPorts; // TO DO // HASAN'ın Notu Buraya bir şey mi eklenecek? Lisans yok mu şimdilik?
             var mainWindow = new MainWindow();
 
             mainWindow.Show();
@@ -40,13 +41,9 @@ namespace AForge.Wpf
 
         private void SearchPorts(object sender, DoWorkEventArgs e)
         {
-            bool found = false;
+            var found = false;
             var ports = SerialPort.GetPortNames();
-            var sPorts = new List<SerialPort>();
-            foreach (string portName in ports)
-            {
-                sPorts.Add(new SerialPort(portName, 9600));
-            }
+            var sPorts = ports.Select(portName => new SerialPort(portName, 9600)).ToList();
             while (_trialCounter > 0)
             {
                 foreach (var port in sPorts)
@@ -54,9 +51,9 @@ namespace AForge.Wpf
                     if (!port.IsOpen)
                         port.Open();
                     port.Write("1");
-                    string message = "";
+                    var message = "";
                     message = Timeout(port, message);
-                    string check = "";
+                    var check = "";
                     if (message.Length > 3)
                         check = message.Substring(0, message.Length - 1);
                     if (check == "123456")
@@ -82,15 +79,9 @@ namespace AForge.Wpf
             {
                 MessageBox.Show(ResLocalization.DeviceNotFound, ResLocalization.Error,
                     MessageBoxButton.OK, MessageBoxImage.Error);
-                Dispatcher.Invoke(() => Close());
+                Dispatcher.Invoke(Close);
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-
-        }
-
         private static string Timeout(SerialPort port, string message)
         {
             if (!port.IsOpen)
@@ -98,12 +89,7 @@ namespace AForge.Wpf
                 port.Open();
             }
             var task = Task.Run(() => message = port.ReadLine());
-            if (task.Wait(TimeSpan.FromSeconds(3)))
-            {
-                return task.Result;
-            }
-
-            return message;
+            return task.Wait(TimeSpan.FromSeconds(3)) ? task.Result : message;
         }
 
         private void StartupWindow_Loaded(object sender, RoutedEventArgs e)

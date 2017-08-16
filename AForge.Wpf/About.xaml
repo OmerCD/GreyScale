@@ -59,6 +59,7 @@
                     <Hyperlink NavigateUri="mailto:hasancangedik@hotmail.com?subject=About GreyScale Application&amp;" RequestNavigate="Hyperlink_RequestNavigate">
                         hasancangedik@hotmail.com
                     </Hyperlink> 
+                    <LineBreak/>
                     <Hyperlink NavigateUri="mailto:omercd@hotmail.com.tr?subject=About GreyScale Application&amp;" RequestNavigate="Hyperlink_RequestNavigate">
                         omercd@hotmail.com.tr
                     </Hyperlink>

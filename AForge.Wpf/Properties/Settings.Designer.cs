@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AForge.Wpf.Properties {
+namespace GreyScale.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
