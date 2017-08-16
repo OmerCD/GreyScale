@@ -21,16 +21,17 @@ namespace AForge.Wpf
 
         public int GetSelectedId => Convert.ToInt32(((SelectionItem) Items[SelectedIndex]).Id);
 
-        struct SelectionItem
-        {
-            public string ImagePath { get; set; }
-            public string Name { get; set; }
-            public string StuffId { get; set; }
-            public string Id { get; set; }
-        }
+     
         public void Ekle(string resimYolu, string text1, string text2,string keyId)
         {
             Items.Add(new SelectionItem {ImagePath = resimYolu, Name = text1, StuffId = text2,Id=keyId});           
         }
+    }
+    public struct SelectionItem
+    {
+        public string ImagePath { get; set; }
+        public string Name { get; set; }
+        public string StuffId { get; set; }
+        public string Id { get; set; }
     }
 }

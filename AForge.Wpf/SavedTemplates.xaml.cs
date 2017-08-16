@@ -22,8 +22,8 @@ namespace AForge.Wpf
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = (ListViewItem) TemplateListView.Items[TemplateListView.SelectedIndex];
-            var id = int.Parse(selectedItem.Name.Substring(1));
+            var selectedItem = (SelectionItem) TemplateListView.Items[TemplateListView.SelectedIndex];
+            var id = int.Parse(selectedItem.Id);
             TemplateListView.Sil(TemplateListView.SelectedItem);
             new TemplateProperties().DeleteTemplateFromDatabase(id);
             DeletedItemIds.Add(id);

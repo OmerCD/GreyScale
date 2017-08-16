@@ -491,6 +491,10 @@ namespace AForge.Wpf
         }
         private void BtnRecognition_OnClick(object sender, RoutedEventArgs e)
         {
+            if (_recognition)
+            {
+                TxtMatches.Text = ResLocalization.Find;
+            }
             Recognition = !_recognition;
             _processor.onlyFindContours = !_recognition;
         }
@@ -499,11 +503,12 @@ namespace AForge.Wpf
         private void YeniButon_Click(object sender, RoutedEventArgs e)
         {
             _lockSelection = false;
-            _processor.templates = new Templates();
-            _processor.foundTemplates = new List<FoundTemplateDesc>();
+            _processor= new ImageProcessor();
+            _croppedImage = null;
             _designedSamples = new Templates();
             AlanSayisi.Text = ResLocalization.SavedTemplateCount + " :0";
             PaintCanvas.Background = Brushes.White;
+            PaintCanvas.Children.Clear();
         }
 
         private void BtnAlanEkle_Click(object sender, RoutedEventArgs e)
@@ -628,12 +633,12 @@ namespace AForge.Wpf
 
         private void Arttir(object sender, RoutedEventArgs e)
         {
-
+            DetailSlider.Value++;
         }
 
         private void Eksilt(object sender, RoutedEventArgs e)
         {
-
+            DetailSlider.Value--;
         }
     }
 }
