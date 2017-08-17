@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity.Core.Objects;
 using System.Data.SQLite;
+using ContourAnalysisNS;
 
 namespace AForge.Wpf.DatabaseCodes
 {
@@ -19,6 +20,31 @@ namespace AForge.Wpf.DatabaseCodes
         private int _adaptiveThresholdBlockSize;
         private bool _adaptiveNoiseFilter;
 
+        public static ImageProcessor Processor
+        {
+            get
+            {
+                var proc = new ImageProcessor();
+                var cO = new ContourOptions();
+                cO.LoadSavedOptions();
+
+                var rotateAngle = cO.MaxRotateAngle ? System.Math.PI : System.Math.PI / 4;
+                var noiseFilter = cO.AdaptiveNoiseFilter ? 1.5 : 0.5;
+
+                proc.adaptiveThresholdBlockSize = cO.AdaptiveThresholdBlockSize;
+                proc.adaptiveThresholdParameter = noiseFilter;
+                proc.equalizeHist = cO.EqualizeHist;
+                proc.finder.maxRotateAngle = rotateAngle;
+                proc.minContourArea = cO.MinContourArea;
+                proc.minContourLength = cO.MinContourLength;
+                proc.finder.maxACFDescriptorDeviation = cO.MaxAcfDescriptorDeviation;
+                proc.finder.minACF = cO.MinAcf;
+                proc.finder.minICF = cO.MinIcf;
+                proc.blur = cO.Blur;
+                proc.cannyThreshold = cO.CannyThreshold;
+                return proc;
+            }
+        }
         public static void SaveOption<T>(string columnName, T value)
         {
 

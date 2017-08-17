@@ -98,7 +98,8 @@ namespace AForge.Wpf
             Closing += MainWindow_Closing;
             _dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             _dispatcherTimer.Tick += DispatcherTimer_Tick;
-            _processor = new ImageProcessor();
+            _processor = ContourOptions.Processor;
+            
             _designedSamples = new Templates();
         }
 
@@ -502,8 +503,9 @@ namespace AForge.Wpf
 
         private void YeniButon_Click(object sender, RoutedEventArgs e)
         {
+            ContourOptions.SaveOption("AdaptiveThresholdBlockSize",DetailSlider.Value);
             _lockSelection = false;
-            _processor= new ImageProcessor();
+            _processor = ContourOptions.Processor;
             _croppedImage = null;
             _designedSamples = new Templates();
             AlanSayisi.Text = ResLocalization.SavedTemplateCount + " :0";
